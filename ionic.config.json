@@ -1,0 +1,7 @@
+{
+  "name": "stack-anlyze",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
