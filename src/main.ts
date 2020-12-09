@@ -1,6 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
+import store from './store';
+
+import { setupConfig } from '@ionic/core';
 
 import { IonicVue } from '@ionic/vue';
 
@@ -23,10 +26,16 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+const config = setupConfig({
+  mode: 'md'
+});
+
 const app = createApp(App)
+  .use(config)
   .use(IonicVue)
+  .use(store)
   .use(router);
-  
+
 router.isReady().then(() => {
   app.mount('#app');
 });
