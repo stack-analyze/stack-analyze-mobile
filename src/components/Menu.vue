@@ -9,31 +9,54 @@
             </ion-toolbar>
         </ion-header>
         <ion-content>
-            <ion-menu-toggle v-for="(recomendation, i) of recomendations" :key="i">
-                <ion-item :href="recomendation.link" target="_blank">
-                    <ion-icon :color="recomendation.color" slot="start" :icon="recomendation.logo" />
-                    <ion-label :color="recomendation.color">{{ recomendation.name }}</ion-label>
+            <ion-item-group>
+                <ion-item-divider>
+                    <ion-label>Options</ion-label>
+                </ion-item-divider>
+                <ion-item>
+                    <ion-icon slot="start" color="secondary" :icon="moonOutline" />
+                    <ion-label>Dark mode</ion-label>
+                    <ion-toggle color="secondary" @ionChange="darkMode" v-model="theme" />
                 </ion-item>
-            </ion-menu-toggle>
+            </ion-item-group>
+            <ion-item-group>
+                <ion-item-divider>
+                    <ion-label>Recomendations</ion-label>
+                </ion-item-divider>
+                <ion-menu-toggle v-for="(recomendation, i) of recomendations" :key="i">
+                    <ion-item :href="recomendation.link" target="_blank">
+                    <ion-icon
+                        :color="recomendation.color"
+                        slot="start"
+                        :icon="recomendation.logo"
+                    />
+                    <ion-label :color="recomendation.color">{{recomendation.name}}</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-item-group>
         </ion-content>
     </ion-menu>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
+import { useStore } from "vuex";
 
 import { recomendations } from "@/ts/data";
 
 import {
     IonMenu,
     IonMenuToggle,
+    IonItemGroup,
+    IonItemDivider,
     IonToolbar,
     IonHeader,
     IonContent,
     IonItem,
     IonLabel,
     IonAvatar,
-    IonImg
-} from '@ionic/vue'
+    IonImg,
+    IonToggle,
+} from "@ionic/vue";
 
 import { moonOutline } from "ionicons/icons";
 
@@ -45,21 +68,30 @@ export default defineComponent({
     components: {
         IonMenu,
         IonMenuToggle,
+        IonItemGroup,
+        IonItemDivider,
         IonToolbar,
         IonHeader,
         IonContent,
         IonItem,
         IonLabel,
         IonAvatar,
-        IonImg
+        IonImg,
+        IonToggle,
     },
     setup() {
+        const store = useStore();
+        const theme = computed(() => store.state.darkMode);
+        const darkMode = () => store.commit("darkTheme");
+
         return {
             moonOutline,
-            recomendations
-        }
-    }
-})
+            recomendations,
+            theme,
+            darkMode,
+        };
+    },
+});
 </script>
 
 <style>
@@ -76,7 +108,6 @@ export default defineComponent({
 }
 
 .logo {
- margin-top: 6%;
+    margin-top: 6%;
 }
-
 </style>

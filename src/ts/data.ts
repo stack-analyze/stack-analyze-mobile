@@ -1,3 +1,4 @@
+// import icons
 import { 
     logoGithub,
     logoInstagram,
@@ -52,7 +53,7 @@ export const Cards = [
         img: "/assets/img/profile-MrRedu.jpeg",
         name: "ideas",
         title: "MrRedu",
-        details: "ideas y observador",
+        details: "ideas and watchers",
         social: [
             {
                 logo: logoGithub,
