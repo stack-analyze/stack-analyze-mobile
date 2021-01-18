@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">stack-anlyze</string>
+    <string name="title_activity_main">stack-anlyze</string>
+    <string name="package_name">com.stackanlyze.app</string>
+    <string name="custom_url_scheme">com.stackanlyze.app</string>
+</resources>
