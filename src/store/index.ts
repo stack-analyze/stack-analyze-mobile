@@ -1,15 +1,12 @@
 import { createStore } from 'vuex'
 
-// DOM element 
-const classDark = document.body;
-
 export default createStore({
   state: {
-    darkMode: false
+    darkMode: localStorage.getItem("theme") || false,
   },
   mutations: {
-    darkTheme(state) { 
-      state.darkMode = classDark.classList.toggle('dark');
+    darkTheme(state) {
+      localStorage.setItem("theme", JSON.stringify(!state.darkMode));
     }
   },
   actions: {

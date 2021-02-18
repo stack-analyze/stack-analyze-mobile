@@ -16,8 +16,18 @@
         <ion-label>whois</ion-label>
       </ion-tab-button>
 
+      <ion-tab-button tab="github" href="/github">
+        <ion-icon :icon="informationCircleOutline" />
+        <ion-label>github</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="anime" href="/anime">
+        <ion-icon :icon="searchCircleOutline" />
+        <ion-label>anime</ion-label>
+      </ion-tab-button>
+
       <ion-tab-button tab="about" href="/about">
-        <ion-icon :icon="peopleOutline" />
+        <ion-icon :icon="peopleOutline"  />
         <ion-label>about</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
@@ -55,6 +65,8 @@ import {
   extensionPuzzleOutline,
   peopleOutline,
   globeOutline,
+  informationCircleOutline,
+  searchCircleOutline
 } from "ionicons/icons";
 
 export default {
@@ -72,6 +84,8 @@ export default {
       extensionPuzzleOutline,
       peopleOutline,
       globeOutline,
+      informationCircleOutline,
+      searchCircleOutline
     };
   },
 };

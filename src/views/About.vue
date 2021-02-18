@@ -6,7 +6,7 @@
         <ion-slide v-for="card of Cards" :key="card.id">
           <ion-card mode="ios" color="light">
             <ion-card-header mode="md">
-              <ion-img :src="card.img" alt="card.id" />
+              <ion-img :src="card.img" :alt="card.id" />
               <ion-card-subtitle>{{ card.details }}</ion-card-subtitle>
               <ion-card-title>{{ card.title }}</ion-card-title>
             </ion-card-header>

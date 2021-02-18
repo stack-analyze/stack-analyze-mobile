@@ -22,6 +22,16 @@ const routes: Array<RouteRecordRaw> = [
     name: 'about',
     component: () => import('@/views/About.vue')
   },
+  {
+    path: '/github',
+    name: 'github info',
+    component: () => import('@/views/GithubInfo.vue')
+  },
+  {
+    path: '/anime',
+    name: 'anime search',
+    component: () => import('@/views/AnimeSearch.vue')
+  },
   { path: "/", redirect: "tech-stack" }
 ]
 

@@ -13,11 +13,12 @@
                 <ion-item-divider>
                     <ion-label>Options</ion-label>
                 </ion-item-divider>
-                <ion-item>
-                    <ion-icon slot="start" color="secondary" :icon="moonOutline" />
-                    <ion-label>Dark mode</ion-label>
-                    <ion-toggle color="secondary" @ionChange="darkMode" v-model="theme" />
-                </ion-item>
+                <ion-menu-toogle>
+                    <ion-item button="true" @click="openChangelog">
+                        <ion-icon slot="start" color="secondary" :icon="libraryOutline" />
+                        <ion-label>Changelog</ion-label>
+                    </ion-item>
+                </ion-menu-toogle>
             </ion-item-group>
             <ion-item-group>
                 <ion-item-divider>
@@ -38,8 +39,7 @@
     </ion-menu>
 </template>
 <script lang="ts">
-import { defineComponent, computed } from "vue";
-import { useStore } from "vuex";
+import { defineComponent } from "vue";
 
 import { recomendations } from "@/ts/data";
 
@@ -55,10 +55,11 @@ import {
     IonLabel,
     IonAvatar,
     IonImg,
-    IonToggle,
+    modalController
 } from "@ionic/vue";
 
-import { moonOutline } from "ionicons/icons";
+import { moonOutline, libraryOutline } from "ionicons/icons";
+import ChangelogVue from "./Changelog.vue";
 
 export default defineComponent({
     name: "Menu",
@@ -77,18 +78,23 @@ export default defineComponent({
         IonLabel,
         IonAvatar,
         IonImg,
-        IonToggle,
     },
     setup() {
-        const store = useStore();
-        const theme = computed(() => store.state.darkMode);
-        const darkMode = () => store.commit("darkTheme");
+        const openChangelog = async () => {
+            const modal = await modalController.create({
+                component: ChangelogVue,
+                backdropDismiss: false,
+                mode: "ios",
+            });
+                
+            return modal.present();
+        };
 
         return {
             moonOutline,
+            libraryOutline,
             recomendations,
-            theme,
-            darkMode,
+            openChangelog
         };
     },
 });

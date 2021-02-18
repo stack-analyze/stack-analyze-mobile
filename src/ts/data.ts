@@ -1,5 +1,7 @@
+/* eslint-disable no-useless-escape */
+
 // import icons
-import { 
+import {
     logoGithub,
     logoInstagram,
     logoCodepen,
@@ -8,6 +10,9 @@ import {
     earthOutline
 } from "ionicons/icons";
 
+export const regex = "[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?";
+export const whoisRegex = "(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?";
+
 // card info
 export const Cards = [
     {
@@ -15,7 +20,7 @@ export const Cards = [
         img: "/assets/img/logo-mobile.png",
         name: "app logo",
         title: "stack-analyze",
-        details: "version: 1.0.0",
+        details: "version: 1.1.0",
         social: [
             {
                 logo: logoGithub,
@@ -68,9 +73,9 @@ export const Cards = [
 export const recomendations = [
     {
         name: "dorian designs",
-        logo: logoTwitch,
-        color: "twitch",
-        link: "https://www.twitch.tv/doriandesings"
+        logo: logoYoutube,
+        color: "youtube",
+        link: "https://www.youtube.com/user/DorianDesigns"
     },
     {
         name: "bluuweb",
@@ -79,17 +84,41 @@ export const recomendations = [
         link: "https://www.youtube.com/user/Bluuweb"
     },
     {
+        name: "fazt",
+        logo: logoYoutube,
+        color: "youtube",
+        link: "https://www.youtube.com/channel/UCX9NJ471o7Wie1DQe94RVIg"
+    },
+    {
+        name: "leonidas esteban",
+        logo: logoYoutube,
+        color: "youtube",
+        link: "https://www.youtube.com/user/LeonidasEsteban"
+    },
+    {
         name: "Doofy's Projects",
         logo: earthOutline,
         color: "primary",
         link: "https://windowsminios.org"
     },
     {
-        // next recomend version 1.0.9
-        name: "lunanny",
+        name: "gothspicechannel",
         logo: logoInstagram,
         color: "instagram",
-        link: "https://www.instagram.com/lu.nanny/"
+        link: "https://www.instagram.com/gothspicechannel/"
+    },
+    {
+        // next recomend version 1.0.9
+        name: "lunanny",
+        logo: logoTwitch,
+        color: "twitch",
+        link: "https://www.twitch.tv/lunanny"
+    },
+    {
+        name: "dannyaegyo",
+        logo: logoTwitch,
+        color: "twitch",
+        link: "https://www.twitch.tv/dannyaegyo"
     }
 ]
 

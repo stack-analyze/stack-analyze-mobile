@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { IonApp, IonSplitPane, IonRouterOutlet } from '@ionic/vue';
-import { defineComponent } from 'vue';
+import { defineComponent, inject } from 'vue';
 
 import TabsNav from '@/components/Tabs.vue';
 import Menu from '@/components/Menu.vue';
@@ -23,6 +23,11 @@ export default defineComponent({
     IonRouterOutlet,
     TabsNav,
     Menu
+  },
+  setup() {
+    const useTheme = inject('DarkThemeMode')
+    
+    return { useTheme }
   }
-});
+})
 </script>
