@@ -15,31 +15,36 @@
                 </ion-item-divider>
                 <ion-menu-toogle>
                     <ion-item button="true" @click="openChangelog">
-                        <ion-icon slot="start" color="secondary" :icon="libraryOutline" />
+                        <ion-icon slot="start" color="secondary" :icon="libraryOutline"></ion-icon>
                         <ion-label>Changelog</ion-label>
                     </ion-item>
                 </ion-menu-toogle>
             </ion-item-group>
             <ion-item-group>
-                <ion-item-divider>
-                    <ion-label>Recomendations</ion-label>
-                </ion-item-divider>
-                <ion-menu-toggle v-for="(recomendation, i) of recomendations" :key="i">
-                    <ion-item :href="recomendation.link" target="_blank">
-                    <ion-icon
-                        :color="recomendation.color"
-                        slot="start"
-                        :icon="recomendation.logo"
-                    />
-                    <ion-label :color="recomendation.color">{{recomendation.name}}</ion-label>
-                    </ion-item>
-                </ion-menu-toggle>
+                <details :open="openDetails" class="menu-recomends">
+                    <summary class="title-recomends" @click="openDetails = true">
+                        <ion-item-divider>
+                            <ion-label>Recomendations</ion-label>
+                        </ion-item-divider>
+                    </summary>
+                    <ion-menu-toggle v-for="(recomendation, i) of recomendations" :key="i">
+                        <ion-item :href="recomendation.link" target="_blank" @click="openDetails = false">
+                        <ion-icon
+                            :color="recomendation.color"
+                            slot="start"
+                            :icon="recomendation.logo"
+                        >
+                        </ion-icon>
+                        <ion-label :color="recomendation.color">{{recomendation.name}}</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </details>
             </ion-item-group>
         </ion-content>
     </ion-menu>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 
 import { recomendations } from "@/ts/data";
 
@@ -80,6 +85,8 @@ export default defineComponent({
         IonImg,
     },
     setup() {
+        const openDetails = ref(false);
+
         const openChangelog = async () => {
             const modal = await modalController.create({
                 component: ChangelogVue,
@@ -94,7 +101,8 @@ export default defineComponent({
             moonOutline,
             libraryOutline,
             recomendations,
-            openChangelog
+            openChangelog,
+            openDetails
         };
     },
 });
@@ -115,5 +123,32 @@ export default defineComponent({
 
 .logo {
     margin-top: 6%;
+}
+
+.title-recomends {
+    list-style-type: none;
+}
+
+.title-recomends::marker {
+    display: none;
+}
+
+.title-recomends::-webkit-details-marker {
+    display: none;
+}
+
+.title-recomends ion-item-divider:after {
+    content: "+";
+    float: left;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: -5px 10px 0 0;
+    padding: 0;
+    text-align: center;
+    width: 20px;
+}
+
+.menu-recomends[open] .title-recomends ion-item-divider:after {
+    content: "-";
 }
 </style>

@@ -2,24 +2,45 @@
   <ion-page>
     <Toolbar />
     <ion-content>
-      <form @submit.prevent="domainInfo">
-        <ion-item>
-          <ion-label position="floating" color="secondary">
-            enter a url:
-          </ion-label>
-          <ion-input
-            type="text"
-            v-model="website"
-            clearInput="true"
-            autocomplete="off"
-            :pattern="whoisRegex"
-            required
-          />
-        </ion-item>
-      </form>
-      <ion-button @click="reset" color="danger" fill="outline" expand="full">
-        reset whois
-      </ion-button>
+      <ion-item>
+        <ion-label position="floating" color="secondary">
+          enter a url:
+        </ion-label>
+        <ion-input
+          type="text"
+          v-model="website"
+          clearInput="true"
+          autocomplete="off"
+          required
+        >
+        </ion-input>
+      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button
+              @click="domainInfo"
+              :disabled="validate"
+              color="secondary"
+              fill="outline"
+              expand="block"
+            >
+              start-analyze
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button
+              @click="reset"
+              :disabled="resetStatus"
+              color="danger"
+              fill="outline"
+              expand="block"
+            >
+              reset tech-stack
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
       <ion-card mode="ios">
         <ion-card-header mode="md">
           <ion-card-title>Website: {{ url }}</ion-card-title>
@@ -36,7 +57,7 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 import {
   IonPage,
@@ -50,6 +71,9 @@ import {
   IonCardSubtitle,
   IonCardHeader,
   IonCardContent,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from "@ionic/vue";
 
 import axios from "axios";
@@ -76,16 +100,24 @@ export default {
     IonCardSubtitle,
     IonCardHeader,
     IonCardContent,
+    IonGrid,
+    IonRow,
+    IonCol,
   },
   setup() {
     const website = ref("");
-    const info = ref([]);
+    const info = ref("");
     const url = ref("");
 
     const reset = () => {
-      info.value = [];
+      info.value = "";
       url.value = "";
     };
+
+    const validate = computed(() =>
+      website.value.match(whoisRegex) ? false : true
+    );
+    const resetStatus = computed(() => (info.value === "" ? true : false));
 
     const domainInfo = async (): Promise<void> => {
       try {
@@ -112,7 +144,8 @@ export default {
       url,
       domainInfo,
       presentAlert,
-      whoisRegex,
+      validate,
+      resetStatus,
     };
   },
 };

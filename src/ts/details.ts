@@ -18,5 +18,15 @@ export const versionsNotes = [
           fixed:
               1. remove dark mode
         `
+    },
+    {
+        version: '1.2.0',
+        details: `
+          Added:
+              1. the new tools hardware info
+              2. add all recomendations in npm versions 1.1.0 - 1.1.1
+          changed:
+            1. remove @keyup.prevent to @submit.prevent using dom keypress event
+        `
     }
 ];

@@ -11,17 +11,40 @@
           clearInput="true"
           autocomplete="off"
           required
-          @keyup.enter="animeSearch"
-        />
+        >
+        </ion-input>
       </ion-item>
-      <ion-button @click="reset" color="danger" expand="full" fill="outline">
-        reset anime search
-      </ion-button>
-      <ion-grid fixed>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button
+              @click="animeSearch"
+              color="secondary"
+              fill="outline"
+              expand="block"
+            >
+              start-analyze
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button
+              @click="reset"
+              :disabled="resetStatus"
+              color="danger"
+              fill="outline"
+              expand="block"
+            >
+              reset tech-stack
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
         <ion-row>
           <ion-col
             v-for="(anime, i) of animeResults"
             :key="i"
+            size-xl="2"
             size-lg="3"
             size-md="4"
             size-sm="6"
@@ -33,15 +56,16 @@
                   :src="anime.image_url"
                   :alt="anime.title"
                   class="poster"
-                />
+                >
+                </ion-img>
               </ion-card-header>
               <ion-card-content>
                 <ion-card-title class="ion-text-sm">
                   <ion-label>{{ anime.title }}</ion-label>
                 </ion-card-title>
-                <ion-button @click="openModal(anime.mal_id)"
-                  >open anime info</ion-button
-                >
+                <ion-button @click="openModal(anime.mal_id)">
+                  open anime info
+                </ion-button>
               </ion-card-content>
             </ion-card>
           </ion-col>
@@ -52,7 +76,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, computed } from "vue";
 
 import axios from "axios";
 
@@ -61,6 +85,7 @@ import Modal from "@/components/Modal.vue";
 
 // script
 import presentAlert from "@/ts/alertMsg";
+import openToast from "@/ts/warning-message";
 
 import {
   IonPage,
@@ -101,10 +126,13 @@ export default defineComponent({
   name: "anime",
   setup() {
     const anime = ref("");
-    const animeResults = ref({});
+    const animeResults = ref([]);
 
     const animeSearch = async () => {
-      try {
+      if (anime.value === '') {
+        openToast()
+      } else {
+        try {
         const res = await axios.get("https://api.jikan.moe/v3/search/anime", {
           params: {
             q: anime.value,
@@ -119,9 +147,12 @@ export default defineComponent({
         );
       }
       anime.value = "";
+      }
     };
+    
+    const resetStatus = computed(() => (animeResults.value[0] === undefined ? true : false));
 
-    const reset = () => (animeResults.value = {});
+    const reset = () => (animeResults.value = []);
 
     const openModal = async (id: number) => {
       const modal = await modalController.create({
@@ -143,6 +174,7 @@ export default defineComponent({
       animeSearch,
       reset,
       openModal,
+      resetStatus
     };
   },
 });

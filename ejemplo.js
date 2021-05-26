@@ -1,0 +1,1 @@
+console.info(process.env.BASE_URL);

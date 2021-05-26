@@ -4,7 +4,7 @@
             <ion-title>changelog</ion-title>
             <ion-buttons slot="end">
                 <ion-button @click="closeModal" color="danger">
-                    <ion-icon :icon="closeCircleOutline" />
+                    <ion-icon :icon="closeCircleOutline"></ion-icon>
                 </ion-button>
             </ion-buttons>
         </ion-toolbar>

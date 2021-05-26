@@ -1,4 +1,4 @@
-0<template>
+<template>
   <ion-page>
     <Toolbar />
     <ion-content>
@@ -11,19 +11,42 @@
           v-model="website"
           clearInput="true"
           autocomplete="off"
-          @keyup.enter="tech"
-          :pattern="regex"
           required
-        />
+        >
+        </ion-input>
       </ion-item>
-      <ion-button @click="reset" color="danger" fill="outline" expand="full">
-        reset tech-stack
-      </ion-button>
-      <ion-grid fixed>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button
+              @click="tech"
+              :disabled="validate"
+              color="secondary"
+              fill="outline"
+              expand="block"
+            >
+              start-analyze
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button
+              @click="reset"
+              :disabled="resetStatus"
+              color="danger"
+              fill="outline"
+              expand="block"
+            >
+              reset tech-stack
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
         <ion-row>
           <ion-col
             v-for="app of apps"
             :key="app.slug"
+            size-xl="2"
             size-lg="3"
             size-md="4"
             size-sm="6"
@@ -34,7 +57,8 @@
                 <ion-img
                   :src="`/assets/img/logos/${app.icon}`"
                   :alt="app.name"
-                />
+                >
+                </ion-img>
               </ion-card-header>
               <ion-card-content>
                 <ion-card-title>{{ app.name }}</ion-card-title>
@@ -56,7 +80,7 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 import {
   IonPage,
@@ -66,6 +90,15 @@ import {
   IonLabel,
   IonItem,
   IonImg,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardSubtitle,
+  IonGrid,
+  IonRow,
+  IonCol,
+  toastController,
 } from "@ionic/vue";
 
 import axios from "axios";
@@ -74,7 +107,7 @@ import Toolbar from "@/components/Toolbar.vue";
 
 // scripts
 import presentAlert from "@/ts/alertMsg";
-import { regex } from '@/ts/data';
+import { regex } from "@/ts/data";
 
 export default {
   name: "TechStack",
@@ -86,17 +119,27 @@ export default {
     IonLabel,
     IonItem,
     IonImg,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardTitle,
+    IonCardSubtitle,
+    IonGrid,
+    IonRow,
+    IonCol,
     Toolbar,
   },
   setup() {
     const website = ref("");
     const apps = ref([]);
-    const url = ref("");
 
     const reset = () => {
       apps.value = [];
-      url.value = "";
+      website.value = "";
     };
+
+    const validate = computed(() => (website.value.match(regex) ? false : true));
+    const resetStatus = computed(() => (apps.value[0] === undefined ? true : false));
 
     const tech = async (): Promise<void> => {
       try {
@@ -108,8 +151,15 @@ export default {
             },
           }
         );
+
+        const toast = await toastController.create({
+          message: "not found stack",
+          duration: 2000,
+        });
+
         apps.value = res.data;
-        url.value = website.value;
+        
+        if(apps.value[0] === undefined) { toast.present(); }
       } catch (err) {
         presentAlert(err.message, "Error tech-stack", "problem to tech-stack");
       }
@@ -119,10 +169,10 @@ export default {
     return {
       apps,
       website,
-      url,
       reset,
       tech,
-      regex
+      validate,
+      resetStatus,
     };
   },
 };

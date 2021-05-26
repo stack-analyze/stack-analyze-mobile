@@ -20,7 +20,7 @@ export const Cards = [
         img: "/assets/img/logo-mobile.png",
         name: "app logo",
         title: "stack-analyze",
-        details: "version: 1.1.0",
+        details: "version: 1.2.0",
         social: [
             {
                 logo: logoGithub,
@@ -90,6 +90,12 @@ export const recomendations = [
         link: "https://www.youtube.com/channel/UCX9NJ471o7Wie1DQe94RVIg"
     },
     {
+        name: "fernando herrera",
+        logo: logoYoutube,
+        color: "youtube",
+        link: "https://www.youtube.com/channel/UCuaPTYj15JSkETGnEseaFFg"
+    },
+    {
         name: "leonidas esteban",
         logo: logoYoutube,
         color: "youtube",
@@ -99,16 +105,53 @@ export const recomendations = [
         name: "Doofy's Projects",
         logo: earthOutline,
         color: "primary",
-        link: "https://windowsminios.org"
+        link: "https://dprojects.org"
     },
     {
         name: "gothspicechannel",
         logo: logoInstagram,
         color: "instagram",
-        link: "https://www.instagram.com/gothspicechannel/"
+        link: "https://instagram.com/gothspicechannel"
+    },
+    {   
+        name: "jujujuhariah_1995",
+        logo: logoInstagram,
+        color: "instagram",
+        link: "https://www.instagram.com/jujujuhariah_1995"
     },
     {
-        // next recomend version 1.0.9
+        name: "seyyahi solist",
+        logo: logoInstagram,
+        color: "instagram",
+        link: "https://www.instagram.com/seyyahisolist"
+    },
+    {
+        name: "alpicorniorex",
+        logo: logoInstagram,
+        color: "instagram",
+        link: "https://www.instagram.com/alpicorniorex"
+    },
+    {
+        name: "toni_stream",
+        logo: logoInstagram,
+        color: "instagram",
+        link: "https://www.instagram.com/toni_stream"
+    },
+    {
+        name: "celirodriguez12",
+        logo: logoInstagram,
+        color: "instagram",
+        link: "https://www.instagram.com/celirodriguez12"
+    },
+    {
+        // next recomend npm version 1.1.2 || 1.1.3
+        name: "aidee",
+        logo: logoInstagram,
+        color: "instagram",
+        link: "https://instagram.com/beautybyaidee"
+    },
+    {
+        // next recomend npm version 1.0.9
         name: "lunanny",
         logo: logoTwitch,
         color: "twitch",

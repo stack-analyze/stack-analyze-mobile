@@ -4,7 +4,7 @@
       <ion-title>anime info</ion-title>
       <ion-buttons slot="end">
         <ion-button @click="closeModal" color="danger">
-          <ion-icon :icon="closeCircleOutline" />
+          <ion-icon :icon="closeCircleOutline"></ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
@@ -12,7 +12,7 @@
   <ion-content>
     <ion-card>
       <ion-card-header>
-        <ion-img :src="animeResult.image_url" :alt="animeResult.mal_id" class="poster" />
+        <ion-img :src="animeResult.image_url" :alt="animeResult.mal_id" class="poster"></ion-img>
         <ion-card-title>{{ animeResult.title }}</ion-card-title>
         <ion-card-subtitle>
           airing: {{ !animeResult.airing ? "finish" : "current" }}

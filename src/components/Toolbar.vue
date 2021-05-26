@@ -4,7 +4,7 @@
       <ion-title color="light">{{ $route.name }}</ion-title>
       <ion-buttons slot="start">
         <ion-menu-button color="light">
-          <ion-icon :icon="settingsOutline" />
+          <ion-icon :icon="settingsOutline"></ion-icon>
         </ion-menu-button>
       </ion-buttons>
     </ion-toolbar>

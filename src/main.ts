@@ -1,7 +1,6 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
-import store from './store';
 
 import { setupConfig } from '@ionic/core';
 
@@ -26,18 +25,26 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+// ionic config
 const config = setupConfig({
   mode: 'md'
 });
 
+/* start vue init */
 const app = createApp(App)
   .use(config)
   .use(IonicVue)
-  .use(store)
   .use(router);
 
 router.isReady().then(() => {
   app.mount('#app');
 });
+/* end vue init */
 
-console.info(localStorage.getItem("darkMode"));
+// events
+document.addEventListener('keypress', (e) => {
+  if (e.code === 'Enter') {
+    e.preventDefault();
+    return false;
+  }
+});
