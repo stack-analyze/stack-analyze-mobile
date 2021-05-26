@@ -6,6 +6,9 @@ import { setupConfig } from '@ionic/core';
 
 import { IonicVue } from '@ionic/vue';
 
+// service worker
+import './registerServiceWorker'
+
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
 

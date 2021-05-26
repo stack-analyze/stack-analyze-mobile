@@ -20,7 +20,7 @@ export const Cards = [
         img: "/assets/img/logo-mobile.png",
         name: "app logo",
         title: "stack-analyze",
-        details: "version: 1.2.0",
+        details: `version: 1.2.0`,
         social: [
             {
                 logo: logoGithub,
