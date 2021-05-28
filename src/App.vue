@@ -9,8 +9,16 @@
 </template>
 
 <script lang="ts">
-import { IonApp, IonSplitPane, IonRouterOutlet } from '@ionic/vue';
-import { defineComponent, inject } from 'vue';
+import {
+  IonApp,
+  IonSplitPane,
+  IonRouterOutlet,
+  toastController
+} from '@ionic/vue';
+import { 
+  defineComponent,
+  onMounted
+} from 'vue';
 
 import TabsNav from '@/components/Tabs.vue';
 import Menu from '@/components/Menu.vue';
@@ -25,9 +33,14 @@ export default defineComponent({
     Menu
   },
   setup() {
-    const useTheme = inject('DarkThemeMode')
-    
-    return { useTheme }
+    onMounted(async () => {
+      const toast = await toastController
+        .create({
+          message: 'capacitor plugins apis is not compatible in some browser.',
+          duration: 2000
+        });
+      toast.present();
+    });
   }
 })
 </script>

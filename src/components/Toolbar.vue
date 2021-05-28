@@ -12,18 +12,20 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from "vue";
+
 import {
   IonHeader,
   IonToolbar,
   IonTitle,
   IonMenuButton,
   IonButtons,
-  IonIcon
+  IonIcon,
 } from "@ionic/vue";
 
 import { settingsOutline } from "ionicons/icons";
 
-export default {
+export default defineComponent({
   name: "Toolbar",
   components: {
     IonHeader,
@@ -31,12 +33,12 @@ export default {
     IonTitle,
     IonMenuButton,
     IonButtons,
-    IonIcon
+    IonIcon,
   },
   setup() {
-    return { 
+    return {
       settingsOutline,
     };
   },
-};
+});
 </script>

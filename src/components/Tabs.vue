@@ -29,15 +29,16 @@
         <ion-label>anime</ion-label>
       </ion-tab-button>
 
+      <ion-tab-button tab="hardware" href="/hardware">
+        <ion-icon :icon="terminalOutline"></ion-icon>
+        <ion-label>hardware</ion-label>
+      </ion-tab-button>
+
       <ion-tab-button tab="about" href="/about">
         <ion-icon :icon="peopleOutline"></ion-icon>
         <ion-label>about</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="hardware" href="/hardware">
-        <ion-icon :icon="terminalOutline"></ion-icon>
-        <ion-label>hardware</ion-label>
-      </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
 </template>
@@ -71,6 +72,8 @@ ion-tab-button.tab-selected::before {
 </style>
 
 <script lang="ts">
+import {defineComponent} from 'vue'
+
 import {
   IonTabs,
   IonTabBar,
@@ -89,7 +92,7 @@ import {
   terminalOutline
 } from "ionicons/icons";
 
-export default {
+export default defineComponent({
   name: "TabsNav",
   components: {
     IonTabs,
@@ -109,6 +112,6 @@ export default {
       terminalOutline
     };
   },
-};
+});
 </script>
 

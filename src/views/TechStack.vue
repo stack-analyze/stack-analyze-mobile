@@ -80,7 +80,7 @@
 </template>
 
 <script lang="ts">
-import { computed, ref } from "vue";
+import { defineComponent, computed, ref } from "vue";
 
 import {
   IonPage,
@@ -109,7 +109,7 @@ import Toolbar from "@/components/Toolbar.vue";
 import presentAlert from "@/ts/alertMsg";
 import { regex } from "@/ts/data";
 
-export default {
+export default defineComponent({
   name: "TechStack",
   components: {
     IonPage,
@@ -175,7 +175,7 @@ export default {
       resetStatus,
     };
   },
-};
+});
 </script>
 
 <style>

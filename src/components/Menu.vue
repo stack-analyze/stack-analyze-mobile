@@ -3,7 +3,7 @@
         <ion-header>
             <ion-toolbar class="toolbar ion-text-center">
                 <ion-avatar class="horizontal logo">
-                    <ion-img src="/assets/icon/icon.png" alt="icon logo" />
+                    <ion-img src="/assets/img/logo-mobile.png" alt="icon logo" />
                 </ion-avatar>
                 <ion-title>stack-analyze</ion-title>
             </ion-toolbar>
@@ -63,7 +63,10 @@ import {
     modalController
 } from "@ionic/vue";
 
-import { moonOutline, libraryOutline } from "ionicons/icons";
+import {
+    moonOutline,
+    libraryOutline
+} from "ionicons/icons";
 import ChangelogVue from "./Changelog.vue";
 
 export default defineComponent({

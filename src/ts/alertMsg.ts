@@ -1,6 +1,6 @@
 import { alertController } from "@ionic/vue";
 
-export default async function presentAlert(msg: any, header: string, subHeader: string) {
+export default async function presentAlert(msg: string, header: string, subHeader: string): Promise<void> {
     const alert = await alertController.create({
       header,
       subHeader,
@@ -9,5 +9,5 @@ export default async function presentAlert(msg: any, header: string, subHeader: 
       mode: "ios",
       buttons: ["OK"],
     });
-    return alert.present();
+    alert.present();
 }

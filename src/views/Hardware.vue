@@ -1,7 +1,7 @@
 <template>
   <ion-page>
+  <ion-content>
     <Toolbar />
-    <ion-content>
       <ion-grid>
         <ion-row>
           <ion-col size-md="4" offset-md="4" size-sm="12">
@@ -70,7 +70,7 @@
 </template>
 
 <script lang="ts">
-import { onMounted, ref } from "vue";
+import { defineComponent, watchEffect, ref, onUpdated } from "vue";
 
 import {
   IonPage,
@@ -92,7 +92,7 @@ import { Device } from "@capacitor/device";
 
 import Toolbar from "@/components/Toolbar.vue";
 
-export default {
+export default defineComponent({
   name: "hardwareInformation",
   components: {
     IonPage,
@@ -114,7 +114,12 @@ export default {
     const modelInfo = ref({});
     const batteryInfo = ref({});
 
-    onMounted(async () => {
+    watchEffect(async () => {
+      modelInfo.value = await Device.getInfo();
+      batteryInfo.value = await Device.getBatteryInfo();
+    });
+    
+    onUpdated(async () => {
       modelInfo.value = await Device.getInfo();
       batteryInfo.value = await Device.getBatteryInfo();
     });
@@ -124,5 +129,5 @@ export default {
       batteryInfo,
     };
   },
-};
+});
 </script>

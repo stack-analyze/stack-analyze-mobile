@@ -10,18 +10,18 @@
           type="url"
           v-model="website"
           clearInput="true"
+          :pattern="regex"
           autocomplete="off"
           required
-        >
-        </ion-input>
+        />
       </ion-item>
       <ion-grid>
         <ion-row>
           <ion-col>
             <ion-button
-              @:click="results"
-              :disabled="validate"
+              @click="results"
               color="secondary"
+              :disabled="pagespeedValidate"
               fill="outline"
               expand="block"
             >
@@ -31,7 +31,7 @@
           <ion-col>
             <ion-button
               @click="reset"
-              :disabled="resetStatus"
+              :disabled="pagespeedReset"
               color="danger"
               fill="outline"
               expand="block"
@@ -41,36 +41,28 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-card mode="ios">
-              <ion-card-header mode="md">
-                <ion-card-subtitle>Desktop: {{ url }}</ion-card-subtitle>
-                <ion-card-title :color="resColorDesktop">
-                  {{ desktop }}/100
-                </ion-card-title>
-              </ion-card-header>
-            </ion-card>
-          </ion-col>
-          <ion-col>
-            <ion-card mode="ios">
-              <ion-card-header mode="md">
-                <ion-card-subtitle>Mobile: {{ url }}</ion-card-subtitle>
-                <ion-card-title :color="resColorMobile">
-                  {{ mobile }}/100
-                </ion-card-title>
-              </ion-card-header>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <ion-card mode="ios">
+        <ion-card-header mode="md">
+          <ion-card-subtitle>Desktop: {{ url }}</ion-card-subtitle>
+          <ion-card-title :color="resColorDesktop">
+            {{ desktop }}/100
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+      <ion-card mode="ios">
+        <ion-card-header mode="md">
+          <ion-card-subtitle>Mobile: {{ url }}</ion-card-subtitle>
+          <ion-card-title :color="resColorMobile">
+            {{ mobile }}/100
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { ref, computed } from "vue";
+import { defineComponent, computed, ref } from "vue";
 import axios from "axios";
 
 import {
@@ -84,9 +76,6 @@ import {
   IonCardHeader,
   IonCardSubtitle,
   IonCardTitle,
-  IonGrid,
-  IonRow,
-  IonCol
 } from "@ionic/vue";
 import Toolbar from "@/components/Toolbar.vue";
 
@@ -94,7 +83,7 @@ import Toolbar from "@/components/Toolbar.vue";
 import presentAlert from "@/ts/alertMsg";
 import { regex } from "@/ts/data";
 
-export default {
+export default defineComponent({
   name: "Pagespeed",
   components: {
     Toolbar,
@@ -108,9 +97,6 @@ export default {
     IonCardHeader,
     IonCardSubtitle,
     IonCardTitle,
-    IonGrid,
-    IonRow,
-    IonCol
   },
   setup() {
     const website = ref("");
@@ -120,10 +106,14 @@ export default {
     const resColorDesktop = ref("dark");
     const resColorMobile = ref("dark");
 
-    const validate = computed(() => (url.value.match(regex) ? false : true));
-    const resetStatus = computed(() =>
-      mobile.value === 0 && desktop.value === 0 ? true : false
-    );
+    const pagespeedValidate = computed(() => website.value.match(regex) ? false : true);
+    const pagespeedReset = computed(() => {
+      if (desktop.value === 0 && mobile.value === 0) {
+        return true;
+      } else {
+        return false;
+      }
+    });
 
     function reset() {
       desktop.value = 0;
@@ -208,10 +198,10 @@ export default {
       presentAlert,
       resColorDesktop,
       resColorMobile,
-      validate,
-      resetStatus,
+      regex,
+      pagespeedReset,
+      pagespeedValidate
     };
   },
-};
+});
 </script>
-

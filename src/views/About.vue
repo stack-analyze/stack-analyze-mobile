@@ -29,6 +29,7 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
 import { slideOpts, Cards } from '@/ts/data';
 
 import {
@@ -47,7 +48,7 @@ import {
 
 import Toolbar from "@/components/Toolbar.vue";
 
-export default {
+export default defineComponent({
   name: "TechStack",
   components: {
     Toolbar,
@@ -69,5 +70,5 @@ export default {
       Cards,
     };
   },
-};
+});
 </script>

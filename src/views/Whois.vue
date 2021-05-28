@@ -57,7 +57,7 @@
 </template>
 
 <script lang="ts">
-import { ref, computed } from "vue";
+import { defineComponent, ref, computed } from "vue";
 
 import {
   IonPage,
@@ -85,7 +85,7 @@ import presentAlert from "@/ts/alertMsg";
 
 import { whoisRegex } from "@/ts/data";
 
-export default {
+export default defineComponent({
   name: "TechStack",
   components: {
     Toolbar,
@@ -147,6 +147,6 @@ export default {
       validate,
       resetStatus,
     };
-  },
-};
+  }
+});
 </script>

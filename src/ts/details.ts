@@ -27,6 +27,13 @@ export const versionsNotes = [
               2. add all recomendations in npm versions 1.1.0 - 1.1.1
           changed:
             1. remove @keyup.prevent to @submit.prevent using dom keypress event
+            2. modify tar bar and all pages except about page
+            3. remove modules:
+                3.1 vuex
+                3.2 @capacitor/android
+        fixed:
+            1. upgrade all modules for compatibility capacitor 3
+            2. add message required in github and anime pages
         `
     }
 ];
