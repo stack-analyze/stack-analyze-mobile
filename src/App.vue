@@ -36,7 +36,7 @@ export default defineComponent({
     onMounted(async () => {
       const toast = await toastController
         .create({
-          message: 'capacitor plugins apis is not compatible in some browser.',
+          message: 'Capacitor version 3 plugins in some browsers work partially or are not incompatible at all.',
           duration: 2000
         });
       toast.present();
