@@ -114,10 +114,10 @@ export const recomendations = [
         link: "https://instagram.com/gothspicechannel"
     },
     {   
-        name: "jujujuhariah_1995",
+        name: "sailormoon_1995",
         logo: logoInstagram,
         color: "instagram",
-        link: "https://www.instagram.com/jujujuhariah_1995"
+        link: "https://www.instagram.com/sailormoon_1995"
     },
     {
         name: "seyyahi solist",
