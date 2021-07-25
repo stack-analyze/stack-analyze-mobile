@@ -42,7 +42,6 @@
 </template>
 
 <script lang="ts">
-import Axios from "axios";
 import { defineComponent, ref, watchEffect } from "vue";
 
 import {
@@ -89,12 +88,14 @@ export default defineComponent({
 
     watchEffect(async () => {
       try {
-        const res = await Axios.get(
+        const res = await fetch(
           `https://api.jikan.moe/v3/anime/${props.animeId}`
         );
 
-        animeResult.value = res.data;
-        duration.value = res.data.aired.string;
+        const data = await res.json();
+
+        animeResult.value = data;
+        duration.value = data.aired.string;
       } catch (err) {
         presentAlert(
           err.message,

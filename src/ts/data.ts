@@ -7,6 +7,7 @@ import {
     logoCodepen,
     logoTwitch,
     logoYoutube,
+    logoTiktok,
     earthOutline
 } from "ionicons/icons";
 
@@ -20,7 +21,7 @@ export const Cards = [
         img: "/assets/img/logo-mobile.png",
         name: "app logo",
         title: "stack-analyze",
-        details: `version: 1.2.0`,
+        details: `version: 1.3.0`,
         social: [
             {
                 logo: logoGithub,
@@ -50,6 +51,11 @@ export const Cards = [
                 logo: logoCodepen,
                 color: "codepen",
                 link: "https://codepen.io/omega5300",
+            },
+            {
+                logo: logoTiktok,
+                color: "codepen",
+                link: "https://www.tiktok.com/@juliomixtreria"
             }
         ]
     },
@@ -126,6 +132,12 @@ export const recomendations = [
         link: "https://www.instagram.com/seyyahisolist"
     },
     {
+        name: "fatoosgoksuu",
+        logo: logoInstagram,
+        color: "instagram",
+        link: "https://www.instagram.com/fatoosgoksuu"
+    },
+    {
         name: "alpicorniorex",
         logo: logoInstagram,
         color: "instagram",
@@ -162,6 +174,12 @@ export const recomendations = [
         logo: logoTwitch,
         color: "twitch",
         link: "https://www.twitch.tv/dannyaegyo"
+    },
+    {
+        name: "lamua_",
+        logo: logoTwitch,
+        color: "twitch",
+        link: "https://www.twitch.tv/lamua_"
     }
 ]
 

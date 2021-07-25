@@ -16,7 +16,7 @@
               <ion-card-content mode="md">
                 <ion-card-title>{{ modelInfo.model }}</ion-card-title>
                 <ion-card-subtitle>
-                  {{
+                  os: {{
                     modelInfo.operatingSystem === "unknown"
                       ? "linux or unix derivate"
                       : modelInfo.operatingSystem
@@ -58,6 +58,30 @@
                         </ion-text>
                       </ion-item>
                     </ion-col>
+                    <ion-col size="6">
+                      <ion-item>
+                        <ion-label position="stacked">
+                          is connected:
+                        </ion-label>
+                        <ion-text>
+                          {{
+                            networkInfo.connected ? "yes" : "no"
+                          }}
+                        </ion-text>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col size="6">
+                      <ion-item>
+                        <ion-label position="stacked">
+                          network type:
+                        </ion-label>
+                        <ion-text>
+                          {{
+                            networkInfo.connectionType
+                          }}
+                        </ion-text>
+                      </ion-item>
+                    </ion-col>
                   </ion-row>
                 </ion-grid>
               </ion-card-content>
@@ -70,8 +94,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watchEffect, ref, onUpdated } from "vue";
+// vue modules
+import { defineComponent, watchEffect, ref } from "vue";
 
+// ionic modules
 import {
   IonPage,
   IonContent,
@@ -88,8 +114,11 @@ import {
   IonText,
 } from "@ionic/vue";
 
+// capacitor plugins
 import { Device } from "@capacitor/device";
+import { Network } from "@capacitor/network";
 
+// toolbar component
 import Toolbar from "@/components/Toolbar.vue";
 
 export default defineComponent({
@@ -113,20 +142,18 @@ export default defineComponent({
   setup() {
     const modelInfo = ref({});
     const batteryInfo = ref({});
+    const networkInfo = ref({});
 
     watchEffect(async () => {
       modelInfo.value = await Device.getInfo();
       batteryInfo.value = await Device.getBatteryInfo();
-    });
-    
-    onUpdated(async () => {
-      modelInfo.value = await Device.getInfo();
-      batteryInfo.value = await Device.getBatteryInfo();
+      networkInfo.value = await Network.getStatus();
     });
 
     return {
       modelInfo,
       batteryInfo,
+      networkInfo,
     };
   },
 });

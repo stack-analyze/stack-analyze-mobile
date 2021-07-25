@@ -29,6 +29,11 @@
         <ion-label>anime</ion-label>
       </ion-tab-button>
 
+      <ion-tab-button tab="crypto" href="/crypto">
+        <ion-icon :icon="walletOutline"></ion-icon>
+        <ion-label>crypto</ion-label>
+      </ion-tab-button>
+
       <ion-tab-button tab="hardware" href="/hardware">
         <ion-icon :icon="terminalOutline"></ion-icon>
         <ion-label>hardware</ion-label>
@@ -71,7 +76,7 @@ ion-tab-button.tab-selected::before {
 }
 </style>
 
-<script lang="ts">
+<script lang="">
 import {defineComponent} from 'vue'
 
 import {
@@ -89,7 +94,8 @@ import {
   globeOutline,
   informationCircleOutline,
   searchCircleOutline,
-  terminalOutline
+  terminalOutline,
+  walletOutline
 } from "ionicons/icons";
 
 export default defineComponent({
@@ -109,7 +115,8 @@ export default defineComponent({
       globeOutline,
       informationCircleOutline,
       searchCircleOutline,
-      terminalOutline
+      terminalOutline,
+      walletOutline
     };
   },
 });

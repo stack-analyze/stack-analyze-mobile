@@ -1,6 +1,6 @@
 <template>
   <ion-header>
-    <ion-toolbar mode="ios" color="secondary">
+    <ion-toolbar color="secondary">
       <ion-title color="light">{{ $route.name }}</ion-title>
       <ion-buttons slot="start">
         <ion-menu-button color="light">

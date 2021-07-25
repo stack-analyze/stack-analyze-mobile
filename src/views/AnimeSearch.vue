@@ -44,11 +44,11 @@
           <ion-col
             v-for="(anime, i) of animeResults"
             :key="i"
-            size-xl="2"
+            size-xl="3"
             size-lg="3"
             size-md="4"
-            size-sm="6"
-            size-xs="12"
+            size-sm="4"
+            size="12"
           >
             <ion-card>
               <ion-card-header>
@@ -63,7 +63,7 @@
                 <ion-card-title class="ion-text-sm">
                   <ion-label>{{ anime.title }}</ion-label>
                 </ion-card-title>
-                <ion-button @click="openModal(anime.mal_id)">
+                <ion-button @click="openModal(anime.mal_id)" expand="block">
                   open anime info
                 </ion-button>
               </ion-card-content>
@@ -81,7 +81,7 @@ import { defineComponent, ref, computed } from "vue";
 import axios from "axios";
 
 import Toolbar from "@/components/Toolbar.vue";
-import Modal from "@/components/Modal.vue";
+import Modal from "@/components/ModalAnime.vue";
 
 // script
 import presentAlert from "@/ts/alertMsg";

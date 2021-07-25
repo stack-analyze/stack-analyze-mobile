@@ -1,10 +1,12 @@
-import { createApp } from 'vue';
-import App from './App.vue';
+import { createApp } from 'vue'
+
 import router from './router';
 
 import { setupConfig } from '@ionic/core';
 
 import { IonicVue } from '@ionic/vue';
+
+import App from './App.vue'
 
 // service worker
 import './registerServiceWorker'
@@ -38,6 +40,9 @@ const app = createApp(App)
   .use(config)
   .use(IonicVue)
   .use(router);
+
+app.use(config);
+app.use(IonicVue);
 
 router.isReady().then(() => {
   app.mount('#app');

@@ -1,5 +1,5 @@
 <template>
-  <ion-app>
+  <ion-app class="dark">
     <IonSplitPane content-id="main" disabled="true">
       <Menu menuId="main" />
       <ion-router-outlet id="main" />

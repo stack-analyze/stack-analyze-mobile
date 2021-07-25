@@ -1,5 +1,9 @@
-import { createRouter, createWebHistory } from '@ionic/vue-router';
+import { createRouter, createMemoryHistory, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
+
+const isServer = typeof window === 'undefined';
+
+const history = isServer ? createMemoryHistory() : createWebHistory()
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -58,11 +62,19 @@ const routes: Array<RouteRecordRaw> = [
       title: 'hardware information'
     }
   },
+  {
+    path: '/crypto',
+    name: 'crypto info',
+    component: () => import('@/views/CryptoMarket.vue'),
+    meta: {
+      title: 'crypto info'
+    }
+  },
   { path: "/", redirect: "tech-stack" }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history,
   routes
 })
 
