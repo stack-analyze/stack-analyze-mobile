@@ -19,6 +19,12 @@
                         <ion-label>Changelog</ion-label>
                     </ion-item>
                 </ion-menu-toogle>
+                <ion-menu-toogle>
+                    <ion-item button="true" @click="openMuaInfo">
+                        <ion-icon slot="start" color="secondary" :icon="brushOutline"></ion-icon>
+                        <ion-label>Mua discovery</ion-label>
+                    </ion-item>
+                </ion-menu-toogle>
             </ion-item-group>
             <ion-item-group>
                 <details :open="openDetails" class="menu-recomends">
@@ -65,9 +71,12 @@ import {
 
 import {
     moonOutline,
-    libraryOutline
+    libraryOutline,
+    brushOutline
 } from "ionicons/icons";
+
 import ChangelogVue from "./Changelog.vue";
+import MuaInfo from "./MuaEaster.vue";
 
 export default defineComponent({
     name: "Menu",
@@ -95,6 +104,18 @@ export default defineComponent({
                 component: ChangelogVue,
                 backdropDismiss: false,
                 mode: "ios",
+                cssClass: "modal"
+            });
+                
+            return modal.present();
+        };
+        
+        const openMuaInfo = async () => {
+            const modal = await modalController.create({
+                component: MuaInfo,
+                backdropDismiss: false,
+                mode: "ios",
+                cssClass: "modal"
             });
                 
             return modal.present();
@@ -105,7 +126,9 @@ export default defineComponent({
             libraryOutline,
             recomendations,
             openChangelog,
-            openDetails
+            openDetails,
+            brushOutline,
+            openMuaInfo
         };
     },
 });
@@ -153,5 +176,9 @@ export default defineComponent({
 
 .menu-recomends[open] .title-recomends ion-item-divider:after {
     content: "-";
+}
+
+.modal {
+    --height: 100%;
 }
 </style>

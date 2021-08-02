@@ -49,6 +49,7 @@
 </template>
 
 <style scoped>
+
 ion-tab-button {
   --color: var(--ion-color-medium);
   --color-selected: var(--ion-color-secondary);

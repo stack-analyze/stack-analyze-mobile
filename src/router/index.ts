@@ -1,9 +1,5 @@
-import { createRouter, createMemoryHistory, createWebHistory } from '@ionic/vue-router';
+import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
-
-const isServer = typeof window === 'undefined';
-
-const history = isServer ? createMemoryHistory() : createWebHistory()
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -74,7 +70,7 @@ const routes: Array<RouteRecordRaw> = [
 ]
 
 const router = createRouter({
-  history,
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 

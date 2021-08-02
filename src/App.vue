@@ -13,34 +13,31 @@ import {
   IonApp,
   IonSplitPane,
   IonRouterOutlet,
-  toastController
-} from '@ionic/vue';
-import { 
-  defineComponent,
-  onMounted
-} from 'vue';
+  toastController,
+} from "@ionic/vue";
+import { defineComponent, onMounted } from "vue";
 
-import TabsNav from '@/components/Tabs.vue';
-import Menu from '@/components/Menu.vue';
+import TabsNav from "@/components/Tabs.vue";
+import Menu from "@/components/Menu.vue";
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
     IonApp,
     IonSplitPane,
     IonRouterOutlet,
     TabsNav,
-    Menu
+    Menu,
   },
   setup() {
     onMounted(async () => {
-      const toast = await toastController
-        .create({
-          message: 'Capacitor version 3 plugins in some browsers work partially or are not incompatible at all.',
-          duration: 2000
-        });
+      const toast = await toastController.create({
+        message:
+          "Capacitor version 3 plugins in some browsers work partially or are not incompatible at all.",
+        duration: 2000,
+      });
       toast.present();
     });
-  }
-})
+  },
+});
 </script>

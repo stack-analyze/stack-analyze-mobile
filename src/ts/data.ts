@@ -175,12 +175,6 @@ export const recomendations = [
         color: "twitch",
         link: "https://www.twitch.tv/dannyaegyo"
     },
-    {
-        name: "lamua_",
-        logo: logoTwitch,
-        color: "twitch",
-        link: "https://www.twitch.tv/lamua_"
-    }
 ]
 
 // slide speed
