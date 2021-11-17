@@ -75,7 +75,7 @@ const Cards = [
     },
     {
         id: "member-3",
-        img: "",
+        img: "assets/img/No-image-found.jpg",
         name: "bitly info idea",
         title: "vergiskarime",
         details: "ideas and watchers",
@@ -83,7 +83,7 @@ const Cards = [
             {
                 logo: logoInstagram,
                 color: "instagram",
-                link: "https://github.com/MrRedu",
+                link: "https://www.instagram.com/verguiskarime/",
             }
         ]
     },
@@ -128,10 +128,10 @@ const recomendations = [
         link: "https://dprojects.org"
     },
     {   
-        name: "sailormoon_1995",
+        name: "juju_juhariah1995",
         logo: logoInstagram,
         color: "instagram",
-        link: "https://www.instagram.com/sailormoon_1995"
+        link: "https://www.instagram.com/juju_juhariah1995"
     },
     {
         // next recomend npm version 1.0.9
@@ -155,7 +155,7 @@ const nonolive = [
     },
     {
         name: "🌼PAPATYA❣SS🌼",
-        link: "https://www.nonolive.com/"
+        link: "https://www.nonolive.com/28480328"
     },
     {
         name: "Seyyahi Solist",
@@ -169,6 +169,10 @@ const nonolive = [
         name: "🦎🌟Aidee💋🦜",
         link: "https://www.nonolive.com/31655138"
     },
+    {
+        name: "💲💋Lili🧉🌟",
+        link: "https://www.nonolive.com/31925565"
+    }
     {
         name: "💋🧉Narki🐺Lili",
         link: "https://www.nonolive.com/28480328"
