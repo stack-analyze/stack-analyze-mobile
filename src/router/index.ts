@@ -66,6 +66,22 @@ const routes: Array<RouteRecordRaw> = [
       title: 'crypto info'
     }
   },
+  {
+    path: '/bitly',
+    name: 'bitly info',
+    component: () => import('@/views/BitlyInfo.vue'),
+    meta: {
+      title: 'bitly info'
+    }
+  },
+  {
+    path: '/movie-info',
+    name: 'movie info',
+    component: () => import('@/views/MoviesInfo.vue'),
+    meta: {
+      title: 'movie info'
+    }
+  },
   { path: "/", redirect: "tech-stack" }
 ]
 

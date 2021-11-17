@@ -41,40 +41,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-grid>
-        <ion-row>
-          <ion-col
-            v-for="app of apps"
-            :key="app.slug"
-            size-xl="2"
-            size-lg="3"
-            size-md="4"
-            size-sm="6"
-            size-xs="12"
-          >
-            <ion-card>
-              <ion-card-header>
-                <ion-img
-                  :src="`/assets/img/logos/${app.icon}`"
-                  :alt="app.name"
-                >
-                </ion-img>
-              </ion-card-header>
-              <ion-card-content>
-                <ion-card-title>{{ app.name }}</ion-card-title>
-                <ion-card-subtitle>
-                  Categories:
-                  {{
-                    Object.values(app.categories)
-                      .map((categorie) => categorie.name)
-                      .join(", ")
-                  }}
-                </ion-card-subtitle>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <stack-results :stackData="apps"></stack-results>
     </ion-content>
   </ion-page>
 </template>
@@ -89,12 +56,6 @@ import {
   IonButton,
   IonLabel,
   IonItem,
-  IonImg,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardSubtitle,
   IonGrid,
   IonRow,
   IonCol,
@@ -104,6 +65,7 @@ import {
 import axios from "axios";
 
 import Toolbar from "@/components/Toolbar.vue";
+import stackResults from "@/components/stackResults.vue";
 
 // scripts
 import presentAlert from "@/ts/alertMsg";
@@ -118,16 +80,11 @@ export default defineComponent({
     IonButton,
     IonLabel,
     IonItem,
-    IonImg,
-    IonCard,
-    IonCardContent,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardSubtitle,
     IonGrid,
     IonRow,
     IonCol,
     Toolbar,
+    stackResults
   },
   setup() {
     const website = ref("");
@@ -160,8 +117,8 @@ export default defineComponent({
         apps.value = res.data;
         
         if(apps.value[0] === undefined) { toast.present(); }
-      } catch (err) {
-        presentAlert(err.message, "Error tech-stack", "problem to tech-stack");
+      } catch (err: any) {
+        presentAlert(err, "Error tech-stack", "problem to tech-stack");
       }
       website.value = "";
     };

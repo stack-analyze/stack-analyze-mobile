@@ -1,7 +1,7 @@
 <template>
   <ion-header>
     <ion-toolbar>
-      <ion-title>anime info</ion-title>
+      <ion-title>movie info</ion-title>
       <ion-buttons slot="end">
         <ion-button @click="closeModal" color="danger">
           <ion-icon :icon="closeCircleOutline"></ion-icon>
@@ -12,30 +12,27 @@
   <ion-content>
     <ion-card>
       <ion-card-header>
-        <ion-img :src="animeResult.image_url" :alt="animeResult.mal_id" class="poster"></ion-img>
-        <ion-card-title>{{ animeResult.title }}</ion-card-title>
+        <ion-img
+          :src="movieResult.poster_path === null ? 'assets/img/No-image-found.jpg' : `http://image.tmdb.org/t/p/w500/${movieResult.poster_path}`"
+          :alt="movieResult.title"
+          class="poster"
+        ></ion-img>
+        <ion-card-title>{{ movieResult.title }}</ion-card-title>
         <ion-card-subtitle>
-          airing: {{ !animeResult.airing ? "finish" : "current" }}
+          release date: {{ movieResult.release_date }}
         </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <ion-item>
-          rating: {{ animeResult.rating }}
-        </ion-item>
+        <ion-item> {{ movieResult.overview }} </ion-item>
         <ion-item>
           <ion-label>
-            episodes: {{ animeResult.episodes === null ? 'counting ' : animeResult.episodes }}
+            vote average: {{ movieResult.vote_average }}
           </ion-label>
         </ion-item>
         <ion-item>
-          <details>
-            <summary>synopsis</summary>
-            {{ animeResult.synopsis }}
-          </details>
+          vote count: {{ movieResult.vote_count }}
         </ion-item>
-        <ion-item>
-          aired duration: {{ duration }}
-        </ion-item>
+        <ion-item>language: {{ movieResult.original_language }}</ion-item>
       </ion-card-content>
     </ion-card>
   </ion-content>
@@ -55,10 +52,10 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardSubtitle,
-  modalController
+  modalController,
 } from "@ionic/vue";
 
-import { closeCircleOutline } from 'ionicons/icons';
+import { closeCircleOutline } from "ionicons/icons";
 
 // scripts
 import presentAlert from "@/ts/alertMsg";
@@ -78,45 +75,34 @@ export default defineComponent({
     IonCardSubtitle,
   },
   props: {
-    animeId: {
-      type: Number,
-    }
+    movieId: Number,
   },
   setup(props) {
-    const animeResult = ref({});
-    const duration = ref('');
+    const movieResult = ref({});
 
     watchEffect(async () => {
       try {
         const res = await fetch(
-          `https://api.jikan.moe/v3/anime/${props.animeId}`
+          `https://api.themoviedb.org/3/movie/${props.movieId}?api_key=${process.env.VUE_APP_MOVIE_CODE}`
         );
 
         const data = await res.json();
-
-        animeResult.value = data;
-        duration.value = data.aired.string;
+        movieResult.value = data
       } catch (err: any) {
-        presentAlert(
-          err,
-          "Error anime Search",
-          "problem to anime Search"
-        );
+        presentAlert(err, "Error movie Search", "problem to movie Search");
       }
     });
-    
 
     function closeModal() {
       modalController.dismiss({
-        'dismissed': true
+        dismissed: true,
       });
     }
 
     return {
-      animeResult,
       closeModal,
       closeCircleOutline,
-      duration,
+      movieResult
     };
   },
 });
@@ -124,7 +110,7 @@ export default defineComponent({
 
 <style scoped>
 .poster {
-  --height: 334px;
+  --height: 240px;
   --width: 225px;
 }
 </style>

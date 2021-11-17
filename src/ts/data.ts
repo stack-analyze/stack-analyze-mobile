@@ -11,11 +11,11 @@ import {
     earthOutline
 } from "ionicons/icons";
 
-export const regex = "[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?";
-export const whoisRegex = "(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?";
+const regex = "[Hh][Tt][Tt][Pp][Ss]?:\/\/(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?";
+const whoisRegex = "(?:(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)(?:\.(?:[a-zA-Z\u00a1-\uffff0-9]+-?)*[a-zA-Z\u00a1-\uffff0-9]+)*(?:\.(?:[a-zA-Z\u00a1-\uffff]{2,}))(?::\d{2,5})?(?:\/[^\s]*)?";
 
 // card info
-export const Cards = [
+const Cards = [
     {
         id: "logo",
         img: "/assets/img/logo-mobile.png",
@@ -73,10 +73,24 @@ export const Cards = [
             }
         ]
     },
+    {
+        id: "member-3",
+        img: "",
+        name: "bitly info idea",
+        title: "vergiskarime",
+        details: "ideas and watchers",
+        social: [
+            {
+                logo: logoInstagram,
+                color: "instagram",
+                link: "https://github.com/MrRedu",
+            }
+        ]
+    },
 ];
 
 // omega5300 recomendations
-export const recomendations = [
+const recomendations = [
     {
         name: "dorian designs",
         logo: logoYoutube,
@@ -113,54 +127,11 @@ export const recomendations = [
         color: "primary",
         link: "https://dprojects.org"
     },
-    {
-        name: "gothspicechannel",
-        logo: logoInstagram,
-        color: "instagram",
-        link: "https://instagram.com/gothspicechannel"
-    },
     {   
         name: "sailormoon_1995",
         logo: logoInstagram,
         color: "instagram",
         link: "https://www.instagram.com/sailormoon_1995"
-    },
-    {
-        name: "seyyahi solist",
-        logo: logoInstagram,
-        color: "instagram",
-        link: "https://www.instagram.com/seyyahisolist"
-    },
-    {
-        name: "fatoosgoksuu",
-        logo: logoInstagram,
-        color: "instagram",
-        link: "https://www.instagram.com/fatoosgoksuu"
-    },
-    {
-        name: "alpicorniorex",
-        logo: logoInstagram,
-        color: "instagram",
-        link: "https://www.instagram.com/alpicorniorex"
-    },
-    {
-        name: "toni_stream",
-        logo: logoInstagram,
-        color: "instagram",
-        link: "https://www.instagram.com/toni_stream"
-    },
-    {
-        name: "celirodriguez12",
-        logo: logoInstagram,
-        color: "instagram",
-        link: "https://www.instagram.com/celirodriguez12"
-    },
-    {
-        // next recomend npm version 1.1.2 || 1.1.3
-        name: "aidee",
-        logo: logoInstagram,
-        color: "instagram",
-        link: "https://instagram.com/beautybyaidee"
     },
     {
         // next recomend npm version 1.0.9
@@ -175,9 +146,47 @@ export const recomendations = [
         color: "twitch",
         link: "https://www.twitch.tv/dannyaegyo"
     },
-]
+];
+
+const nonolive = [
+    {
+        name: "⚔️GothspiceChann💰",
+        link: "https://www.nonolive.com/14278329"
+    },
+    {
+        name: "🌼PAPATYA❣SS🌼",
+        link: "https://www.nonolive.com/"
+    },
+    {
+        name: "Seyyahi Solist",
+        link: "https://www.nonolive.com/28525468"
+    },
+    {
+        name: "ᴹᴰ🐺☣ToniD'Ale",
+        link: "https://www.nonolive.com/41145492"
+    },
+    {
+        name: "🦎🌟Aidee💋🦜",
+        link: "https://www.nonolive.com/31655138"
+    },
+    {
+        name: "💋🧉Narki🐺Lili",
+        link: "https://www.nonolive.com/28480328"
+    }
+];
 
 // slide speed
-export const slideOpts = {
+const slideOpts = {
     speed: 200,
+    slidesPerView: true, 
+    loop: true,
+};
+
+export {
+    regex,
+    whoisRegex,
+    Cards,
+    recomendations,
+    slideOpts,
+    nonolive
 };

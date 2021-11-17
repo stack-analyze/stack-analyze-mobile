@@ -3,29 +3,66 @@
         <ion-header>
             <ion-toolbar class="toolbar ion-text-center">
                 <ion-avatar class="horizontal logo">
-                    <ion-img src="/assets/img/logo-mobile.png" alt="icon logo" />
+                    <ion-img 
+                        src="/assets/img/logo-mobile.png" 
+                        alt="icon logo"
+                    ></ion-img>
                 </ion-avatar>
                 <ion-title>stack-analyze</ion-title>
             </ion-toolbar>
         </ion-header>
+        
         <ion-content>
             <ion-item-group>
                 <ion-item-divider>
                     <ion-label>Options</ion-label>
                 </ion-item-divider>
-                <ion-menu-toogle>
-                    <ion-item button="true" @click="openChangelog">
-                        <ion-icon slot="start" color="secondary" :icon="libraryOutline"></ion-icon>
+                
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item 
+                        button
+                        @click="openChangelog"
+                    >
+                        <ion-icon 
+                            slot="start" 
+                            color="secondary" 
+                            :icon="libraryOutline"
+                        >
+                        </ion-icon>
                         <ion-label>Changelog</ion-label>
                     </ion-item>
-                </ion-menu-toogle>
-                <ion-menu-toogle>
-                    <ion-item button="true" @click="openMuaInfo">
-                        <ion-icon slot="start" color="secondary" :icon="brushOutline"></ion-icon>
+                </ion-menu-toggle>
+                
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item button @click="openMuaInfo">
+                        <ion-icon 
+                            slot="start" 
+                            color="secondary" 
+                            :icon="brushOutline"
+                        >
+                        </ion-icon>
                         <ion-label>Mua discovery</ion-label>
                     </ion-item>
-                </ion-menu-toogle>
+                </ion-menu-toggle>
             </ion-item-group>
+            
+            <ion-item-group>
+                <ion-item-divider>
+                    <ion-label>tools</ion-label>
+                </ion-item-divider>
+                
+                <ion-menu-toggle auto-hide="false" v-for="(p, i) in appPages" :key="i">
+                    <ion-item 
+                        button
+                        router-direction="root" 
+                        :router-link="p.url"
+                    >
+                        <ion-icon slot="start" :icon="p.icon" color="secondary"></ion-icon>
+                        <ion-label>{{ p.title }}</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-item-group>
+            
             <ion-item-group>
                 <details :open="openDetails" class="menu-recomends">
                     <summary class="title-recomends" @click="openDetails = true">
@@ -44,6 +81,13 @@
                         <ion-label :color="recomendation.color">{{recomendation.name}}</ion-label>
                         </ion-item>
                     </ion-menu-toggle>
+
+                    <ion-menu-toggle v-for="(nono, i) of nonolive" :key="i">
+                        <ion-item :href="nono.link">
+                            <ion-icon src="/assets/nono.svg" color="nonolive" slot="start"></ion-icon>
+                            <ion-label color="nonolive">{{ nono.name }}</ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
                 </details>
             </ion-item-group>
         </ion-content>
@@ -52,7 +96,9 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 
-import { recomendations } from "@/ts/data";
+import { recomendations, nonolive } from "@/ts/data";
+
+import appPages from "@/ts/appPages";
 
 import {
     IonMenu,
@@ -98,6 +144,7 @@ export default defineComponent({
     },
     setup() {
         const openDetails = ref(false);
+        const selectedIndex = ref(0);
 
         const openChangelog = async () => {
             const modal = await modalController.create({
@@ -128,7 +175,10 @@ export default defineComponent({
             openChangelog,
             openDetails,
             brushOutline,
-            openMuaInfo
+            openMuaInfo,
+            selectedIndex,
+            appPages,
+            nonolive
         };
     },
 });

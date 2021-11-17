@@ -3,7 +3,7 @@
     <IonSplitPane content-id="main" disabled="true">
       <Menu menuId="main" />
       <ion-router-outlet id="main" />
-      <TabsNav />
+      <!-- <TabsNav /> -->
     </IonSplitPane>
   </ion-app>
 </template>
@@ -26,7 +26,7 @@ export default defineComponent({
     IonApp,
     IonSplitPane,
     IonRouterOutlet,
-    TabsNav,
+    // TabsNav,
     Menu,
   },
   setup() {

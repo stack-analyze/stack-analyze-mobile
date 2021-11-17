@@ -76,9 +76,9 @@ export default defineComponent({
           }
         );
         coinList.value = res.data;
-      } catch (err) {
+      } catch (err: any) {
         presentAlert(
-          err.message,
+          err,
           "Error anime Search",
           "problem to anime Search"
         );

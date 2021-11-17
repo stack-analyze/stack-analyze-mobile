@@ -5,6 +5,22 @@ type detailsVersion = {
 
 export const versionsNotes:detailsVersion [] = [
     {
+        version: '1.4.0',
+        details: `
+        added:
+           1. news tools:
+             1.1. bitly info.
+             1.2. movies info.
+           2. add tech logo in other domain.
+           3. new module: swipperjs.
+        changed:
+          1. rewrite some pages in modular components
+          2. migrate tabs to slide menu
+        fixed:
+          1. migrate ion-slides to swipper js slides
+        `
+    },
+    {
         version: '1.3.0',
         details: `
         Added: 

@@ -41,22 +41,8 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-card mode="ios">
-        <ion-card-header mode="md">
-          <ion-card-subtitle>Desktop: {{ url }}</ion-card-subtitle>
-          <ion-card-title :color="resColorDesktop">
-            {{ desktop }}/100
-          </ion-card-title>
-        </ion-card-header>
-      </ion-card>
-      <ion-card mode="ios">
-        <ion-card-header mode="md">
-          <ion-card-subtitle>Mobile: {{ url }}</ion-card-subtitle>
-          <ion-card-title :color="resColorMobile">
-            {{ mobile }}/100
-          </ion-card-title>
-        </ion-card-header>
-      </ion-card>
+      <pagespeed-card pagespeedMode="Desktop" :pagespeedURL="url" :pagespeedColor="resColorDesktop" :pagespeedScore="desktop"></pagespeed-card>
+      <pagespeed-card pagespeedMode="Mobile" :pagespeedURL="url" :pagespeedColor="resColorMobile" :pagespeedScore="mobile"></pagespeed-card>
     </ion-content>
   </ion-page>
 </template>
@@ -72,12 +58,13 @@ import {
   IonButton,
   IonLabel,
   IonItem,
-  IonCard,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from "@ionic/vue";
 import Toolbar from "@/components/Toolbar.vue";
+
+import PagespeedCard from "@/components/cardResults.vue";
 
 // scripts
 import presentAlert from "@/ts/alertMsg";
@@ -93,10 +80,10 @@ export default defineComponent({
     IonButton,
     IonLabel,
     IonItem,
-    IonCard,
-    IonCardHeader,
-    IonCardSubtitle,
-    IonCardTitle,
+    IonGrid,
+    IonRow,
+    IonCol,
+    PagespeedCard
   },
   setup() {
     const website = ref("");
@@ -182,8 +169,8 @@ export default defineComponent({
             break;
         }
         url.value = website.value;
-      } catch (err) {
-        presentAlert(err.message, "Error pagespeed", "problem to pagespeed");
+      } catch (err: any) {
+        presentAlert(err, "Error pagespeed", "problem to pagespeed");
       }
       website.value = "";
     };

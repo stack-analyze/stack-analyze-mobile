@@ -7,57 +7,63 @@
           enter a url:
         </ion-label>
         <ion-input
-          type="text"
-          v-model="website"
+          type="url"
+          v-model="bitlyURL"
           clearInput="true"
           autocomplete="off"
           required
         >
         </ion-input>
       </ion-item>
+
       <ion-grid>
         <ion-row>
           <ion-col>
             <ion-button
-              @click="domainInfo"
+              @click="bitly"
               :disabled="validate"
               color="secondary"
               fill="outline"
               expand="block"
             >
-              start-analyze
+              analyze bitly url
             </ion-button>
           </ion-col>
           <ion-col>
             <ion-button
               @click="reset"
-              :disabled="resetStatus"
+              :disabled="resetInfo"
               color="danger"
               fill="outline"
               expand="block"
             >
-              reset tech-stack
+              reset bitly info
             </ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-card mode="ios">
-        <ion-card-header mode="md">
-          <ion-card-title>Website: {{ url }}</ion-card-title>
-          <ion-card-subtitle>whois info</ion-card-subtitle>
-          <ion-card-content>
-            <ion-item v-for="(domain, i) of info" :key="domain">
-              {{ i + 1 }} - {{ domain }}
-            </ion-item>
-          </ion-card-content>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            {{bitlyResults.link}}
+          </ion-card-title>
         </ion-card-header>
+        <ion-card-content>
+          <ion-card-subtitle>
+            {{format(bitlyResults.created_at)}}
+          </ion-card-subtitle>
+          <ion-item>
+            {{bitlyResults.long_url}}
+          </ion-item>
+        </ion-card-content>
       </ion-card>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, computed, ref } from "vue";
 
 import {
   IonPage,
@@ -73,24 +79,24 @@ import {
   IonCardContent,
   IonGrid,
   IonRow,
-  IonCol,
+  IonCol
 } from "@ionic/vue";
 
 import axios from "axios";
 
+import { format } from "timeago.js";
+
 import Toolbar from "@/components/Toolbar.vue";
 
-// scripts
 import presentAlert from "@/ts/alertMsg";
-
-import { whoisRegex } from "@/ts/data";
+import { whoisRegex } from "@/ts/data"; 
 
 export default defineComponent({
-  name: "TechStack",
+  name: "BitlyInfo",
   components: {
     Toolbar,
-    IonContent,
     IonPage,
+    IonContent,
     IonInput,
     IonButton,
     IonLabel,
@@ -102,50 +108,48 @@ export default defineComponent({
     IonCardContent,
     IonGrid,
     IonRow,
-    IonCol,
+    IonCol
   },
   setup() {
-    const website = ref("");
-    const info = ref("");
-    const url = ref("");
+    const bitlyURL = ref("");
+    const bitlyResults = ref({});
 
     const reset = () => {
-      info.value = "";
-      url.value = "";
+      bitlyResults.value = {};
     };
 
-    const validate = computed(() =>
-      website.value.match(whoisRegex) ? false : true
-    );
-    const resetStatus = computed(() => (info.value === "" ? true : false));
+    const validate = computed(() => bitlyURL.value.match(whoisRegex) ? false : true);
+    
+    const resetInfo = computed(() => (Object.entries(bitlyResults.value).length === 0 ? true : false));
 
-    const domainInfo = async (): Promise<void> => {
+    const bitly = async (): Promise<void> => {
       try {
-        const res = await axios.get(
-          "https://stack-analyze.herokuapp.com/whois",
+        const { data } = await axios.post(
+          "https://api-ssl.bitly.com/v4/expand",
+          { bitlink_id: bitlyURL.value },
           {
-            params: {
-              url: website.value,
-            },
-          }
-        );
-        info.value = res.data;
-        url.value = website.value;
+            headers: {
+              Authorization:`Bearer ${process.env.VUE_APP_BITLY_CODE}`,
+              "Content-Type": "application/json"
+            }
+          });
+
+        bitlyResults.value = data;
       } catch (err: any) {
-        presentAlert(err, "Error whois", "problem to whois");
+        presentAlert(err, "error info", "problem bitly info");
       }
-      website.value = "";
+
+      bitlyURL.value = "";
     };
 
     return {
-      info,
-      website,
-      reset,
-      url,
-      domainInfo,
-      presentAlert,
+      format,
+      bitlyURL,
+      bitlyResults,
+      bitly,
       validate,
-      resetStatus,
+      reset,
+      resetInfo
     };
   }
 });

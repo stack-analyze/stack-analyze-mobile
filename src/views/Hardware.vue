@@ -14,26 +14,31 @@
                 </ion-img>
               </ion-card-header>
               <ion-card-content mode="md">
-                <ion-card-title>{{ modelInfo.model }}</ion-card-title>
+                <ion-card-title >{{ modelInfo.model }}</ion-card-title>
                 <ion-card-subtitle>
                   os: {{
                     modelInfo.operatingSystem === "unknown"
-                      ? "linux or unix derivate"
+                      ? "unix"
                       : modelInfo.operatingSystem
                   }}
                 </ion-card-subtitle>
                 <ion-grid>
                   <ion-row>
-                    <ion-col size="6">
+                    <ion-col size="12">
                       <ion-item>
+                        <ion-label>manufacturer: {{ modelInfo.manufacturer }}</ion-label>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col size="6">
+                      <ion-item >
                         <ion-label position="stacked">os version:</ion-label>
                         <ion-text>{{ modelInfo.osVersion }}</ion-text>
                       </ion-item>
                     </ion-col>
                     <ion-col size="6">
                       <ion-item>
-                        <ion-label position="stacked">manufacturer:</ion-label>
-                        <ion-text>{{ modelInfo.manufacturer }}</ion-text>
+                        <ion-label position="stacked">platform:</ion-label>
+                        <ion-text>{{ modelInfo.platform }}</ion-text>
                       </ion-item>
                     </ion-col>
                     <ion-col size="6">
@@ -43,30 +48,6 @@
                         </ion-label>
                         <ion-text>
                           {{ batteryInfo.batteryLevel * 100 }} %
-                        </ion-text>
-                      </ion-item>
-                    </ion-col>
-                    <ion-col size="6">
-                      <ion-item>
-                        <ion-label position="stacked">
-                          charging status:
-                        </ion-label>
-                        <ion-text>
-                          {{
-                            batteryInfo.isCharging ? "charging" : "discharging"
-                          }}
-                        </ion-text>
-                      </ion-item>
-                    </ion-col>
-                    <ion-col size="6">
-                      <ion-item>
-                        <ion-label position="stacked">
-                          is connected:
-                        </ion-label>
-                        <ion-text>
-                          {{
-                            networkInfo.connected ? "yes" : "no"
-                          }}
                         </ion-text>
                       </ion-item>
                     </ion-col>
@@ -148,6 +129,10 @@ export default defineComponent({
       modelInfo.value = await Device.getInfo();
       batteryInfo.value = await Device.getBatteryInfo();
       networkInfo.value = await Network.getStatus();
+      
+      const model = await Network.getStatus();
+
+      console.log(model);
     });
 
     return {

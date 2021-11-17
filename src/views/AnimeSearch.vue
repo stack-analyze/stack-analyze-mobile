@@ -39,38 +39,7 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-grid>
-        <ion-row>
-          <ion-col
-            v-for="(anime, i) of animeResults"
-            :key="i"
-            size-xl="3"
-            size-lg="3"
-            size-md="4"
-            size-sm="4"
-            size="12"
-          >
-            <ion-card>
-              <ion-card-header>
-                <ion-img
-                  :src="anime.image_url"
-                  :alt="anime.title"
-                  class="poster"
-                >
-                </ion-img>
-              </ion-card-header>
-              <ion-card-content>
-                <ion-card-title class="ion-text-sm">
-                  <ion-label>{{ anime.title }}</ion-label>
-                </ion-card-title>
-                <ion-button @click="openModal(anime.mal_id)" expand="block">
-                  open anime info
-                </ion-button>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <anime-results :animeData="animeResults"></anime-results>
     </ion-content>
   </ion-page>
 </template>
@@ -81,7 +50,7 @@ import { defineComponent, ref, computed } from "vue";
 import axios from "axios";
 
 import Toolbar from "@/components/Toolbar.vue";
-import Modal from "@/components/ModalAnime.vue";
+import animeResults from "@/components/animeInfo.vue"
 
 // script
 import presentAlert from "@/ts/alertMsg";
@@ -90,37 +59,27 @@ import openToast from "@/ts/warning-message";
 import {
   IonPage,
   IonContent,
-  IonImg,
   IonItem,
   IonLabel,
   IonInput,
   IonCol,
   IonGrid,
   IonRow,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
   IonButton,
-  modalController,
 } from "@ionic/vue";
 
 export default defineComponent({
   components: {
     Toolbar,
+    animeResults,
     IonPage,
     IonContent,
-    IonImg,
     IonItem,
     IonLabel,
     IonInput,
     IonCol,
     IonGrid,
     IonRow,
-    IonCard,
-    IonCardContent,
-    IonCardHeader,
-    IonCardTitle,
     IonButton,
   },
   name: "anime",
@@ -139,9 +98,9 @@ export default defineComponent({
           },
         });
         animeResults.value = res.data.results;
-      } catch (err) {
+      } catch (err: any) {
         presentAlert(
-          err.message,
+          err,
           "Error anime Search",
           "problem to anime Search"
         );
@@ -154,39 +113,13 @@ export default defineComponent({
 
     const reset = () => (animeResults.value = []);
 
-    const openModal = async (id: number) => {
-      const modal = await modalController.create({
-        component: Modal,
-        componentProps: {
-          animeId: id,
-        },
-        backdropDismiss: false,
-        cssClass: "my-custom-class",
-        mode: "ios",
-      });
-
-      return modal.present();
-    };
-
     return {
       anime,
       animeResults,
       animeSearch,
       reset,
-      openModal,
       resetStatus
     };
   },
 });
 </script>
-
-<style scoped>
-.poster {
-  --height: 334px;
-  --width: 225px;
-}
-
-.my-custom-class {
-  --width: 225px;
-}
-</style>

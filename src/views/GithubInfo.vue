@@ -197,9 +197,9 @@ export default defineComponent({
             `https://api.github.com/users/${user.value}`
           );
           userInfo.value = res.data;
-        } catch (err) {
+        } catch (err: any) {
           presentAlert(
-            err.message,
+            err,
             "Error github user info",
             "problem to github info"
           );
