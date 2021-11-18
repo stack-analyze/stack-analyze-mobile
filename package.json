@@ -1,6 +1,6 @@
 {
   "name": "stack-anlyze",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "private": true,
   "description": "mobile or pwa based of stack-analyze npm version 1.0.7",
   "scripts": {

@@ -21,7 +21,7 @@ const Cards = [
         img: "/assets/img/logo-mobile.png",
         name: "app logo",
         title: "stack-analyze",
-        details: `version: 1.3.0`,
+        details: `version: 1.4.0`,
         social: [
             {
                 logo: logoGithub,
@@ -78,7 +78,7 @@ const Cards = [
         img: "/assets/img/No-image-found.jpg",
         name: "bitly info idea",
         title: "vergiskarime",
-        details: "ideas and watchers",
+        details: "bitly info idea",
         social: [
             {
                 logo: logoInstagram,
@@ -178,7 +178,7 @@ const nonolive = [
     {
         name: "💲💋Lili🧉🌟",
         link: "https://www.nonolive.com/31925565"
-    }
+    },
     {
         name: "💋🧉Narki🐺Lili",
         link: "https://www.nonolive.com/28480328"
