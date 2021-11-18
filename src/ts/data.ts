@@ -75,7 +75,7 @@ const Cards = [
     },
     {
         id: "member-3",
-        img: "assets/img/No-image-found.jpg",
+        img: "/assets/img/No-image-found.jpg",
         name: "bitly info idea",
         title: "vergiskarime",
         details: "ideas and watchers",
@@ -132,6 +132,12 @@ const recomendations = [
         logo: logoInstagram,
         color: "instagram",
         link: "https://www.instagram.com/juju_juhariah1995"
+    },
+    {   
+        name: "seyyahikaktus",
+        logo: logoInstagram,
+        color: "instagram",
+        link: "https://www.instagram.com/seyyahikaktus"
     },
     {
         // next recomend npm version 1.0.9
