@@ -41,14 +41,24 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <pagespeed-card pagespeedMode="Desktop" :pagespeedURL="url" :pagespeedColor="resColorDesktop" :pagespeedScore="desktop"></pagespeed-card>
-      <pagespeed-card pagespeedMode="Mobile" :pagespeedURL="url" :pagespeedColor="resColorMobile" :pagespeedScore="mobile"></pagespeed-card>
+      <pagespeed-card
+        pagespeedMode="Desktop"
+        :pagespeedURL="url"
+        :pagespeedColor="resColorDesktop"
+        :pagespeedScore="desktop"
+      ></pagespeed-card>
+      <pagespeed-card
+        pagespeedMode="Mobile"
+        :pagespeedURL="url"
+        :pagespeedColor="resColorMobile"
+        :pagespeedScore="mobile"
+      ></pagespeed-card>
     </ion-content>
   </ion-page>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, ref } from "vue";
+<script setup lang="ts">
+import { computed, ref } from "vue";
 import axios from "axios";
 
 import {
@@ -70,125 +80,94 @@ import PagespeedCard from "@/components/cardResults.vue";
 import presentAlert from "@/ts/alertMsg";
 import { regex } from "@/ts/data";
 
-export default defineComponent({
-  name: "Pagespeed",
-  components: {
-    Toolbar,
-    IonContent,
-    IonPage,
-    IonInput,
-    IonButton,
-    IonLabel,
-    IonItem,
-    IonGrid,
-    IonRow,
-    IonCol,
-    PagespeedCard
-  },
-  setup() {
-    const website = ref("");
-    const url = ref("");
-    const desktop = ref(0);
-    const mobile = ref(0);
-    const resColorDesktop = ref("dark");
-    const resColorMobile = ref("dark");
+const website = ref("");
+const url = ref("");
+const desktop = ref(0);
+const mobile = ref(0);
+const resColorDesktop = ref("dark");
+const resColorMobile = ref("dark");
 
-    const pagespeedValidate = computed(() => website.value.match(regex) ? false : true);
-    const pagespeedReset = computed(() => {
-      if (desktop.value === 0 && mobile.value === 0) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-
-    function reset() {
-      desktop.value = 0;
-      mobile.value = 0;
-      url.value = "";
-      resColorDesktop.value = "dark";
-      resColorMobile.value = "dark";
-    }
-
-    const results = async (): Promise<void> => {
-      try {
-        const resDesktop = await axios.get(
-          "https://www.googleapis.com/pagespeedonline/v5/runPagespeed",
-          {
-            params: {
-              url: website.value,
-              key: "AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0",
-              strategy: "desktop",
-            },
-          }
-        );
-        const resMobile = await axios.get(
-          "https://www.googleapis.com/pagespeedonline/v5/runPagespeed",
-          {
-            params: {
-              url: website.value,
-              key: "AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0",
-              strategy: "mobile",
-            },
-          }
-        );
-
-        desktop.value = Math.round(
-          resDesktop.data.lighthouseResult.categories.performance.score * 100
-        );
-        mobile.value = Math.round(
-          resMobile.data.lighthouseResult.categories.performance.score * 100
-        );
-
-        switch (true) {
-          case desktop.value === 1 || desktop.value <= 49:
-            resColorDesktop.value = "danger";
-            break;
-          case desktop.value === 50 || desktop.value <= 89:
-            resColorDesktop.value = "warning";
-            break;
-          case desktop.value >= 90 || desktop.value === 100:
-            resColorDesktop.value = "success";
-            break;
-          default:
-            resColorDesktop.value = "dark";
-            break;
-        }
-        switch (true) {
-          case mobile.value === 1 || mobile.value <= 49:
-            resColorMobile.value = "danger";
-            break;
-          case mobile.value === 50 || mobile.value <= 89:
-            resColorMobile.value = "warning";
-            break;
-          case mobile.value >= 90 || mobile.value === 100:
-            resColorMobile.value = "success";
-            break;
-          default:
-            resColorMobile.value = "dark";
-            break;
-        }
-        url.value = website.value;
-      } catch (err: any) {
-        presentAlert(err, "Error pagespeed", "problem to pagespeed");
-      }
-      website.value = "";
-    };
-
-    return {
-      website,
-      desktop,
-      url,
-      reset,
-      mobile,
-      results,
-      presentAlert,
-      resColorDesktop,
-      resColorMobile,
-      regex,
-      pagespeedReset,
-      pagespeedValidate
-    };
-  },
+const pagespeedValidate = computed(() =>
+  website.value.match(regex) ? false : true
+);
+const pagespeedReset = computed(() => {
+  if (desktop.value === 0 && mobile.value === 0) {
+    return true;
+  } else {
+    return false;
+  }
 });
+
+function reset() {
+  desktop.value = 0;
+  mobile.value = 0;
+  url.value = "";
+  resColorDesktop.value = "dark";
+  resColorMobile.value = "dark";
+}
+
+const results = async (): Promise<void> => {
+  try {
+    const resDesktop = await axios.get(
+      "https://www.googleapis.com/pagespeedonline/v5/runPagespeed",
+      {
+        params: {
+          url: website.value,
+          key: "AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0",
+          strategy: "desktop",
+        },
+      }
+    );
+    const resMobile = await axios.get(
+      "https://www.googleapis.com/pagespeedonline/v5/runPagespeed",
+      {
+        params: {
+          url: website.value,
+          key: "AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0",
+          strategy: "mobile",
+        },
+      }
+    );
+
+    desktop.value = Math.round(
+      resDesktop.data.lighthouseResult.categories.performance.score * 100
+    );
+    mobile.value = Math.round(
+      resMobile.data.lighthouseResult.categories.performance.score * 100
+    );
+
+    switch (true) {
+      case desktop.value === 1 || desktop.value <= 49:
+        resColorDesktop.value = "danger";
+        break;
+      case desktop.value === 50 || desktop.value <= 89:
+        resColorDesktop.value = "warning";
+        break;
+      case desktop.value >= 90 || desktop.value === 100:
+        resColorDesktop.value = "success";
+        break;
+      default:
+        resColorDesktop.value = "dark";
+        break;
+    }
+    switch (true) {
+      case mobile.value === 1 || mobile.value <= 49:
+        resColorMobile.value = "danger";
+        break;
+      case mobile.value === 50 || mobile.value <= 89:
+        resColorMobile.value = "warning";
+        break;
+      case mobile.value >= 90 || mobile.value === 100:
+        resColorMobile.value = "success";
+        break;
+      default:
+        resColorMobile.value = "dark";
+        break;
+    }
+    url.value = website.value;
+  } catch (err: any) {
+    presentAlert(err, "Error pagespeed", "problem to pagespeed");
+  }
+  website.value = "";
+};
 </script>

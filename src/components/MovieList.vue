@@ -13,7 +13,11 @@
         <ion-card>
           <ion-card-header>
             <ion-img
-              :src="movie.poster_path === null ? 'assets/img/No-image-found.jpg' : `http://image.tmdb.org/t/p/w500/${movie.poster_path}`"
+              :src="
+                movie.poster_path === null
+                  ? 'assets/img/No-image-found.jpg'
+                  : `http://image.tmdb.org/t/p/w500/${movie.poster_path}`
+              "
               :alt="movie.title"
             ></ion-img>
           </ion-card-header>
@@ -29,7 +33,7 @@
   </ion-grid>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import {
   IonGrid,
   IonRow,
@@ -42,56 +46,35 @@ import {
   IonButton,
   modalController,
 } from "@ionic/vue";
-import { defineComponent } from "vue";
 
 import Modal from "@/components/ModalMovie.vue";
 
-export default defineComponent({
-  name: "MovieList",
-  props: { 
-    movieData: Array,
-  },
-  components: {
-    IonGrid,
-    IonRow,
-    IonCol,
-    IonCard,
-    IonCardHeader,
-    IonCardContent,
-    IonCardTitle,
-    IonImg,
-    IonButton,
-  },
-  setup() {
-        const openModal = async (id: number) => {
-            const modal = await modalController.create({
-                component: Modal,
-                componentProps: {
-                    movieId: id,
-                },
-                backdropDismiss: false,
-                cssClass: "my-custom-class",
-                mode: "ios",
-            });
+const props = defineProps({ movieData: Array })
+props.movieData;
 
-            return modal.present();
-        }
+const openModal = async (id: number) => {
+  const modal = await modalController.create({
+    component: Modal,
+    componentProps: {
+      movieId: id,
+    },
+    backdropDismiss: false,
+    cssClass: "my-custom-class",
+    mode: "ios",
+  });
 
-        return {
-            openModal
-        }; 
-    }
-});
+  return modal.present();
+};
 </script>
 
 <style scoped>
 .poster {
-    --height: 334px;
-    --width: 225px;
+  --height: 334px;
+  --width: 225px;
 }
 
 .my-custom-class {
-    --width: 225px;
-    --max-height: 100%;
+  --width: 225px;
+  --max-height: 100%;
 }
 </style>

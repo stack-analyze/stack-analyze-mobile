@@ -39,18 +39,18 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <anime-results :animeData="animeResults"></anime-results>
+      <anime-results :animeData="animeData"></anime-results>
     </ion-content>
   </ion-page>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+<script setup lang="ts">
+import { ref, computed } from "vue";
 
 import axios from "axios";
 
 import Toolbar from "@/components/Toolbar.vue";
-import animeResults from "@/components/animeInfo.vue"
+import animeResults from "@/components/animeInfo.vue";
 
 // script
 import presentAlert from "@/ts/alertMsg";
@@ -68,58 +68,30 @@ import {
   IonButton,
 } from "@ionic/vue";
 
-export default defineComponent({
-  components: {
-    Toolbar,
-    animeResults,
-    IonPage,
-    IonContent,
-    IonItem,
-    IonLabel,
-    IonInput,
-    IonCol,
-    IonGrid,
-    IonRow,
-    IonButton,
-  },
-  name: "anime",
-  setup() {
-    const anime = ref("");
-    const animeResults = ref([]);
+const anime = ref("");
+const animeData = ref([]);
 
-    const animeSearch = async () => {
-      if (anime.value === '') {
-        openToast()
-      } else {
-        try {
-        const res = await axios.get("https://api.jikan.moe/v3/search/anime", {
-          params: {
-            q: anime.value,
-          },
-        });
-        animeResults.value = res.data.results;
-      } catch (err: any) {
-        presentAlert(
-          err,
-          "Error anime Search",
-          "problem to anime Search"
-        );
-      }
-      anime.value = "";
-      }
-    };
-    
-    const resetStatus = computed(() => (animeResults.value[0] === undefined ? true : false));
+const animeSearch = async () => {
+  if (anime.value === "") {
+    openToast();
+  } else {
+    try {
+      const res = await axios.get("https://api.jikan.moe/v3/search/anime", {
+        params: {
+          q: anime.value,
+        },
+      });
+      animeData.value = res.data.results;
+    } catch (err: any) {
+      presentAlert(err, "Error anime Search", "problem to anime Search");
+    }
+    anime.value = "";
+  }
+};
 
-    const reset = () => (animeResults.value = []);
+const resetStatus = computed(() =>
+  animeData.value[0] === undefined ? true : false
+);
 
-    return {
-      anime,
-      animeResults,
-      animeSearch,
-      reset,
-      resetStatus
-    };
-  },
-});
+const reset = () => (animeData.value = []);
 </script>

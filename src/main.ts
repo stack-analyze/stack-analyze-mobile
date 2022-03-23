@@ -2,8 +2,6 @@ import { createApp } from 'vue'
 
 import router from './router';
 
-import { setupConfig } from '@ionic/core';
-
 import { IonicVue } from '@ionic/vue';
 
 import App from './App.vue'
@@ -30,29 +28,11 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-// ionic config
-const config = setupConfig({
-  mode: 'md'
-});
-
 /* start vue init */
 const app = createApp(App)
-  .use(config)
-  .use(IonicVue)
+  .use(IonicVue, {rippleEffect: false, mode: 'md'})
   .use(router);
-
-app.use(config);
-app.use(IonicVue);
 
 router.isReady().then(() => {
   app.mount('#app');
-});
-/* end vue init */
-
-// events
-document.addEventListener('keypress', (e) => {
-  if (e.code === 'Enter') {
-    e.preventDefault();
-    return false;
-  }
 });

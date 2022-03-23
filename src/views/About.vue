@@ -6,7 +6,7 @@
         effect="fade"
         slides-per-view="4"
         :loop="true"
-        
+        :modules="modules"
       >
         <swiper-slide v-for="card of Cards" :key="card.id">
           <ion-card mode="ios" color="light">
@@ -34,15 +34,7 @@
   </ion-page>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-import { Swiper, SwiperSlide } from "swiper/vue";
-
-import SwipperCore, { EffectFade } from 'swiper';
-
-import { Cards } from "@/ts/data";
-
+<script setup lang="ts">
 import {
   IonPage,
   IonContent,
@@ -53,37 +45,20 @@ import {
   IonCardTitle,
   IonImg,
   IonButton,
-  IonicSwiper
+  IonicSlides
 } from "@ionic/vue";
+
+import { EffectFade } from 'swiper';
+
+import { Swiper, SwiperSlide } from "swiper/vue";
 
 import Toolbar from "@/components/Toolbar.vue";
 
-import "swiper/swiper-bundle.min.css";
-import "@ionic/vue/css/ionic-swiper.css";
+import { Cards } from "@/ts/data";
 
-SwipperCore.use([IonicSwiper, EffectFade]);
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import '@ionic/vue/css/ionic-swiper.css';
 
-export default defineComponent({
-  name: "TechStack",
-  components: {
-    Toolbar,
-    Swiper,
-    SwiperSlide,
-    IonContent,
-    IonPage,
-    IonCard,
-    IonCardContent,
-    IonCardHeader,
-    IonCardSubtitle,
-    IonCardTitle,
-    IonImg,
-    IonButton,
-  },
-  setup() {
-
-    return {
-      Cards,
-    };
-  },
-});
+const modules = [EffectFade, IonicSlides];
 </script>

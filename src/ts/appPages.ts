@@ -7,13 +7,15 @@ import {
     searchCircleOutline,
     terminalOutline,
     walletOutline,
-    videocamOutline
+    videocamOutline,
+    logoTwitch,
+    thumbsUpOutline
 } from "ionicons/icons";
 
 const appPages = [
     {
         title: "tech-stack",
-        url: "/tech-stack",
+        url: "/",
         icon: extensionPuzzleOutline
     },
     {
@@ -60,6 +62,16 @@ const appPages = [
         title: "about",
         url: "/about",
         icon: peopleOutline
+    },
+    {
+        title: "twitch info",
+        url: "/twitch",
+        icon: logoTwitch
+    },
+    {
+        title: "recommend",
+        url: "/recommend",
+        icon: thumbsUpOutline
     },
 ];
 

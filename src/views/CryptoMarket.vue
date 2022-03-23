@@ -25,8 +25,8 @@
   </ion-page>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, watchEffect } from "vue";
+<script setup lang="ts">
+import { ref, watchEffect } from "vue";
 
 import axios from "axios";
 
@@ -47,51 +47,22 @@ import {
   IonList,
 } from "@ionic/vue";
 
-export default defineComponent({
-  components: {
-    Toolbar,
-    IonPage,
-    IonContent,
-    IonAvatar,
-    IonLabel,
-    IonText,
-    IonNote,
-    IonImg,
-    IonItem,
-    IonList,
-  },
-  name: "anime",
-  setup() {
-    const coinList = ref([]);
-    const coinSearch = ref("");
+const coinList = ref([]);
 
-    watchEffect(async () => {
-      try {
-        const res = await axios.get(
-          "https://api.coingecko.com/api/v3/coins/markets",
-          {
-            params: {
-              vs_currency: "usd",
-            },
-          }
-        );
-        coinList.value = res.data;
-      } catch (err: any) {
-        presentAlert(
-          err,
-          "Error anime Search",
-          "problem to anime Search"
-        );
+watchEffect(async () => {
+  try {
+    const res = await axios.get(
+      "https://api.coingecko.com/api/v3/coins/markets",
+      {
+        params: {
+          vs_currency: "usd",
+        },
       }
-    });
-    
-    
-
-    return {
-      coinList,
-      coinSearch
-    };
-  },
+    );
+    coinList.value = res.data;
+  } catch (err: any) {
+    presentAlert(err, "Error crypto market", "problem to crypto market");
+  }
 });
 </script>
 

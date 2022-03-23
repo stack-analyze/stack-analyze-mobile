@@ -21,7 +21,7 @@ const Cards = [
         img: "/assets/img/logo-mobile.png",
         name: "app logo",
         title: "stack-analyze",
-        details: `version: 1.4.0`,
+        details: `version: 1.5.0`,
         social: [
             {
                 logo: logoGithub,
@@ -139,6 +139,12 @@ const recomendations = [
         color: "instagram",
         link: "https://www.instagram.com/seyyahikaktus"
     },
+    {   
+        name: "papatyakaktuss",
+        logo: logoInstagram,
+        color: "instagram",
+        link: "https://www.instagram.com/papatyakaktuss"
+    },
     {
         // next recomend npm version 1.0.9
         name: "lunanny",
@@ -154,49 +160,9 @@ const recomendations = [
     },
 ];
 
-const nonolive = [
-    {
-        name: "⚔️GothspiceChann💰",
-        link: "https://www.nonolive.com/14278329"
-    },
-    {
-        name: "🌼PAPATYA❣SS🌼",
-        link: "https://www.nonolive.com/28480328"
-    },
-    {
-        name: "Seyyahi Solist",
-        link: "https://www.nonolive.com/28525468"
-    },
-    {
-        name: "ᴹᴰ🐺☣ToniD'Ale",
-        link: "https://www.nonolive.com/41145492"
-    },
-    {
-        name: "🦎🌟Aidee💋🦜",
-        link: "https://www.nonolive.com/31655138"
-    },
-    {
-        name: "💲💋Lili🧉🌟",
-        link: "https://www.nonolive.com/31925565"
-    },
-    {
-        name: "💋🧉Narki🐺Lili",
-        link: "https://www.nonolive.com/28480328"
-    }
-];
-
-// slide speed
-const slideOpts = {
-    speed: 200,
-    slidesPerView: true, 
-    loop: true,
-};
-
 export {
     regex,
     whoisRegex,
     Cards,
     recomendations,
-    slideOpts,
-    nonolive
 };

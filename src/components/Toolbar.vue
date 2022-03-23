@@ -11,9 +11,7 @@
   </ion-header>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
+<script setup lang="ts">
 import {
   IonHeader,
   IonToolbar,
@@ -24,21 +22,4 @@ import {
 } from "@ionic/vue";
 
 import { settingsOutline } from "ionicons/icons";
-
-export default defineComponent({
-  name: "Toolbar",
-  components: {
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonMenuButton,
-    IonButtons,
-    IonIcon,
-  },
-  setup() {
-    return {
-      settingsOutline,
-    };
-  },
-});
 </script>

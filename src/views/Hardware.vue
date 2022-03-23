@@ -1,7 +1,7 @@
 <template>
   <ion-page>
-  <ion-content>
-    <Toolbar />
+    <ion-content>
+      <Toolbar />
       <ion-grid>
         <ion-row>
           <ion-col size-md="4" offset-md="4" size-sm="12">
@@ -14,9 +14,10 @@
                 </ion-img>
               </ion-card-header>
               <ion-card-content mode="md">
-                <ion-card-title >{{ modelInfo.model }}</ion-card-title>
+                <ion-card-title>{{ modelInfo.model }}</ion-card-title>
                 <ion-card-subtitle>
-                  os: {{
+                  os:
+                  {{
                     modelInfo.operatingSystem === "unknown"
                       ? "unix"
                       : modelInfo.operatingSystem
@@ -26,11 +27,13 @@
                   <ion-row>
                     <ion-col size="12">
                       <ion-item>
-                        <ion-label>manufacturer: {{ modelInfo.manufacturer }}</ion-label>
+                        <ion-label
+                          >manufacturer: {{ modelInfo.manufacturer }}</ion-label
+                        >
                       </ion-item>
                     </ion-col>
                     <ion-col size="6">
-                      <ion-item >
+                      <ion-item>
                         <ion-label position="stacked">os version:</ion-label>
                         <ion-text>{{ modelInfo.osVersion }}</ion-text>
                       </ion-item>
@@ -57,9 +60,7 @@
                           network type:
                         </ion-label>
                         <ion-text>
-                          {{
-                            networkInfo.connectionType
-                          }}
+                          {{ networkInfo.connectionType }}
                         </ion-text>
                       </ion-item>
                     </ion-col>
@@ -74,9 +75,9 @@
   </ion-page>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 // vue modules
-import { defineComponent, watchEffect, ref } from "vue";
+import { watchEffect, ref } from "vue";
 
 // ionic modules
 import {
@@ -102,44 +103,13 @@ import { Network } from "@capacitor/network";
 // toolbar component
 import Toolbar from "@/components/Toolbar.vue";
 
-export default defineComponent({
-  name: "hardwareInformation",
-  components: {
-    IonPage,
-    IonContent,
-    IonItem,
-    IonGrid,
-    IonRow,
-    IonCol,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardSubtitle,
-    IonCardContent,
-    IonImg,
-    IonText,
-    Toolbar,
-  },
-  setup() {
-    const modelInfo = ref({});
-    const batteryInfo = ref({});
-    const networkInfo = ref({});
+const modelInfo = ref({});
+const batteryInfo = ref({});
+const networkInfo = ref({});
 
-    watchEffect(async () => {
-      modelInfo.value = await Device.getInfo();
-      batteryInfo.value = await Device.getBatteryInfo();
-      networkInfo.value = await Network.getStatus();
-      
-      const model = await Network.getStatus();
-
-      console.log(model);
-    });
-
-    return {
-      modelInfo,
-      batteryInfo,
-      networkInfo,
-    };
-  },
+watchEffect(async () => {
+  modelInfo.value = await Device.getInfo();
+  batteryInfo.value = await Device.getBatteryInfo();
+  networkInfo.value = await Network.getStatus();
 });
 </script>

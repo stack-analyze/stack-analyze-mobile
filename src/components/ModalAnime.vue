@@ -12,19 +12,24 @@
   <ion-content>
     <ion-card>
       <ion-card-header>
-        <ion-img :src="animeResult.image_url" :alt="animeResult.mal_id" class="poster"></ion-img>
+        <ion-img
+          :src="animeResult.image_url"
+          :alt="animeResult.mal_id"
+          class="poster"
+        ></ion-img>
         <ion-card-title>{{ animeResult.title }}</ion-card-title>
         <ion-card-subtitle>
           airing: {{ !animeResult.airing ? "finish" : "current" }}
         </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <ion-item>
-          rating: {{ animeResult.rating }}
-        </ion-item>
+        <ion-item> rating: {{ animeResult.rating }} </ion-item>
         <ion-item>
           <ion-label>
-            episodes: {{ animeResult.episodes === null ? 'counting ' : animeResult.episodes }}
+            episodes:
+            {{
+              animeResult.episodes === null ? "counting " : animeResult.episodes
+            }}
           </ion-label>
         </ion-item>
         <ion-item>
@@ -33,16 +38,14 @@
             {{ animeResult.synopsis }}
           </details>
         </ion-item>
-        <ion-item>
-          aired duration: {{ duration }}
-        </ion-item>
+        <ion-item> aired duration: {{ duration }} </ion-item>
       </ion-card-content>
     </ion-card>
   </ion-content>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, watchEffect } from "vue";
+<script setup lang="ts">
+import { ref, watchEffect } from "vue";
 
 import {
   IonHeader,
@@ -55,71 +58,37 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonCardSubtitle,
-  modalController
+  modalController,
 } from "@ionic/vue";
 
-import { closeCircleOutline } from 'ionicons/icons';
+import { closeCircleOutline } from "ionicons/icons";
 
 // scripts
 import presentAlert from "@/ts/alertMsg";
 
-export default defineComponent({
-  name: "Modal",
-  components: {
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonImg,
-    IonCard,
-    IonCardContent,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardSubtitle,
-  },
-  props: {
-    animeId: {
-      type: Number,
-    }
-  },
-  setup(props) {
-    const animeResult = ref({});
-    const duration = ref('');
+const props = defineProps({ animeId: Number });
 
-    watchEffect(async () => {
-      try {
-        const res = await fetch(
-          `https://api.jikan.moe/v3/anime/${props.animeId}`
-        );
+const animeResult = ref({});
+const duration = ref("");
 
-        const data = await res.json();
+watchEffect(async () => {
+  try {
+    const res = await fetch(`https://api.jikan.moe/v3/anime/${props.animeId}`);
 
-        animeResult.value = data;
-        duration.value = data.aired.string;
-      } catch (err: any) {
-        presentAlert(
-          err,
-          "Error anime Search",
-          "problem to anime Search"
-        );
-      }
-    });
-    
+    const data = await res.json();
 
-    function closeModal() {
-      modalController.dismiss({
-        'dismissed': true
-      });
-    }
-
-    return {
-      animeResult,
-      closeModal,
-      closeCircleOutline,
-      duration,
-    };
-  },
+    animeResult.value = data;
+    duration.value = data.aired.string;
+  } catch (err: any) {
+    presentAlert(err, "Error anime Search", "problem to anime Search");
+  }
 });
+
+function closeModal() {
+  modalController.dismiss({
+    dismissed: true,
+  });
+}
 </script>
 
 <style scoped>

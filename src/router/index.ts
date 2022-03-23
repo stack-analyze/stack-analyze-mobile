@@ -3,7 +3,7 @@ import { RouteRecordRaw } from 'vue-router';
 
 const routes: Array<RouteRecordRaw> = [
     {
-    path: '/tech-stack',
+    path: '/',
     name: 'tech-stack',
     component: () => import('@/views/TechStack.vue'),
     meta: {
@@ -82,11 +82,26 @@ const routes: Array<RouteRecordRaw> = [
       title: 'movie info'
     }
   },
-  { path: "/", redirect: "tech-stack" }
+  {
+    path: '/twitch',
+    name: 'twitch info',
+    component: () => import('@/views/TwitchInfo.vue'),
+    meta: {
+      title: 'twitch info'
+    }
+  },
+  {
+    path: '/recommend',
+    name: 'recommend',
+    component: () => import('@/views/Recommends.vue'),
+    meta: {
+      title: 'twitch info'
+    }
+  },
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(),
   routes
 })
 

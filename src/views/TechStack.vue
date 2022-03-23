@@ -46,8 +46,8 @@
   </ion-page>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, ref } from "vue";
+<script setup lang="ts">
+import { computed, ref } from "vue";
 
 import {
   IonPage,
@@ -71,68 +71,42 @@ import stackResults from "@/components/stackResults.vue";
 import presentAlert from "@/ts/alertMsg";
 import { regex } from "@/ts/data";
 
-export default defineComponent({
-  name: "TechStack",
-  components: {
-    IonPage,
-    IonContent,
-    IonInput,
-    IonButton,
-    IonLabel,
-    IonItem,
-    IonGrid,
-    IonRow,
-    IonCol,
-    Toolbar,
-    stackResults
-  },
-  setup() {
-    const website = ref("");
-    const apps = ref([]);
+const website = ref("");
+const apps = ref([]);
 
-    const reset = () => {
-      apps.value = [];
-      website.value = "";
-    };
+const reset = () => {
+  apps.value = [];
+  website.value = "";
+};
 
-    const validate = computed(() => (website.value.match(regex) ? false : true));
-    const resetStatus = computed(() => (apps.value[0] === undefined ? true : false));
+const validate = computed(() => (website.value.match(regex) ? false : true));
+const resetStatus = computed(() =>
+  apps.value[0] === undefined ? true : false
+);
 
-    const tech = async (): Promise<void> => {
-      try {
-        const res = await axios.get(
-          "https://stack-analyze.herokuapp.com/stack",
-          {
-            params: {
-              url: website.value,
-            },
-          }
-        );
+const tech = async (): Promise<void> => {
+  try {
+    const res = await axios.get("https://stack-analyze-api.onrender.com/stack", {
+      params: {
+        url: website.value,
+      },
+    });
 
-        const toast = await toastController.create({
-          message: "not found stack",
-          duration: 2000,
-        });
+    const toast = await toastController.create({
+      message: "not found stack",
+      duration: 2000,
+    });
 
-        apps.value = res.data;
-        
-        if(apps.value[0] === undefined) { toast.present(); }
-      } catch (err: any) {
-        presentAlert(err, "Error tech-stack", "problem to tech-stack");
-      }
-      website.value = "";
-    };
+    apps.value = res.data;
 
-    return {
-      apps,
-      website,
-      reset,
-      tech,
-      validate,
-      resetStatus,
-    };
-  },
-});
+    if (apps.value[0] === undefined) {
+      toast.present();
+    }
+  } catch (err: any) {
+    presentAlert(err, "Error tech-stack", "problem to tech-stack");
+  }
+  website.value = "";
+};
 </script>
 
 <style>

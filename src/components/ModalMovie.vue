@@ -13,7 +13,11 @@
     <ion-card>
       <ion-card-header>
         <ion-img
-          :src="movieResult.poster_path === null ? 'assets/img/No-image-found.jpg' : `http://image.tmdb.org/t/p/w500/${movieResult.poster_path}`"
+          :src="
+            movieResult.poster_path === null
+              ? 'assets/img/No-image-found.jpg'
+              : `http://image.tmdb.org/t/p/w500/${movieResult.poster_path}`
+          "
           :alt="movieResult.title"
           class="poster"
         ></ion-img>
@@ -25,21 +29,17 @@
       <ion-card-content>
         <ion-item> {{ movieResult.overview }} </ion-item>
         <ion-item>
-          <ion-label>
-            vote average: {{ movieResult.vote_average }}
-          </ion-label>
+          <ion-label> vote average: {{ movieResult.vote_average }} </ion-label>
         </ion-item>
-        <ion-item>
-          vote count: {{ movieResult.vote_count }}
-        </ion-item>
+        <ion-item> vote count: {{ movieResult.vote_count }} </ion-item>
         <ion-item>language: {{ movieResult.original_language }}</ion-item>
       </ion-card-content>
     </ion-card>
   </ion-content>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, watchEffect } from "vue";
+<script setup lang="ts">
+import { ref, watchEffect } from "vue";
 
 import {
   IonHeader,
@@ -60,52 +60,31 @@ import { closeCircleOutline } from "ionicons/icons";
 // scripts
 import presentAlert from "@/ts/alertMsg";
 
-export default defineComponent({
-  name: "Modal",
-  components: {
-    IonHeader,
-    IonToolbar,
-    IonTitle,
-    IonContent,
-    IonImg,
-    IonCard,
-    IonCardContent,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardSubtitle,
-  },
-  props: {
-    movieId: Number,
-  },
-  setup(props) {
-    const movieResult = ref({});
-
-    watchEffect(async () => {
-      try {
-        const res = await fetch(
-          `https://api.themoviedb.org/3/movie/${props.movieId}?api_key=${process.env.VUE_APP_MOVIE_CODE}`
-        );
-
-        const data = await res.json();
-        movieResult.value = data
-      } catch (err: any) {
-        presentAlert(err, "Error movie Search", "problem to movie Search");
-      }
-    });
-
-    function closeModal() {
-      modalController.dismiss({
-        dismissed: true,
-      });
-    }
-
-    return {
-      closeModal,
-      closeCircleOutline,
-      movieResult
-    };
-  },
+const props = defineProps({ 
+  movieId: Number,
 });
+
+const movieResult = ref({});
+
+watchEffect(async () => {
+  console.info(props.movieId);
+  try {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${props.movieId}?api_key=${process.env.VUE_APP_MOVIE_CODE}`
+    );
+
+    const data = await res.json();
+    movieResult.value = data;
+  } catch (err: any) {
+    presentAlert(err, "Error movie Search", "problem to movie Search");
+  }
+});
+
+function closeModal() {
+  modalController.dismiss({
+    dismissed: true,
+  });
+}
 </script>
 
 <style scoped>

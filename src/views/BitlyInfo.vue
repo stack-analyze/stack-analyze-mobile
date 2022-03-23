@@ -46,15 +46,15 @@
       <ion-card>
         <ion-card-header>
           <ion-card-title>
-            {{bitlyResults.link}}
+            {{ bitlyResults.link }}
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
           <ion-card-subtitle>
-            {{format(bitlyResults.created_at)}}
+            {{ format(bitlyResults.created_at) }}
           </ion-card-subtitle>
           <ion-item>
-            {{bitlyResults.long_url}}
+            {{ bitlyResults.long_url }}
           </ion-item>
         </ion-card-content>
       </ion-card>
@@ -62,8 +62,8 @@
   </ion-page>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, ref } from "vue";
+<script setup lang="ts">
+import { computed, ref } from "vue";
 
 import {
   IonPage,
@@ -79,78 +79,50 @@ import {
   IonCardContent,
   IonGrid,
   IonRow,
-  IonCol
+  IonCol,
 } from "@ionic/vue";
 
 import axios from "axios";
-
 import { format } from "timeago.js";
 
 import Toolbar from "@/components/Toolbar.vue";
 
 import presentAlert from "@/ts/alertMsg";
-import { whoisRegex } from "@/ts/data"; 
+import { whoisRegex } from "@/ts/data";
 
-export default defineComponent({
-  name: "BitlyInfo",
-  components: {
-    Toolbar,
-    IonPage,
-    IonContent,
-    IonInput,
-    IonButton,
-    IonLabel,
-    IonItem,
-    IonCard,
-    IonCardTitle,
-    IonCardSubtitle,
-    IonCardHeader,
-    IonCardContent,
-    IonGrid,
-    IonRow,
-    IonCol
-  },
-  setup() {
-    const bitlyURL = ref("");
-    const bitlyResults = ref({});
+const bitlyURL = ref("");
+const bitlyResults = ref({});
 
-    const reset = () => {
-      bitlyResults.value = {};
-    };
+const reset = () => {
+  bitlyResults.value = {};
+};
 
-    const validate = computed(() => bitlyURL.value.match(whoisRegex) ? false : true);
-    
-    const resetInfo = computed(() => (Object.entries(bitlyResults.value).length === 0 ? true : false));
+const validate = computed(() =>
+  bitlyURL.value.match(whoisRegex) ? false : true
+);
 
-    const bitly = async (): Promise<void> => {
-      try {
-        const { data } = await axios.post(
-          "https://api-ssl.bitly.com/v4/expand",
-          { bitlink_id: bitlyURL.value },
-          {
-            headers: {
-              Authorization:`Bearer ${process.env.VUE_APP_BITLY_CODE}`,
-              "Content-Type": "application/json"
-            }
-          });
+const resetInfo = computed(() =>
+  Object.entries(bitlyResults.value).length === 0 ? true : false
+);
 
-        bitlyResults.value = data;
-      } catch (err: any) {
-        presentAlert(err, "error info", "problem bitly info");
+const bitly = async () => {
+  try {
+    const { data } = await axios.post(
+      "https://api-ssl.bitly.com/v4/expand",
+      { bitlink_id: bitlyURL.value },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.VUE_APP_BITLY_CODE}`,
+          "Content-Type": "application/json",
+        },
       }
+    );
 
-      bitlyURL.value = "";
-    };
-
-    return {
-      format,
-      bitlyURL,
-      bitlyResults,
-      bitly,
-      validate,
-      reset,
-      resetInfo
-    };
+    bitlyResults.value = data;
+  } catch (err: any) {
+    presentAlert(err, "error info", "problem bitly info");
   }
-});
+
+  bitlyURL.value = "";
+};
 </script>

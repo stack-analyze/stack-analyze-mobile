@@ -7,12 +7,7 @@
         <ion-label position="floating" color="secondary">
           enter a github user to search:
         </ion-label>
-        <ion-input
-          v-model="user"
-          clearInput="true"
-          autocomplete="off"
-          required
-        >
+        <ion-input v-model="user" clearInput="true" autocomplete="off" required>
         </ion-input>
       </ion-item>
       <ion-grid>
@@ -24,7 +19,7 @@
               fill="outline"
               expand="block"
             >
-              start-analyze
+              start search
             </ion-button>
           </ion-col>
           <ion-col>
@@ -35,7 +30,7 @@
               fill="outline"
               expand="block"
             >
-              reset tech-stack
+              reset github info
             </ion-button>
           </ion-col>
         </ion-row>
@@ -51,7 +46,10 @@
           >
             <ion-card mode="ios">
               <ion-card-header mode="md">
-                <ion-img :src="userInfo.avatar_url" alt="profile-github" ></ion-img>
+                <ion-img
+                  :src="userInfo.avatar_url"
+                  alt="profile-github"
+                ></ion-img>
                 <ion-card-title>
                   {{ userInfo.login }}
                 </ion-card-title>
@@ -86,7 +84,7 @@
                       <ion-item>
                         <ion-label position="stacked">repos</ion-label>
                         <ion-note color="dark">
-                          {{userInfo.public_repos}}
+                          {{ userInfo.public_repos }}
                         </ion-note>
                       </ion-item>
                     </ion-col>
@@ -94,7 +92,7 @@
                       <ion-item>
                         <ion-label position="stacked">gits</ion-label>
                         <ion-note color="dark">
-                          {{userInfo.public_gists}}
+                          {{ userInfo.public_gists }}
                         </ion-note>
                       </ion-item>
                     </ion-col>
@@ -107,7 +105,7 @@
             <ion-card mode="ios">
               <ion-card-header mode="md">
                 <ion-img
-                  src="assets/img/No-image-found.jpg"
+                  src="/assets/img/No-image-found.jpg"
                   alt="profile-github"
                 >
                 </ion-img>
@@ -123,8 +121,8 @@
   </ion-page>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+<script setup lang="ts">
+import { ref, computed } from "vue";
 
 import axios from "axios";
 
@@ -155,72 +153,30 @@ import {
   IonCol,
 } from "@ionic/vue";
 
-export default defineComponent({
-  components: {
-    Toolbar,
-    IonPage,
-    IonContent,
-    IonItem,
-    IonNote,
-    IonLabel,
-    IonInput,
-    IonImg,
-    IonCard,
-    IonCardContent,
-    IonCardHeader,
-    IonCardSubtitle,
-    IonCardTitle,
-    IonButton,
-    IonGrid,
-    IonRow,
-    IonCol,
-  },
-  name: "github",
-  setup() {
-    const user = ref("");
-    const userInfo = ref({});
+const user = ref("");
+const userInfo = ref({});
 
-    const resetStatus = computed(() =>
-      Object.entries(userInfo.value).length === 0 ? true : false
-    );
+const resetStatus = computed(() =>
+  Object.entries(userInfo.value).length === 0 ? true : false
+);
 
-    const githubInfoCount = computed(
-      () => Object.entries(userInfo.value).length
-    );
+const githubInfoCount = computed(() => Object.entries(userInfo.value).length);
 
-    const githubInfo = async () => {
-      if (user.value === "") {
-        openToast();
-      } else {
-        try {
-          const res = await axios.get(
-            `https://api.github.com/users/${user.value}`
-          );
-          userInfo.value = res.data;
-        } catch (err: any) {
-          presentAlert(
-            err,
-            "Error github user info",
-            "problem to github info"
-          );
-        }
-        user.value = "";
-      }
-    };
+const githubInfo = async () => {
+  if (user.value === "") {
+    openToast();
+  } else {
+    try {
+      const res = await axios.get(`https://api.github.com/users/${user.value}`);
+      userInfo.value = res.data;
+    } catch (err: any) {
+      presentAlert(err, "Error github user info", "problem to github info");
+    }
+    user.value = "";
+  }
+};
 
-    const reset = () => (userInfo.value = {});
-
-    return {
-      user,
-      userInfo,
-      githubInfo,
-      reset,
-      format,
-      resetStatus,
-      githubInfoCount,
-    };
-  },
-});
+const reset = () => (userInfo.value = {});
 </script>
 
 <style scoped>

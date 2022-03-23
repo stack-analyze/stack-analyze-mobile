@@ -56,8 +56,8 @@
   </ion-page>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+<script setup lang="ts">
+import { ref, computed } from "vue";
 
 import {
   IonPage,
@@ -85,68 +85,37 @@ import presentAlert from "@/ts/alertMsg";
 
 import { whoisRegex } from "@/ts/data";
 
-export default defineComponent({
-  name: "TechStack",
-  components: {
-    Toolbar,
-    IonContent,
-    IonPage,
-    IonInput,
-    IonButton,
-    IonLabel,
-    IonItem,
-    IonCard,
-    IonCardTitle,
-    IonCardSubtitle,
-    IonCardHeader,
-    IonCardContent,
-    IonGrid,
-    IonRow,
-    IonCol,
-  },
-  setup() {
-    const website = ref("");
-    const info = ref("");
-    const url = ref("");
+// states
+const website = ref("");
+const info = ref("");
+const url = ref("");
 
-    const reset = () => {
-      info.value = "";
-      url.value = "";
-    };
+// computers
+const validate = computed(() =>
+  website.value.match(whoisRegex) ? false : true
+);
 
-    const validate = computed(() =>
-      website.value.match(whoisRegex) ? false : true
-    );
-    const resetStatus = computed(() => (info.value === "" ? true : false));
+const resetStatus = computed(() => (info.value === "" ? true : false));
 
-    const domainInfo = async (): Promise<void> => {
-      try {
-        const res = await axios.get(
-          "https://stack-analyze.herokuapp.com/whois",
-          {
-            params: {
-              url: website.value,
-            },
-          }
-        );
-        info.value = res.data;
-        url.value = website.value;
-      } catch (err: any) {
-        presentAlert(err, "Error whois", "problem to whois");
-      }
-      website.value = "";
-    };
+// reset function
+const reset = () => {
+  info.value = "";
+  url.value = "";
+};
 
-    return {
-      info,
-      website,
-      reset,
-      url,
-      domainInfo,
-      presentAlert,
-      validate,
-      resetStatus,
-    };
+// function
+const domainInfo = async (): Promise<void> => {
+  try {
+    const res = await axios.get("https://stack-analyze-api.onrender.com/whois", {
+      params: {
+        url: website.value,
+      },
+    });
+    info.value = res.data;
+    url.value = website.value;
+  } catch (err: any) {
+    presentAlert(err, "Error whois", "problem to whois");
   }
-});
+  website.value = "";
+};
 </script>
