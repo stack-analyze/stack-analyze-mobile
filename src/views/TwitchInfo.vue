@@ -178,5 +178,4 @@ const twitchInfo = async () => {
 };
 
 const reset = () => (twitchUserInfo.value = {});
-console.info(process.env.VUE_APP_TWITCH_TOKEN)
 </script>
