@@ -5,15 +5,29 @@ type detailsVersion = {
 
 export const versionsNotes: detailsVersion[] = [
   {
+    version: '1.6.0',
+    details: `
+      added:
+        1. new tool webscraping 
+          based neo-jquery frontend scraping.
+      changed:
+        1. migrate vue-cli to vite.
+        2. general toast now only in hardware page.
+      fixed:
+        1. add currency format
+        2. add list format
+    `
+  },
+  {
     version: '1.5.0',
     details: `
       added:
         1. new tool twitch info
       changed:
         1. move recommends to page stand-alone
-         1.1 delete nonolive recommends
-         1.2 create page recommends
-         1.3 move recommends from menu component to page
+          1.1 delete nonolive recommends
+          1.2 create page recommends
+          1.3 move recommends from menu component to page
         2. migrate all components and views to script setup
         3. changed and delete colors
           3.1 delete light colors
@@ -63,7 +77,8 @@ export const versionsNotes: detailsVersion[] = [
         1. the new tools hardware info
         2. add all recomendations in npm versions 1.1.0 - 1.1.1
       changed:
-        1. remove @keyup.prevent to @submit.prevent using dom keypress event
+        1. remove @keyup.prevent to @submit.prevent using 
+          dom keypress event
         2. modify tar bar and all pages except about page
         3. remove modules:
           3.1 vuex

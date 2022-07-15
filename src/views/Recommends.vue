@@ -156,6 +156,6 @@ const twitchList = recomendations.filter((item) => item.color === 'twitch');
 
 <style scoped>
 .modal {
-  --height: 100%;
+  --height: 60%;
 }
 </style>

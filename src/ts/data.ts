@@ -72,21 +72,7 @@ const Cards = [
                 link: "https://github.com/MrRedu",
             }
         ]
-    },
-    {
-        id: "member-3",
-        img: "/assets/img/No-image-found.jpg",
-        name: "bitly info idea",
-        title: "vergiskarime",
-        details: "bitly info idea",
-        social: [
-            {
-                logo: logoInstagram,
-                color: "instagram",
-                link: "https://www.instagram.com/verguiskarime/",
-            }
-        ]
-    },
+    }
 ];
 
 // omega5300 recomendations

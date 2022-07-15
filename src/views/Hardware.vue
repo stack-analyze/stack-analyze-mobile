@@ -71,6 +71,13 @@
           </ion-col>
         </ion-row>
       </ion-grid>
+      <ion-toast
+        color="warning"
+        message="the hardware information tool in some browsers works only partially or is incompatible at all."
+        :icon="warningOutline"
+        :duration="2000"
+      >
+      </ion-toast>
     </ion-content>
   </ion-page>
 </template>
@@ -94,7 +101,10 @@ import {
   IonCardContent,
   IonImg,
   IonText,
+  IonToast
 } from "@ionic/vue";
+
+import { warningOutline } from "ionicons/icons";
 
 // capacitor plugins
 import { Device } from "@capacitor/device";

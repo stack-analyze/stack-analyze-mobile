@@ -35,11 +35,13 @@
     <meta property="og:image" content="https://stack-analyze.vercel.app/assets/img/logo-mobile.png">
 
     <link rel="canonical" href="https://stack-analyze.vercel.app" />
-    <link rel="icon" href="<%= BASE_URL %>img/icon/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" />
   </head>
 
   <body>
-    <div id="app"></div>
+    <div id="app" class="ie"></div>
+    <noscript>this browser version is no compatibility</noscript>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 
 </html>

@@ -9,7 +9,8 @@ import {
     walletOutline,
     videocamOutline,
     logoTwitch,
-    thumbsUpOutline
+    thumbsUpOutline,
+    codeSlashOutline
 } from "ionicons/icons";
 
 const appPages = [
@@ -67,6 +68,11 @@ const appPages = [
         title: "twitch info",
         url: "/twitch",
         icon: logoTwitch
+    },
+    {
+        title: "web scraping",
+        url: "/scraping",
+        icon: codeSlashOutline,
     },
     {
         title: "recommend",

@@ -3,8 +3,6 @@
     <Toolbar />
     <ion-content>
       <swiper
-        effect="fade"
-        slides-per-view="4"
         :loop="true"
         :modules="modules"
       >
@@ -48,7 +46,7 @@ import {
   IonicSlides
 } from "@ionic/vue";
 
-import { EffectFade } from 'swiper';
+import { Pagination } from 'swiper';
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 
@@ -57,8 +55,8 @@ import Toolbar from "@/components/Toolbar.vue";
 import { Cards } from "@/ts/data";
 
 import 'swiper/css';
-import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
 import '@ionic/vue/css/ionic-swiper.css';
 
-const modules = [EffectFade, IonicSlides];
+const modules = [Pagination, IonicSlides];
 </script>

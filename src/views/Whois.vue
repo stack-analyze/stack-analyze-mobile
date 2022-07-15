@@ -106,12 +106,12 @@ const reset = () => {
 // function
 const domainInfo = async (): Promise<void> => {
   try {
-    const res = await axios.get("https://stack-analyze-api.onrender.com/whois", {
+    const { data } = await axios.get("https://api-scraping.vercel.app/api/whois", {
       params: {
         url: website.value,
       },
     });
-    info.value = res.data;
+    info.value = data;
     url.value = website.value;
   } catch (err: any) {
     presentAlert(err, "Error whois", "problem to whois");
