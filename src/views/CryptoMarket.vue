@@ -9,7 +9,7 @@
           </ion-avatar>
           <ion-label>
             {{ coin.name }} ({{ coin.symbol }}) <br />
-            <ion-text>price: {{ coin.current_price }} USD</ion-text>
+            <ion-text>price: {{ currency.format(coin.current_price) }} USD</ion-text>
           </ion-label>
           <ion-note
             :color="
@@ -63,6 +63,11 @@ watchEffect(async () => {
   } catch (err: any) {
     presentAlert(err, "Error crypto market", "problem to crypto market");
   }
+});
+
+const currency = Intl.NumberFormat("en-us", {
+  style: "currency",
+  currency: "USD"
 });
 </script>
 
