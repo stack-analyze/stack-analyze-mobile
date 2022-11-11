@@ -1,76 +1,69 @@
 <template>
   <ion-page>
     <ion-content>
-      <Toolbar />
-      <ion-grid>
-        <ion-row>
-          <ion-col size-md="4" offset-md="4" size-sm="12">
-            <ion-card mode="ios">
-              <ion-card-header>
-                <ion-img
-                  src="assets/hardware-info/cpu.svg"
-                  alt="hardware info img"
-                >
-                </ion-img>
-              </ion-card-header>
-              <ion-card-content mode="md">
-                <ion-card-title>{{ modelInfo.model }}</ion-card-title>
-                <ion-card-subtitle>
-                  os:
-                  {{
-                    modelInfo.operatingSystem === "unknown"
-                      ? "unix"
-                      : modelInfo.operatingSystem
-                  }}
-                </ion-card-subtitle>
-                <ion-grid>
-                  <ion-row>
-                    <ion-col size="12">
-                      <ion-item>
-                        <ion-label
-                          >manufacturer: {{ modelInfo.manufacturer }}</ion-label
-                        >
-                      </ion-item>
-                    </ion-col>
-                    <ion-col size="6">
-                      <ion-item>
-                        <ion-label position="stacked">os version:</ion-label>
-                        <ion-text>{{ modelInfo.osVersion }}</ion-text>
-                      </ion-item>
-                    </ion-col>
-                    <ion-col size="6">
-                      <ion-item>
-                        <ion-label position="stacked">platform:</ion-label>
-                        <ion-text>{{ modelInfo.platform }}</ion-text>
-                      </ion-item>
-                    </ion-col>
-                    <ion-col size="6">
-                      <ion-item>
-                        <ion-label position="stacked">
-                          battery status:
-                        </ion-label>
-                        <ion-text>
-                          {{ batteryInfo.batteryLevel * 100 }} %
-                        </ion-text>
-                      </ion-item>
-                    </ion-col>
-                    <ion-col size="6">
-                      <ion-item>
-                        <ion-label position="stacked">
-                          network type:
-                        </ion-label>
-                        <ion-text>
-                          {{ networkInfo.connectionType }}
-                        </ion-text>
-                      </ion-item>
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <stack-toolbar />
+      <ion-card mode="ios" class="stack-card">
+        <ion-card-header>
+          <ion-img
+            src="assets/hardware-info/cpu.svg"
+            alt="hardware info img"
+            class="hardware-img"
+          />
+          <ion-card-title>{{ modelInfo.model }}</ion-card-title>
+          <ion-card-subtitle>
+            os:
+            {{
+              modelInfo.operatingSystem === "unknown" ? "unix" : modelInfo.operatingSystem
+            }}
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content mode="md">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12">
+                <ion-item>
+                  <ion-label position="stacked">
+                    webVer: {{ modelInfo.webViewVersion || "none" }}
+                  </ion-label>
+                  <ion-text>
+                    manufacturer: {{ modelInfo.manufacturer || "no info" }}
+                  </ion-text>
+                </ion-item>
+              </ion-col>
+              <ion-col size="6">
+                <ion-item>
+                  <ion-label position="stacked">os version:</ion-label>
+                  <ion-text>{{ modelInfo.osVersion }}</ion-text>
+                </ion-item>
+              </ion-col>
+              <ion-col size="6">
+                <ion-item>
+                  <ion-label position="stacked"
+                    >platform: {{ modelInfo.platform }}</ion-label
+                  >
+                  <ion-text>
+                    device: {{ modelInfo.isVirtual ? "virtual" : "phisical" }}
+                  </ion-text>
+                </ion-item>
+              </ion-col>
+              <ion-col size="6">
+                <ion-item>
+                  <ion-label position="stacked"> device language: </ion-label>
+                  <ion-text>{{ deviceLanguage }}</ion-text>
+                </ion-item>
+              </ion-col>
+              <ion-col size="6">
+                <ion-item>
+                  <ion-label position="stacked"
+                    >connected: {{ networkInfo.connected ? "yes" : "no" }}</ion-label
+                  >
+                  <ion-text> type: {{ networkInfo.connectionType }} </ion-text>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
       <ion-toast
         color="warning"
         message="the hardware information tool in some browsers works only partially or is incompatible at all."
@@ -101,7 +94,8 @@ import {
   IonCardContent,
   IonImg,
   IonText,
-  IonToast
+  IonLabel,
+  IonToast,
 } from "@ionic/vue";
 
 import { warningOutline } from "ionicons/icons";
@@ -111,15 +105,17 @@ import { Device } from "@capacitor/device";
 import { Network } from "@capacitor/network";
 
 // toolbar component
-import Toolbar from "@/components/Toolbar.vue";
+import StackToolbar from "@/components/Toolbar.vue";
 
-const modelInfo = ref({});
-const batteryInfo = ref({});
-const networkInfo = ref({});
+const modelInfo = ref<any>({});
+
+const deviceLanguage = ref("");
+
+const networkInfo = ref<any>({});
 
 watchEffect(async () => {
   modelInfo.value = await Device.getInfo();
-  batteryInfo.value = await Device.getBatteryInfo();
   networkInfo.value = await Network.getStatus();
+  deviceLanguage.value = (await Device.getLanguageCode()).value;
 });
 </script>

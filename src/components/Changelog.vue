@@ -26,6 +26,7 @@
 import {
   IonContent,
   IonHeader,
+  IonToolbar,
   IonTitle,
   IonButtons,
   IonButton,
@@ -39,7 +40,7 @@ import {
 
 import { closeCircleOutline } from "ionicons/icons";
 
-import { versionsNotes } from "@/ts/details";
+import { versionsNotes } from "@/scripts/details";
 
 function closeModal() {
   modalController.dismiss({ dismissed: true });

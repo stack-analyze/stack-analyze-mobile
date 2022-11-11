@@ -43,6 +43,7 @@ import {
   IonCardTitle,
   IonImg,
   IonButton,
+  IonIcon,
   IonicSlides
 } from "@ionic/vue";
 
@@ -52,11 +53,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 
 import Toolbar from "@/components/Toolbar.vue";
 
-import { Cards } from "@/ts/data";
-
-import 'swiper/css';
-import 'swiper/css/pagination';
-import '@ionic/vue/css/ionic-swiper.css';
+import { Cards } from "@/scripts/data";
 
 const modules = [Pagination, IonicSlides];
 </script>

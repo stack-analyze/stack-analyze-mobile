@@ -6,9 +6,6 @@ import { IonicVue } from '@ionic/vue';
 
 import App from './App.vue'
 
-// service worker
-// import './registerServiceWorker'
-
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
 
@@ -25,8 +22,19 @@ import '@ionic/vue/css/text-transformation.css';
 import '@ionic/vue/css/flex-utils.css';
 import '@ionic/vue/css/display.css';
 
+/* swiper styles */
+import 'swiper/css';
+import 'swiper/css/pagination';
+import '@ionic/vue/css/ionic-swiper.css';
+
+/* vue scroll styles */
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+
 /* Theme variables */
 import './theme/variables.css';
+
+/* general styles */
+import './main.css'
 
 /* start vue init */
 const app = createApp(App)

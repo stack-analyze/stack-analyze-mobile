@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <Toolbar />
+    <stack-toolbar />
     <ion-content>
       <ion-item button @click="openMuaInfo">
         <ion-icon slot="start" color="secondary" :icon="libraryOutline"></ion-icon>
@@ -119,15 +119,16 @@ import {
   IonLabel,
   IonAccordionGroup,
   IonAccordion,
+  IonList,
   modalController
 } from "@ionic/vue";
 
 import { libraryOutline } from "ionicons/icons";
 
-import Toolbar from "@/components/Toolbar.vue";
+import StackToolbar from "@/components/Toolbar.vue";
 import MuaInfo from "@/components/MuaEaster.vue";
 
-import { recomendations } from "@/ts/data";
+import { recomendations } from "@/scripts/data";
 
 const accordionGroup = ref();
 

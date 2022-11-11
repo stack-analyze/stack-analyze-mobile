@@ -1,0 +1,29 @@
+
+> stack-anlyze@1.7.0 build
+> vue-tsc --noEmit && vite build
+
+vite v3.2.2 building for production...
+transforming...
+✓ 456 modules transformed.
+rendering chunks...
+dist/index.html                          2.06 KiB
+dist/manifest.webmanifest                1.38 KiB
+dist/registerSW.js                       0.13 KiB
+dist/assets/swipe-back.34654f9f.js       0.65 KiB / gzip: 0.45 KiB
+dist/assets/input-shims.9e1c1b94.js      4.47 KiB / gzip: 1.95 KiB
+dist/assets/ios.transition.c7159873.js   9.24 KiB / gzip: 2.62 KiB
+dist/assets/md.transition.9f2f2ee1.js    1.01 KiB / gzip: 0.55 KiB
+dist/assets/web.6403e409.js              2.38 KiB / gzip: 1.06 KiB
+dist/assets/web.2040cc4a.js              1.13 KiB / gzip: 0.54 KiB
+dist/assets/index10.cc42b9e1.js          1.80 KiB / gzip: 0.88 KiB
+dist/assets/status-tap.1a4078cc.js       0.47 KiB / gzip: 0.33 KiB
+dist/assets/index.638b4601.css           40.79 KiB / gzip: 9.18 KiB
+dist/assets/swiper.bundle.a76d5250.js    93.45 KiB / gzip: 25.24 KiB
+dist/assets/index.b5f3c437.js            872.83 KiB / gzip: 211.00 KiB
+
+PWA v0.13.2
+mode      generateSW
+precache  28 entries (1030.41 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-3ea082d2.js

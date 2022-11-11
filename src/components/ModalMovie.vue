@@ -12,22 +12,22 @@
   <ion-content>
     <ion-card>
       <ion-card-header>
-        <ion-img
+        <ion-img 
           :src="
-            movieResult.poster_path === null
-              ? 'assets/img/No-image-found.jpg'
-              : `http://image.tmdb.org/t/p/w500/${movieResult.poster_path}`
+            movieResult?.poster_path
+              ? `http://image.tmdb.org/t/p/w500/${movieResult.poster_path}`
+              : 'assets/img/No-image-found.jpg'
           "
           :alt="movieResult.title"
           class="poster"
-        ></ion-img>
+        />
         <ion-card-title>{{ movieResult.title }}</ion-card-title>
         <ion-card-subtitle>
           release date: {{ movieResult.release_date }}
         </ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <ion-item> {{ movieResult.overview }} </ion-item>
+        <ion-item>{{ movieResult.overview }}</ion-item>
         <ion-item>
           <ion-label> vote average: {{ movieResult.vote_average }} </ion-label>
         </ion-item>
@@ -41,10 +41,19 @@
 <script setup lang="ts">
 import { ref, watchEffect } from "vue";
 
+import { AxiosError } from "axios";
+
+import { Movie } from "@/interfaces/MovieInterface";
+
 import {
   IonHeader,
   IonToolbar,
   IonTitle,
+  IonButtons,
+  IonButton,
+  IonItem,
+  IonLabel,
+  IonIcon,
   IonContent,
   IonImg,
   IonCard,
@@ -58,25 +67,28 @@ import {
 import { closeCircleOutline } from "ionicons/icons";
 
 // scripts
-import presentAlert from "@/ts/alertMsg";
+import movieApi from "@/api/movieApi";
+import presentAlert from "@/scripts/alertMsg";
 
-const props = defineProps({ 
-  movieId: Number,
-});
+const { movieId } = defineProps<{
+  movieId: number;
+}>();
 
-const movieResult = ref({});
+const movieResult = ref<Movie>(({} as Movie));
 
 watchEffect(async () => {
-  console.info(props.movieId);
   try {
-    const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${props.movieId}?api_key=${process.env.VUE_APP_MOVIE_CODE}`
-    );
+    const { data } = await movieApi.get(`/movie/${movieId}`, {
+      params: { api_key: import.meta.env.VITE_APP_MOVIE_CODE },
+    });
 
-    const data = await res.json();
     movieResult.value = data;
-  } catch (err: any) {
-    presentAlert(err, "Error movie Search", "problem to movie Search");
+  } catch (err) {
+    presentAlert({
+      msg: (err as AxiosError).message,
+      header: "Error movie info by id",
+      subHeader: "problem to req api",
+    });
   }
 });
 
@@ -89,7 +101,8 @@ function closeModal() {
 
 <style scoped>
 .poster {
-  --height: 240px;
-  --width: 225px;
+  max-height: 100%;
+  width: 225px;
+  margin-inline: auto;
 }
 </style>

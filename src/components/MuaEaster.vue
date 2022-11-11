@@ -52,6 +52,8 @@ import {
   IonCardSubtitle,
   IonCardTitle,
   IonIcon,
+  IonImg,
+  IonButtons,
   IonButton,
   modalController,
 } from "@ionic/vue";

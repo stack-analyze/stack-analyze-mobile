@@ -1,0 +1,80 @@
+/* crypto market styles */
+.shadow-good {
+  filter: drop-shadow(0 0 0.75rem var(--ion-color-success));
+}
+
+.shadow-bad {
+  filter: drop-shadow(0 0 0.75rem var(--ion-color-danger));
+}
+
+/* general styles */
+.stack-result {
+  max-width: 100%;
+  width: 100%;
+  height: 40vh;
+  overflow: auto;
+}
+
+/* web scraping styles*/
+@keyframes blink {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.shell {
+  box-shadow: 6px 10px rgba(255, 255, 255, 0.3);
+  outline: 1px solid #fff;
+  margin: 4px;
+  font-size: 1.2em;
+}
+
+.shell::after {
+  content: "_";
+  color: #fff;
+  animation: blink 0.8s infinite;
+}
+
+.shell-msg {
+  color: #0ff;
+}
+
+.shell-results {
+  color: #fff;
+}
+
+.scraping-select {
+  --placeholder-color: var(--ion-color-secondary)
+}
+  
+.shell-results::before {
+  content: "results scraping: \A";
+  color: #0f0;
+}
+
+/* tech stack styles */
+.stack-img {
+  filter: drop-shadow(0 0 0.75rem #e3dfde);
+  image-rendering: pixelated;
+  image-resolution: 300dpi; 
+}
+
+/* hardware information and github info styles*/
+.hardware-img, .github-img {
+  max-width: 100%;
+  margin: auto;
+}
+
+.github-img {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+}
+
+@media(orientation: landscape) {
+  .stack-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%
+  }
+}

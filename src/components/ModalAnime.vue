@@ -12,33 +12,40 @@
   <ion-content>
     <ion-card>
       <ion-card-header>
-        <ion-img
-          :src="animeResult.image_url"
-          :alt="animeResult.mal_id"
-          class="poster"
-        ></ion-img>
-        <ion-card-title>{{ animeResult.title }}</ion-card-title>
-        <ion-card-subtitle>
-          airing: {{ !animeResult.airing ? "finish" : "current" }}
-        </ion-card-subtitle>
+        <ion-img 
+          :src="animeSchema.images?.webp?.image_url" 
+          :alt="animeSchema.title" 
+          class="poster" 
+        />
+        <ion-card-title>{{ animeSchema.title }}</ion-card-title>
+        <ion-card-subtitle>{{ animeSchema.title_japanese }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <ion-item> rating: {{ animeResult.rating }} </ion-item>
         <ion-item>
-          <ion-label>
-            episodes:
-            {{
-              animeResult.episodes === null ? "counting " : animeResult.episodes
-            }}
-          </ion-label>
+          <ion-label position="stacked"> rating: {{ animeSchema.rating }} </ion-label>
+          <ion-text>status: {{ animeSchema.status }}</ion-text>
         </ion-item>
         <ion-item>
-          <details>
-            <summary>synopsis</summary>
-            {{ animeResult.synopsis }}
-          </details>
+          <ion-label> episodes: {{ animeSchema.episodes || "current" }} </ion-label>
+          <ion-text>type: {{ animeSchema.type }}</ion-text>
         </ion-item>
-        <ion-item> aired duration: {{ duration }} </ion-item>
+        <ion-item>
+          <ion-accordion-group>
+            <ion-accordion value="synopsis">
+              <ion-item slot="header">
+                <ion-label>synopsis</ion-label>
+              </ion-item>
+              <ion-item slot="content">{{ animeSchema.synopsis }}</ion-item>
+            </ion-accordion>
+            <ion-accordion value="aired">
+              <ion-item slot="header">
+                <ion-label>aired time:</ion-label>
+              </ion-item>
+              <ion-item slot="content">{{ animeSchema.aired?.string }}</ion-item>
+            </ion-accordion>
+          </ion-accordion-group>
+        </ion-item>
+        <ion-item>duration: {{ animeSchema.duration }} </ion-item>
       </ion-card-content>
     </ion-card>
   </ion-content>
@@ -51,36 +58,50 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
+  IonButtons,
+  IonButton,
   IonContent,
+  IonItem,
+  IonIcon,
+  IonLabel,
   IonImg,
   IonCard,
   IonCardContent,
   IonCardHeader,
   IonCardTitle,
   IonCardSubtitle,
+  IonAccordion,
+  IonAccordionGroup,
+  IonText,
   modalController,
 } from "@ionic/vue";
 
 import { closeCircleOutline } from "ionicons/icons";
 
+// interfaces
+import { Anime } from "@/interfaces/AnimeInterface";
+
 // scripts
-import presentAlert from "@/ts/alertMsg";
+import animeApi from "@/api/animeApi";
 
-const props = defineProps({ animeId: Number });
+import presentAlert from "@/scripts/alertMsg";
+import { AxiosError } from "axios";
 
-const animeResult = ref({});
-const duration = ref("");
+const { animeID } = defineProps<{ animeID: number }>();
+
+const animeSchema = ref<Anime>(({} as Anime));
 
 watchEffect(async () => {
   try {
-    const res = await fetch(`https://api.jikan.moe/v3/anime/${props.animeId}`);
+    const { data: animeResult } = await animeApi.get(`/anime/${animeID}`);
 
-    const data = await res.json();
-
-    animeResult.value = data;
-    duration.value = data.aired.string;
-  } catch (err: any) {
-    presentAlert(err, "Error anime Search", "problem to anime Search");
+    animeSchema.value = animeResult.data;
+  } catch (err) {
+    presentAlert({
+      msg: (err as AxiosError).message,
+      header: "Error anime",
+      subHeader: "problem to anime search by id",
+    });
   }
 });
 
@@ -93,7 +114,8 @@ function closeModal() {
 
 <style scoped>
 .poster {
-  --height: 334px;
-  --width: 225px;
+  max-height: 100%;
+  width: 225px;
+  margin-inline: auto;
 }
 </style>
