@@ -1,13 +1,8 @@
-// import paths
-import WebPage from "@/views/web/WebTabs.vue";
-import TechStack from "@/views/web/TechStack.vue";
-import PagespeedTool from "@/views/web/PagespeedResults.vue";
-import WhoisInfo from "@/views/web/WhoisInfo.vue";
-import WebScraping from "@/views/web/WebScraping.vue";
+import { RouteRecordRaw } from 'vue-router';
 
-const webRoute = {
+const webRoute: RouteRecordRaw = {
   path: "/web/",
-  component: WebPage,
+  component: () => import('@/views/web/WebTabs.vue'),
   children: [
     {
       path: "",
@@ -16,22 +11,22 @@ const webRoute = {
     {
       path: "tech-stack",
       name: "tech stack",
-      component: TechStack
+      component: () => import('@/views/web/TechStack.vue')
     },
     {
       path: "pagespeed",
       name: "pagespeed",
-      component: PagespeedTool
+      component: () => import('@/views/web/PagespeedResults.vue')
     },
     {
       path: "whois",
       name: "whois",
-      component: WhoisInfo
+      component: () => import('@/views/web/WhoisInfo.vue')
     },
     {
       path: "scraping",
       name: "web scraping",
-      component: WebScraping
+      component: () => import('@/views/web/WebScraping.vue')
     }
   ]
 };

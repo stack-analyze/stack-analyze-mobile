@@ -1,15 +1,8 @@
-// import paths
-import InfoPage from "@/views/info/InfoTabs.vue";
-import AnimeSearch from "@/views/info/AnimeSearch.vue";
-import BitlyInfo from "@/views/info/BitlyInfo.vue";
-import CryptoMarket from "@/views/info/CryptoMarket.vue";
-import GithubInfo from "@/views/info/GithubInfo.vue";
-import MovieInfo from "@/views/info/MovieInfo.vue";
-import TwitchInfo from "@/views/info/TwitchInfo.vue";
+import { RouteRecordRaw } from 'vue-router';
 
-const infoRoute = {
+const infoRoute: RouteRecordRaw = {
   path: "/info/",
-  component: InfoPage,
+  component: () => import('@/views/info/InfoTabs.vue'),
   children: [
     {
       path: "",
@@ -18,32 +11,32 @@ const infoRoute = {
     {
       path: "anime",
       name: "anime search",
-      component: AnimeSearch
+      component: () => import('@/views/info/AnimeSearch.vue')
     },
     {
       path: "bitly",
       name: "bitly info",
-      component: BitlyInfo
+      component: () => import('@/views/info/BitlyInfo.vue')
     },
     {
       path: "github",
       name: "github info",
-      component: GithubInfo
+      component: () => import('@/views/info/GithubInfo.vue')
     },
     {
       path: "crypto",
       name: "crypto market",
-      component: CryptoMarket
+      component: () => import('@/views/info/CryptoMarket.vue')
     },
     {
       path: "movie",
       name: "movie info",
-      component: MovieInfo
+      component: () => import('@/views/info/MovieInfo.vue')
     },
     {
       path: "twitch",
       name: "twitch info",
-      component: TwitchInfo
+      component: () => import('@/views/info/TwitchInfo.vue')
     }
   ]
 };
