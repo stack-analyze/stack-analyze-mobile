@@ -43,27 +43,8 @@
 </template>
 
 <script setup lang="ts">
-// vue imports
-import { ref, computed } from "vue";
-
-// ionic components
-import { 
-  IonPage,
-  IonContent, 
-  IonItem,
-  IonButton,
-  IonLabel,
-  IonIcon
-} from "@ionic/vue";
-
 // icons
 import { diceOutline, refreshOutline, copyOutline } from "ionicons/icons";
-
-// stack toolbar component
-import StackToolbar from "@/components/Toolbar.vue";
-
-// toast message
-import openToast from "@/scripts/warning-message";
 
 // state
 const password = ref("");

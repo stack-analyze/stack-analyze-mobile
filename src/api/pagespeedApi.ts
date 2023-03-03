@@ -1,6 +1,3 @@
-import axios from "axios";
-import { Pagespeed } from "@/interfaces/PagespeedInterface";
-
 type StrategyOpt = "mobile" | "desktop";
 
 export default async function pagespeedApi(url: string, strategy: StrategyOpt): Promise<Pagespeed> {

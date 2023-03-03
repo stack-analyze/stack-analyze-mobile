@@ -1,26 +1,3 @@
-// icons
-import {
-    hourglassOutline,
-    extensionPuzzleOutline,
-    peopleOutline,
-    globeOutline,
-    informationCircleOutline,
-    informationOutline,
-    searchCircleOutline,
-    terminalOutline,
-    walletOutline,
-    videocamOutline,
-    logoTwitch,
-    thumbsUpOutline,
-    codeSlashOutline,
-    attachOutline,
-    lockClosedOutline,
-    newspaperOutline,
-} from "ionicons/icons";
-
-// interfaces
-import { Pages } from "../interfaces/RouteInterface";
-
 const webToolsPages: Pages[] = [
     {
         title: "tech stack",
@@ -51,11 +28,6 @@ const infoToolsPages: Pages[] = [
         icon: informationOutline
     },
     {
-        title: "anime",
-        url: "/info/anime",
-        icon: searchCircleOutline
-    },
-    {
         title: "crypto",
         url: "/info/crypto",
         icon: walletOutline
@@ -66,14 +38,40 @@ const infoToolsPages: Pages[] = [
         icon: searchCircleOutline
     },
     {
+        title: "bundlephobia",
+        url: "/info/bundlephobia",
+        icon: layersOutline
+    },
+];
+
+const queryToolsPages: Pages[] = [
+    {
+        title: "anime",
+        url: "/query/anime",
+        icon: searchCircleOutline
+    },
+    {
         title: "movie",
-        url: "/info/movie",
+        url: "/query/movie",
         icon: videocamOutline
     },
     {
         title: "twitch",
-        url: "/info/twitch",
+        url: "/query/twitch",
         icon: logoTwitch
+    },
+];
+
+const utilityToolsPages: Pages[] = [
+    {
+        title: "hardware",
+        url: "/utility/hardware",
+        icon: terminalOutline
+    },
+    {
+       title: "password generator",
+       url: "/utility/password",
+       icon: lockClosedOutline
     },
 ];
 
@@ -89,14 +87,14 @@ const appPages: Pages[] = [
         icon: informationCircleOutline,
     },
     {
-       title: "password generator",
-       url: "/password",
-       icon: lockClosedOutline
+       title: 'query tools',
+       url: '/query/',
+       icon: searchOutline
     },
     {
-        title: "hardware",
-        url: "/hardware",
-        icon: terminalOutline
+        title: "utility tools",
+        url: "/utility/",
+        icon: constructOutline,
     },
     {
         title: "about",
@@ -118,5 +116,7 @@ const appPages: Pages[] = [
 export {
   appPages,
   webToolsPages,
-  infoToolsPages
+  infoToolsPages,
+  queryToolsPages,
+  utilityToolsPages
 };

@@ -1,5 +1,3 @@
-import { RouteRecordRaw } from 'vue-router';
-
 const webRoute: RouteRecordRaw = {
   path: "/web/",
   component: () => import('@/views/web/WebTabs.vue'),

@@ -80,40 +80,6 @@
 </template>
 
 <script setup lang="ts">
-// ionic components
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonButtons,
-  IonBackButton,
-  IonButton,
-  IonMenu,
-  IonCard,
-  IonCardHeader,
-  IonCardContent,
-  IonCardTitle,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonItem,
-  IonText,
-  IonIcon,
-  // ionic vue hook
-  onIonViewWillEnter,
-  onIonViewWillLeave,
-  // menu controller
-  menuController,
-} from "@ionic/vue";
-
-// ionic icons
-import { home, logoInstagram } from "ionicons/icons";
-
-// local ts
-import revealLinks from "@/scripts/dataRevealLinks";
-
 onIonViewWillEnter(() => {
   menuController.enable(false);
 });

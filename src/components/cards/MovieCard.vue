@@ -21,22 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonCard,
-  IonCardHeader,
-  IonCardContent,
-  IonCardTitle,
-  IonImg,
-  IonButton,
-  modalController,
-} from "@ionic/vue";
-
-import { Movie } from "@/interfaces/MovieInterface";
-
-import Modal from "@/components/ModalMovie.vue";
+import ModalMovie from '../modals/ModalMovie.vue'
 
 const { movieData } = defineProps<{
   movieData: Movie
@@ -44,7 +29,7 @@ const { movieData } = defineProps<{
 
 const openModal = async (id: number) => {
   const modal = await modalController.create({
-    component: Modal,
+    component: ModalMovie,
     componentProps: {
       movieId: id,
     },

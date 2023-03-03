@@ -1,20 +1,7 @@
-<script setup lang="ts">
-import { 
-  IonTabBar,
-  IonTabButton,
-  IonTabs, 
-  IonLabel, 
-  IonIcon, 
-  IonPage, 
-  IonRouterOutlet
-} from "@ionic/vue";
-
-import { webToolsPages } from "@/scripts/appPages";
-</script>
 <template>
   <ion-page>
     <ion-tabs>
-      <ion-router-outlet></ion-router-outlet>
+      <ion-router-outlet />
       <ion-tab-bar slot="bottom">
         <ion-tab-button 
           v-for="page of webToolsPages"

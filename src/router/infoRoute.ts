@@ -1,5 +1,3 @@
-import { RouteRecordRaw } from 'vue-router';
-
 const infoRoute: RouteRecordRaw = {
   path: "/info/",
   component: () => import('@/views/info/InfoTabs.vue'),
@@ -7,11 +5,6 @@ const infoRoute: RouteRecordRaw = {
     {
       path: "",
       redirect: "/info/github"
-    },
-    {
-      path: "anime",
-      name: "anime search",
-      component: () => import('@/views/info/AnimeSearch.vue')
     },
     {
       path: "bitly",
@@ -29,14 +22,9 @@ const infoRoute: RouteRecordRaw = {
       component: () => import('@/views/info/CryptoMarket.vue')
     },
     {
-      path: "movie",
-      name: "movie info",
-      component: () => import('@/views/info/MovieInfo.vue')
-    },
-    {
-      path: "twitch",
-      name: "twitch info",
-      component: () => import('@/views/info/TwitchInfo.vue')
+      path: "bundlephobia",
+      name: "bundlephobia info",
+      component: () => import('@/views/info/Bundlephobia.vue')
     }
   ]
 };

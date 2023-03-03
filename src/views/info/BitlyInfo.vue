@@ -2,40 +2,35 @@
   <ion-page>
     <stack-toolbar />
     <ion-content>
-      <ion-item>
-        <ion-label position="floating" color="secondary"> enter a bitly link: </ion-label>
-        <ion-input type="url" v-model="bitlyURL" :clearInput="true" autocomplete="off">
-        </ion-input>
-      </ion-item>
+      <stack-input 
+        v-model="bitlyURL" 
+        label-txt="enter a bitly link:" 
+        input-type="url" 
+      />
 
       <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-button @click="bitlyInfo" :disabled="validateBitly" color="secondary" fill="outline" expand="block">
-              analyze bitly url
-            </ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button @click="resetBitlyInfo" :disabled="isEmptyBitlyInfo" color="danger" fill="outline"
-              expand="block">
-              reset bitly info
-            </ion-button>
-          </ion-col>
-        </ion-row>
+        <stack-buttons
+          init-btn-name="start bitly info"
+          :init-validate="validateBitly"
+          @init-function="getBitlyInfo"
+          clear-btn-name="clear bitly info"
+          :clear-validate="isEmptyBitlyInfo"
+          @clear-function="resetBitlyInfo"
+        />
       </ion-grid>
 
       <ion-card>
         <ion-card-header>
           <ion-card-title>
-            {{ bitlyResults.link }}
+           short url: {{ bitlyResults.link || 'no bitly link' }}
           </ion-card-title>
         </ion-card-header>
         <ion-card-content>
           <ion-card-subtitle>
-            {{ format(bitlyResults.created_at) }}
+            created at: {{ format(bitlyResults.created_at) }}
           </ion-card-subtitle>
           <ion-item>
-            {{ bitlyResults.long_url }}
+            long url: {{ bitlyResults.long_url || 'no long url' }}
           </ion-item>
         </ion-card-content>
       </ion-card>
@@ -44,53 +39,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
-
-import axios, { AxiosError } from "axios";
-import { format } from "timeago.js";
-
-// ionic components
-import {
-  IonPage,
-  IonContent,
-  IonItem,
-  IonLabel,
-  IonInput,
-  IonButton,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonCard,
-  IonCardTitle,
-  IonCardSubtitle,
-  IonCardHeader,
-  IonCardContent,
-} from "@ionic/vue";
-
-import { Bitly } from "@/interfaces/BitlyInterface";
-
-// stack toolbar component
-import StackToolbar from "@/components/Toolbar.vue";
-import presentAlert from "@/scripts/alertMsg";
-
 // regexp
 const bitlyRegexp = /bit\.ly\//;
 
 // states
 const bitlyURL = ref("");
-const bitlyResults = ref<Bitly>(({} as Bitly));
+const bitlyResults = ref<Partial<Bitly>>({});
 
 // compúted
 const validateBitly = computed(() => !bitlyRegexp.test(bitlyURL.value));
 
-const isEmptyBitlyInfo = computed(() => Object.keys(bitlyResults.value).length === 0);
+const isEmptyBitlyInfo = computed(
+  () => Object.keys(bitlyResults.value).length === 0
+);
 
 // methods
-const resetBitlyInfo = (): void => {
-  bitlyResults.value = ({} as Bitly);
+const resetBitlyInfo = () => {
+  bitlyResults.value = {};
 };
 
-const bitlyInfo = async (): Promise<void> => {
+const getBitlyInfo = async () => {
   try {
     const { data } = await axios.post(
       "https://api-ssl.bitly.com/v4/expand",

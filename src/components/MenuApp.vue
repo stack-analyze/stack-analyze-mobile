@@ -24,7 +24,7 @@
 
         <ion-menu-toggle :auto-hide="false" v-for="(p, i) in appPages" :key="i">
           <ion-item button router-direction="root" :router-link="p.url">
-            <ion-icon slot="start" :icon="p.icon" color="secondary"></ion-icon>
+            <ion-icon slot="start" :icon="p.icon" color="secondary" />
             <ion-label>{{ p.title }}</ion-label>
           </ion-item>
         </ion-menu-toggle>
@@ -32,29 +32,9 @@
     </ion-content>
   </ion-menu>
 </template>
+
 <script setup lang="ts">
-import {
-  IonMenu,
-  IonMenuToggle,
-  IonItemGroup,
-  IonItemDivider,
-  IonToolbar,
-  IonHeader,
-  IonTitle,
-  IonContent,
-  IonItem,
-  IonLabel,
-  IonAvatar,
-  IonImg,
-  IonIcon,
-  modalController,
-} from "@ionic/vue";
-
-import { libraryOutline } from "ionicons/icons";
-
-import ChangelogVue from "./Changelog.vue";
-
-import { appPages } from "@/scripts/appPages";
+import Changelog from './modals/Changelog.vue';
 
 defineProps<{
   menuId: string;
@@ -62,7 +42,7 @@ defineProps<{
 
 const openChangelog = async () => {
   const modal = await modalController.create({
-    component: ChangelogVue,
+    component: Changelog,
     backdropDismiss: false,
     mode: "ios",
     cssClass: "modal",

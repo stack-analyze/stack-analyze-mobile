@@ -1,9 +1,3 @@
-import { RouteRecordRaw } from 'vue-router';
-import { createRouter, createWebHistory } from '@ionic/vue-router';
-
-import webRoute from './webRoute';
-import infoRoute from './infoRoute';
-
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -11,25 +5,17 @@ const routes: RouteRecordRaw[] = [
   },
   webRoute,
   infoRoute,
+  queryRoute,
+  utilityRoute,
   {
     path: '/about',
     name: 'about',
     component: () => import('@/views/About.vue')
   },
   {
-    path: '/hardware',
-    name: 'hardware info',
-    component: () => import('@/views/Hardware.vue')
-  },
-  {
     path: '/recommend',
     name: 'recommend',
     component: () => import('@/views/Recommends.vue')
-  },
-  {
-    path: '/password',
-    name: 'password generator',
-    component: () => import('@/views/PasswordGenerator.vue')
   },
   {
     path: '/prevent-ig-fake',

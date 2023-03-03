@@ -21,22 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  IonCol,
-  IonGrid,
-  IonRow,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
-  IonButton,
-  IonImg,
-  modalController,
-} from "@ionic/vue";
-
-import { Anime } from "@/interfaces/AnimeInterface";
-
-import ModalAnime from "@/components/ModalAnime.vue";
+import ModalAnime from '../modals/ModalAnime.vue'
 
 const { animeData } = defineProps<{ animeData: Anime }>();
 

@@ -1,8 +1,25 @@
-import { resolve } from "node:path";
+import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import { VitePWA } from "vite-plugin-pwa";
+import { defineConfig } from 'vite';
+
+import vue from '@vitejs/plugin-vue';
+
+import { VitePWA } from 'vite-plugin-pwa';
+
+import AutoImport from 'unplugin-auto-import/vite';
+import { ComponentResolver } from 'unplugin-vue-components/types';
+import Components from 'unplugin-vue-components/vite';
+
+import { IonicResolver } from 'unplugin-vue-components/resolvers';
+
+const SwiperResolver = (): ComponentResolver => ({
+  type: 'component',
+  resolve(name: string) {
+    if (name.startsWith('Swiper')) {
+      return { name, from: 'swiper/vue' };
+    }
+  }
+});
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -92,11 +109,54 @@ export default defineConfig({
         display: "standalone",
         background_color: "#ffffff"
       }
-    })
+    }),
+    AutoImport({
+      include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/,],
+      imports: [
+        'vue',
+        'vue-router',
+        {
+          'vue-router': ['RouteRecordRaw'],
+          '@ionic/vue-router': ['createRouter', 'createWebHistory'],
+          '@ionic/vue': [
+            'IonicVue', 'alertController','toastController', 'modalController',
+            'loadingController', 'RefresherEventDetail', 'SearchbarChangeEventDetail', 'onIonViewWillEnter', 
+            'onIonViewWillLeave', 'menuController', 'IonicSlides'
+          ],
+          'ionicons/icons': [
+            'diceOutline', 'refreshOutline', 'copyOutline', 'warningOutline',
+            'libraryOutline', 'home', 'logoInstagram', 'logoGithub',
+            'logoCodepen', 'logoTwitch', 'logoYoutube', 'logoTiktok',
+            'earthOutline', 'hourglassOutline', 'extensionPuzzleOutline', 'peopleOutline',
+            'globeOutline', 'informationCircleOutline', 'informationOutline', 'searchCircleOutline',
+            'terminalOutline', 'walletOutline', 'videocamOutline', 'logoTwitch',
+            'thumbsUpOutline', 'codeSlashOutline', 'attachOutline', 'lockClosedOutline',
+            'newspaperOutline', 'layersOutline', 'searchOutline', 'constructOutline',
+            'closeCircleOutline'
+          ],
+          'axios': [ 'AxiosError', ['default', 'axios'] ],
+          'swiper': ['Pagination'],
+          'timeago.js': ['format'],
+          '@capacitor/device': ['Device', 'DeviceInfo'],
+          '@capacitor/network': ['Network', 'ConnectionStatus'],
+        }
+      ],
+      dirs: [
+        'src/router', 'src/api', 'src/composables', 'src/interface',
+        'src/scripts'
+      ],
+      vueTemplate: true,
+    }),
+    Components({
+      dirs: ['src/components', 'src/components/**'],
+      extensions: ['vue'],
+      resolvers: [IonicResolver(), SwiperResolver()],
+      exclude: ['src/components/modals']
+    }),
   ],
   resolve: {
     alias: {
-      "@": resolve(__dirname, "./src"),
+      "@": fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
 });

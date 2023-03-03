@@ -1,6 +1,6 @@
-import { RevealDocs } from '@/interfaces/revealLinkDocs';
+// import { RevealDocs } from '@/interfaces/revealLinkDocs';
 
-const revealLinks: RevealDocs[] = [
+export const revealLinks: RevealDocs[] = [
     {
         title: 'bitly reveal',
         info: `To reveal bitly shortened sites, there are two ways to use them.
@@ -62,5 +62,3 @@ This was my own research and not taken from an external site.
         ]
     },
 ];
-
-export default revealLinks;

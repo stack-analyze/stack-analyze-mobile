@@ -39,37 +39,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from "vue";
-
-import { AxiosError } from "axios";
-
-import { Movie } from "@/interfaces/MovieInterface";
-
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonButtons,
-  IonButton,
-  IonItem,
-  IonLabel,
-  IonIcon,
-  IonContent,
-  IonImg,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardSubtitle,
-  modalController,
-} from "@ionic/vue";
-
-import { closeCircleOutline } from "ionicons/icons";
-
-// scripts
-import movieApi from "@/api/movieApi";
-import presentAlert from "@/scripts/alertMsg";
-
 const { movieId } = defineProps<{
   movieId: number;
 }>();

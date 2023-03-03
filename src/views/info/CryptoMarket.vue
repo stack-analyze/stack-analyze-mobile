@@ -33,38 +33,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from "vue";
-
-import axios, { AxiosError } from "axios";
-
-// ionic components
-import {
-  IonPage,
-  IonContent,
-  IonImg,
-  IonAvatar,
-  IonLabel,
-  IonText,
-  IonNote,
-  IonItem,
-  IonList,
-  IonRefresher,
-  IonRefresherContent,
-  IonSearchbar,
-  loadingController,
-  RefresherEventDetail,
-SearchbarChangeEventDetail,
-} from "@ionic/vue";
-
-// interface
-import { Crypto } from "@/interfaces/CryptoInterface";
-
-// stack toolbar component
-import StackToolbar from "@/components/Toolbar.vue";
-
-// alert
-import presentAlert from "@/scripts/alertMsg";
-
 // state
 const coinList = ref<Crypto[]>([]);
 const filterCoins = ref<Crypto[]>([]);
@@ -106,7 +74,7 @@ const handleChange = (event: any): void => {
   const query = event.target.value.toLowerCase();
 
   filterCoins.value = coinList.value.filter(
-    d => d.name.toLowerCase().includes(query) || d.symbol.includes(query)
+    d => d.name.toLowerCase().includes(query) || d.symbol.toLowerCase().includes(query)
   );
 };
 

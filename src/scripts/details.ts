@@ -5,6 +5,19 @@ type detailsVersion = {
 
 export const versionsNotes: detailsVersion[] = [
   {
+    version: '1.8.0',
+    details: `
+      added:
+        1. bundlephobia tool.
+      changed:
+        1. now using auto-import similar to nuxt edition.
+        2. update to ionic 7 (beta).
+      fixed:
+        1. now using dark mode with localstorage.
+        2. webscraping tool using new api similar to cli webscraping tool.
+    `,
+  },
+  {
     version: '1.7.0',
     details: `
       added:

@@ -33,19 +33,6 @@
 </template>
 
 <script setup lang="ts">
-import {
-  IonCol,
-  IonCard,
-  IonCardHeader,
-  IonCardContent,
-  IonCardTitle,
-  IonCardSubtitle,
-  IonImg,
-  IonButton
-} from '@ionic/vue';
-
-import { TechStack } from '@/interfaces/TechStackInterface'
-
 const formatter = new Intl.ListFormat('en', { style: 'short', type: 'unit' });
 
 const { stackData } = defineProps<{

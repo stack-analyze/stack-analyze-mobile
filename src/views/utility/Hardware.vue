@@ -76,42 +76,11 @@
 </template>
 
 <script setup lang="ts">
-// vue modules
-import { watchEffect, ref } from "vue";
-
-// ionic modules
-import {
-  IonPage,
-  IonContent,
-  IonItem,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardSubtitle,
-  IonCardContent,
-  IonImg,
-  IonText,
-  IonLabel,
-  IonToast,
-} from "@ionic/vue";
-
-import { warningOutline } from "ionicons/icons";
-
-// capacitor plugins
-import { Device } from "@capacitor/device";
-import { Network } from "@capacitor/network";
-
-// toolbar component
-import StackToolbar from "@/components/Toolbar.vue";
-
-const modelInfo = ref<any>({});
+const modelInfo = ref<Partial<DeviceInfo>>({});
 
 const deviceLanguage = ref("");
 
-const networkInfo = ref<any>({});
+const networkInfo = ref<Partial<ConnectionStatus>>({});
 
 watchEffect(async () => {
   modelInfo.value = await Device.getInfo();

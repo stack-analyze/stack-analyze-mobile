@@ -1,8 +1,4 @@
-import { alertController } from "@ionic/vue";
-
-import { Alert } from "../interfaces/AlertInterface";
-
-export default async function presentAlert({ msg, header, subHeader }: Alert): Promise<void> {
+export async function presentAlert({ msg, header, subHeader }: Alert) {
   const alert = await alertController.create({
     header,
     subHeader,

@@ -2,42 +2,20 @@
   <ion-page>
     <stack-toolbar />
     <ion-content>
-      <ion-item>
-        <ion-label position="floating" color="secondary">
-          enter a git user
-        </ion-label>
-        <ion-input 
-          v-model="user"
-          :clearInput="true"
-          autocomplete="off"
-          required
-        />
-      </ion-item>
-      
+      <stack-input 
+        v-model="user" 
+        label-txt="enter a github user" 
+        input-type="text" 
+      />
       <ion-grid>
-        <ion-row>
-          <ion-col size="6">
-            <ion-button
-              @click="githubInfo"
-              color="secondary"
-              fill="outline"
-              expand="block"
-            >
-              start search
-            </ion-button>
-          </ion-col>
-          <ion-col size="6">
-            <ion-button
-              @click="reset"
-              :disabled="resetStatus"
-              color="danger"
-              fill="outline"
-              expand="block"
-            >
-              reset github info
-            </ion-button>
-          </ion-col>
-        </ion-row>
+        <stack-buttons
+          init-btn-name="get github user"
+          :init-validate="false"
+          @init-function="getGitUser"
+          clear-btn-name="clear github user"
+          :clear-validate="IsEmptyGitInfo"
+          @clear-function="clearGitUser"
+        />
       </ion-grid>
       
       <ion-card class="stack-card" mode="ios">
@@ -107,49 +85,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
-
-import axios, { AxiosError } from "axios";
-
-import { format } from "timeago.js"
-
-// ionic components
-import {
-  IonPage,
-  IonContent,
-  IonItem,
-  IonLabel,
-  IonInput,
-  IonButton,
-  IonImg,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonCard,
-  IonText,
-  IonCardHeader,
-  IonCardContent,
-  IonCardTitle,
-  IonCardSubtitle
-} from "@ionic/vue";
-
-// stack toolbar component
-import StackToolbar from "@/components/Toolbar.vue";
-
-import { GithubSchema } from "@/interfaces/GithubInterface"
-
-import presentAlert from "@/scripts/alertMsg";
-import openToast from "@/scripts/warning-message";
-
+// states
 const user = ref("");
-const githubUser = ref<GithubSchema>(({} as GithubSchema));
+const githubUser = ref<Partial<GithubSchema>>({});
 
-const resetStatus = computed(
+// computers
+const IsEmptyGitInfo = computed(
   () => Object.values(githubUser.value).length === 0
 );
 
-const githubInfo = async (): Promise<void> => {
-  if(!user.value) return openToast("this field is required", "warning");
+// methods
+const getGitUser = async () => {
+  if(!user.value) {
+    return openToast("this field is required", "warning");
+  }
 
   try {
     const { data } = await axios.get(`https://api.github.com/users/${user.value}`)
@@ -166,8 +115,8 @@ const githubInfo = async (): Promise<void> => {
   user.value = "";
 };
 
-const reset = () => {
-  githubUser.value = ({} as GithubSchema)
+const clearGitUser = () => {
+  githubUser.value = {};
 };
 
 </script>

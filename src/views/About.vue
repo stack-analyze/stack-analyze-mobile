@@ -1,6 +1,6 @@
 <template>
   <ion-page>
-    <Toolbar />
+    <stack-toolbar />
     <ion-content>
       <swiper
         :loop="true"
@@ -33,27 +33,5 @@
 </template>
 
 <script setup lang="ts">
-import {
-  IonPage,
-  IonContent,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonImg,
-  IonButton,
-  IonIcon,
-  IonicSlides
-} from "@ionic/vue";
-
-import { Pagination } from 'swiper';
-
-import { Swiper, SwiperSlide } from "swiper/vue";
-
-import Toolbar from "@/components/Toolbar.vue";
-
-import { Cards } from "@/scripts/data";
-
 const modules = [Pagination, IonicSlides];
 </script>

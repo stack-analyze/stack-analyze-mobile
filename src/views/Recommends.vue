@@ -109,26 +109,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
-import {
-  IonPage,
-  IonContent,
-  IonItem,
-  IonIcon,
-  IonLabel,
-  IonAccordionGroup,
-  IonAccordion,
-  IonList,
-  modalController
-} from "@ionic/vue";
-
-import { libraryOutline } from "ionicons/icons";
-
-import StackToolbar from "@/components/Toolbar.vue";
-import MuaInfo from "@/components/MuaEaster.vue";
-
-import { recomendations } from "@/scripts/data";
+import MuaInfo from '@/components/modals/MuaEaster.vue'
 
 const accordionGroup = ref();
 

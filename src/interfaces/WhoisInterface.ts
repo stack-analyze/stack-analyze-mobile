@@ -1,4 +1,4 @@
 export interface Whois { 
-  url?: string; 
-  domain?: string; 
+  url: string; 
+  domain: string; 
 }

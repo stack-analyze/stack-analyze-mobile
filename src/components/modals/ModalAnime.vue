@@ -35,7 +35,9 @@
               <ion-item slot="header">
                 <ion-label>synopsis</ion-label>
               </ion-item>
-              <ion-item slot="content">{{ animeSchema.synopsis }}</ion-item>
+              <ion-item slot="content">
+                {{ animeSchema.synopsis || 'no synopsis' }}
+              </ion-item>
             </ion-accordion>
             <ion-accordion value="aired">
               <ion-item slot="header">
@@ -52,44 +54,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from "vue";
-
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonButtons,
-  IonButton,
-  IonContent,
-  IonItem,
-  IonIcon,
-  IonLabel,
-  IonImg,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardSubtitle,
-  IonAccordion,
-  IonAccordionGroup,
-  IonText,
-  modalController,
-} from "@ionic/vue";
-
-import { closeCircleOutline } from "ionicons/icons";
-
-// interfaces
-import { Anime } from "@/interfaces/AnimeInterface";
-
-// scripts
-import animeApi from "@/api/animeApi";
-
-import presentAlert from "@/scripts/alertMsg";
-import { AxiosError } from "axios";
-
 const { animeID } = defineProps<{ animeID: number }>();
 
-const animeSchema = ref<Anime>(({} as Anime));
+const animeSchema = ref<Partial<Anime>>({});
 
 watchEffect(async () => {
   try {

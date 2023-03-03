@@ -1,6 +1,3 @@
-// vue import
-import { ref, computed } from "vue";
-
 // composable function
 export function useHttp () {
   

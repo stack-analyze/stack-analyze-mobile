@@ -4,7 +4,7 @@
       <ion-router-outlet></ion-router-outlet>
       <ion-tab-bar slot="bottom">
         <ion-tab-button 
-          v-for="page of infoToolsPages"
+          v-for="page of queryToolsPages"
           :key="page.title"
           :tab="page.title" 
           :href="page.url"

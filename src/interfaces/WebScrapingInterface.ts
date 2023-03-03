@@ -2,6 +2,8 @@ export interface HashFunctions {
   [key: string]: () => void
 };
 
+export type Options = 'title' | 'metadata' | 'images' | 'headings' | 'tableHead' | 'tableData' | 'links' | 'cites';
+
 export interface WebScraping {
   metaType?: string;
   metaValue?: string;

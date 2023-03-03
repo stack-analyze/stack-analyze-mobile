@@ -22,26 +22,6 @@
 </template>
 
 <script setup lang="ts">
-
-import {
-  IonContent,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonButtons,
-  IonButton,
-  IonIcon,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardContent,
-  modalController,
-} from "@ionic/vue";
-
-import { closeCircleOutline } from "ionicons/icons";
-
-import { versionsNotes } from "@/scripts/details";
-
 function closeModal() {
   modalController.dismiss({ dismissed: true });
 }

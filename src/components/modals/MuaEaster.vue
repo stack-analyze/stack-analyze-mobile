@@ -40,27 +40,6 @@
 </template>
 
 <script setup lang="ts">
-// ionic components
-import {
-  IonContent,
-  IonHeader,
-  IonTitle,
-  IonToolbar,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonIcon,
-  IonImg,
-  IonButtons,
-  IonButton,
-  modalController,
-} from "@ionic/vue";
-
-// icons
-import { logoInstagram, logoTiktok, closeCircleOutline } from "ionicons/icons";
-
 const muaSocial = [
   {
     logo: logoInstagram,
