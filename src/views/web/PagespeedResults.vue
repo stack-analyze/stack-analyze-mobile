@@ -27,7 +27,7 @@
   </ion-page>
 </template>
 
-<script setup lang="ts"/>
+<script setup lang="ts">
 // composable
 const {website, validateWebsite} = useHttp();
 
