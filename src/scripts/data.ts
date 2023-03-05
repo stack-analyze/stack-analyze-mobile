@@ -98,22 +98,16 @@ const recomendations: SocialMedia[] = [
     link: "https://dprojects.org"
   },
   {
-    name: "juju_juhariah1995",
+    name: "chun_li1995",
     logo: logoInstagram,
     color: "instagram",
-    link: "https://www.instagram.com/juju_juhariah1995"
+    link: "https://www.instagram.com/chun_li1995"
   },
   {
     name: "seyyahikaktus",
     logo: logoInstagram,
     color: "instagram",
     link: "https://www.instagram.com/seyyahikaktus"
-  },
-  {
-    name: "papatyakaktuss",
-    logo: logoInstagram,
-    color: "instagram",
-    link: "https://www.instagram.com/papatyakaktuss"
   },
   {
     // next recomend npm version 1.0.9
@@ -123,10 +117,10 @@ const recomendations: SocialMedia[] = [
     link: "https://www.twitch.tv/lunanny"
   },
   {
-    name: "dannyaegyo",
+    name: "dannyagii",
     logo: logoTwitch,
     color: "twitch",
-    link: "https://www.twitch.tv/dannyaegyo"
+    link: "https://www.twitch.tv/dannyagii"
   },
 ];
 
