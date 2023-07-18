@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const modules = [Pagination, IonicSlides];
+</script>
+
 <template>
   <ion-page>
     <stack-toolbar />
@@ -31,7 +35,3 @@
     </ion-content>
   </ion-page>
 </template>
-
-<script setup lang="ts">
-const modules = [Pagination, IonicSlides];
-</script>

@@ -1,3 +1,19 @@
+<script setup lang="ts">
+import { IonRow, IonCol, IonButton } from "@ionic/vue";
+
+defineProps<{
+  initValidate: boolean;
+  clearValidate: boolean;
+  initBtnName: string;
+  clearBtnName: string;
+}>();
+
+const emits = defineEmits<{
+  (e: "initFunction"): void;
+  (e: "clearFunction"): void;
+}>();
+</script>
+
 <template>
   <ion-row>
     <ion-col size="6">
@@ -24,19 +40,3 @@
     </ion-col>
   </ion-row>
 </template>
-
-<script setup lang="ts">
-import { IonRow, IonCol, IonButton } from "@ionic/vue";
-
-defineProps<{
-  initValidate: boolean;
-  clearValidate: boolean;
-  initBtnName: string;
-  clearBtnName: string;
-}>();
-
-const emits = defineEmits<{
-  (e: "initFunction"): void;
-  (e: "clearFunction"): void;
-}>();
-</script>

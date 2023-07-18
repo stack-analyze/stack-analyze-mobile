@@ -1,35 +1,3 @@
-<template>
-  <ion-page>
-    <stack-toolbar />
-    <ion-content>
-      <stack-input
-        v-model="userStr"
-        label-txt="enter a twitch user for search example a,b,c:"
-        input-type="text"
-      />
-
-      <ion-grid>
-        <stack-buttons
-          init-btn-name="get twitch users"
-          :init-validate="false"
-          @init-function="twitchInfo"
-          clear-btn-name="clear twitch users"
-          :clear-validate="isEmptyUsers"
-          @clear-function="resetTwitch"
-        />
-
-        <ion-row>
-          <twitch-user-info
-            v-for="user of twitchUsers"
-            :key="user.id"
-            :twitch-user="user"
-          />
-        </ion-row>
-      </ion-grid>
-    </ion-content>
-  </ion-page>
-</template>
-
 <script setup lang="ts">
 // states
 const userStr = ref("");
@@ -83,3 +51,35 @@ const resetTwitch = () => {
   twitchUsers.value = [];
 };
 </script>
+
+<template>
+  <ion-page>
+    <stack-toolbar />
+    <ion-content>
+      <stack-input
+        v-model="userStr"
+        label-txt="enter a twitch user for search example a,b,c:"
+        input-type="text"
+      />
+
+      <ion-grid>
+        <stack-buttons
+          init-btn-name="get twitch users"
+          :init-validate="false"
+          @init-function="twitchInfo"
+          clear-btn-name="clear twitch users"
+          :clear-validate="isEmptyUsers"
+          @clear-function="resetTwitch"
+        />
+
+        <ion-row>
+          <twitch-user-info
+            v-for="user of twitchUsers"
+            :key="user.id"
+            :twitch-user="user"
+          />
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ion-page>
+</template>

@@ -17,6 +17,11 @@ const queryRoute: RouteRecordRaw = {
       component: () => import('@/views/query/MovieInfo.vue')
     },
     {
+      path: "pokemon",
+      name: "pokemon info",
+      component: () => import('@/views/query/PokemonInfo.vue')
+    },
+    {
       path: "twitch",
       name: "twitch info",
       component: () => import('@/views/query/TwitchInfo.vue')

@@ -1,37 +1,3 @@
-<template>
-  <ion-page>
-    <stack-toolbar />
-    <ion-content>
-      <ion-refresher slot="fixed" @ionRefresh="handleRefresh($event)">
-        <ion-refresher-content />
-      </ion-refresher>
-      <ion-searchbar
-        :debounce="1000"
-        @ionChange="handleChange($event)"
-      />
-      
-      <ion-list class="scroller" inset>
-        <ion-item v-for="coin of filterCoins" :key="coin.id">
-          <ion-avatar slot="start">
-            <ion-img
-              :class="cryptoShadow(coin.price_change_percentage_24h)"
-              :src="coin.image"
-              :alt="coin.name"
-            />
-          </ion-avatar>
-          <ion-label>
-            {{ coin.name }} ({{ coin.symbol }}) <br />
-            <ion-text> price: {{ currency.format(coin.current_price) }} USD </ion-text>
-          </ion-label>
-          <ion-note :color="cryptoStatus(coin.price_change_percentage_24h)" slot="end">
-            {{ coin.price_change_percentage_24h }} %
-          </ion-note>
-        </ion-item>
-      </ion-list>
-    </ion-content>
-  </ion-page>
-</template>
-
 <script setup lang="ts">
 // state
 const coinList = ref<Crypto[]>([]);
@@ -90,6 +56,40 @@ const showLoading = async () => {
 
 showLoading();
 </script>
+
+<template>
+  <ion-page>
+    <stack-toolbar />
+    <ion-content>
+      <ion-refresher slot="fixed" @ionRefresh="handleRefresh($event)">
+        <ion-refresher-content />
+      </ion-refresher>
+      <ion-searchbar
+        :debounce="1000"
+        @ion-input="handleChange($event)"
+      />
+      
+      <ion-list class="scroller" inset>
+        <ion-item v-for="coin of filterCoins" :key="coin.id">
+          <ion-avatar slot="start">
+            <ion-img
+              :class="cryptoShadow(coin.price_change_percentage_24h)"
+              :src="coin.image"
+              :alt="coin.name"
+            />
+          </ion-avatar>
+          <ion-label>
+            {{ coin.name }} ({{ coin.symbol }}) <br />
+            <ion-text> price: {{ currency.format(coin.current_price) }} USD </ion-text>
+          </ion-label>
+          <ion-note :color="cryptoStatus(coin.price_change_percentage_24h)" slot="end">
+            {{ coin.price_change_percentage_24h }} %
+          </ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-page>
+</template>
 
 <style scoped>
 .scroller {

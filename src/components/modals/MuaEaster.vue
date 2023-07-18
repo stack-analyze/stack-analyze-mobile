@@ -1,9 +1,28 @@
+<script setup lang="ts">
+const muaSocial = [
+  {
+    logo: logoInstagram,
+    color: "instagram",
+    link: "https://www.instagram.com/lamuaofficial",
+  },
+  {
+    logo: logoTiktok,
+    color: "codepen",
+    link: "https://www.tiktok.com/lamua_",
+  },
+];
+
+const emit = defineEmits<{
+  setOpen: [value: boolean]
+}>()
+</script>
+
 <template>
   <ion-header>
     <ion-toolbar color="tertiary">
       <ion-buttons slot="end">
-        <ion-button @click="closeModal">
-          <ion-icon :icon="closeCircleOutline"></ion-icon>
+        <ion-button @click="emit('setOpen')">
+          <ion-icon :icon="closeCircleOutline" />
         </ion-button>
       </ion-buttons>
       <ion-title>mua info</ion-title>
@@ -38,22 +57,3 @@
     </ion-card>
   </ion-content>
 </template>
-
-<script setup lang="ts">
-const muaSocial = [
-  {
-    logo: logoInstagram,
-    color: "instagram",
-    link: "https://www.instagram.com/lamuaofficial",
-  },
-  {
-    logo: logoTiktok,
-    color: "codepen",
-    link: "https://www.tiktok.com/lamua_",
-  },
-];
-
-function closeModal() {
-  modalController.dismiss({ dismissed: true });
-}
-</script>

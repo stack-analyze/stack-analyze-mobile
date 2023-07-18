@@ -1,3 +1,45 @@
+<script setup lang="ts">
+// states
+const pkgName = ref("");
+const pkgInfo = ref<Partial<BundlePhobia>>({});
+
+// computers
+const isEmptyPkgInfo = computed(
+  () => Object.values(pkgInfo.value).length === 0
+);
+
+const isEmptyRepoLink = computed(() => !pkgInfo.value.repository)
+
+// methods
+const kilobyteConvert = (size: number | undefined) => (size < 1024 ? `${size} B` : `${(size / 1024).toFixed(2)} KB`);
+
+const getPkgInfo = async () => {
+  if(!pkgName.value) {
+    return openToast("this field is required", "warning");
+  }
+  
+  try {
+    const { data } = await axios.get("https://bundlephobia.com/api/size", {
+      params: { package: pkgName.value }
+    });
+    
+    pkgInfo.value = data;
+  } catch(err) {
+    presentAlert({
+      msg: (err as AxiosError).message,
+      header: 'Error bundlephobia info',
+      subHeader: 'problem to req api'
+    });
+  }
+  
+  pkgName.value = "";
+};
+
+const clearPkgInfo = () => {
+  pkgInfo.value = {};
+};
+</script>
+
 <template>
   <ion-page>
     <stack-toolbar />
@@ -58,45 +100,3 @@
     </ion-content>
   </ion-page>
 </template>
-
-<script setup lang="ts">
-// states
-const pkgName = ref("");
-const pkgInfo = ref<Partial<BundlePhobia>>({});
-
-// computers
-const isEmptyPkgInfo = computed(
-  () => Object.values(pkgInfo.value).length === 0
-);
-
-const isEmptyRepoLink = computed(() => !pkgInfo.value.repository)
-
-// methods
-const kilobyteConvert = (size: number | undefined) => (size < 1024 ? `${size} B` : `${(size / 1024).toFixed(2)} KB`);
-
-const getPkgInfo = async () => {
-  if(!pkgName.value) {
-    return openToast("this field is required", "warning");
-  }
-  
-  try {
-    const { data } = await axios.get("https://bundlephobia.com/api/size", {
-      params: { package: pkgName.value }
-    });
-    
-    pkgInfo.value = data;
-  } catch(err) {
-    presentAlert({
-      msg: (err as AxiosError).message,
-      header: 'Error bundlephobia info',
-      subHeader: 'problem to req api'
-    });
-  }
-  
-  pkgName.value = "";
-};
-
-const clearPkgInfo = () => {
-  pkgInfo.value = {};
-};
-</script>

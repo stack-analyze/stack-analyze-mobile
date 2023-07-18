@@ -1,32 +1,3 @@
-<template>
-  <ion-page>
-    <stack-toolbar />
-    <ion-content>
-      <stack-input v-model="website" input-type="url" />
-      <ion-grid>
-        <stack-buttons
-          init-btn-name="start whois"
-          :init-validate="validateWebsite"
-          @init-function="getWhois"
-          clear-btn-name="clear whois"
-          :clear-validate="isEmptyWhoisInfo"
-          @clear-function="clearWhois"
-        />
-      </ion-grid>
-      <ion-card mode="md">
-        <ion-card-header>
-          <ion-card-title>
-            {{ whoisInfo.url || "no web info" }}
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <pre class="stack-result">{{ whoisInfo.domain || "no domain info" }}</pre>
-        </ion-card-content>
-      </ion-card>
-    </ion-content>
-  </ion-page>
-</template>
-
 <script setup lang="ts">
 const { website, validateWebsite } = useHttp();
 
@@ -60,3 +31,32 @@ const getWhois = async (): Promise<void> => {
   website.value = "";
 };
 </script>
+
+<template>
+  <ion-page>
+    <stack-toolbar />
+    <ion-content>
+      <stack-input v-model="website" input-type="url" />
+      <ion-grid>
+        <stack-buttons
+          init-btn-name="start whois"
+          :init-validate="validateWebsite"
+          @init-function="getWhois"
+          clear-btn-name="clear whois"
+          :clear-validate="isEmptyWhoisInfo"
+          @clear-function="clearWhois"
+        />
+      </ion-grid>
+      <ion-card mode="md">
+        <ion-card-header>
+          <ion-card-title>
+            {{ whoisInfo.url || "no web info" }}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <pre class="stack-result">{{ whoisInfo.domain || "no domain info" }}</pre>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+  </ion-page>
+</template>

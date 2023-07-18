@@ -1,9 +1,15 @@
+<script setup lang="ts">
+const emit = defineEmits<{
+  setOpen: [status: boolean]
+}>()
+</script>
+
 <template>
   <ion-header>
     <ion-toolbar>
       <ion-title>changelog</ion-title>
       <ion-buttons slot="end">
-        <ion-button @click="closeModal" color="danger">
+        <ion-button @click="emit('setOpen')" color="danger">
           <ion-icon :icon="closeCircleOutline"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -20,12 +26,6 @@
     </ion-card>
   </ion-content>
 </template>
-
-<script setup lang="ts">
-function closeModal() {
-  modalController.dismiss({ dismissed: true });
-}
-</script>
 
 <style scoped>
 .format {

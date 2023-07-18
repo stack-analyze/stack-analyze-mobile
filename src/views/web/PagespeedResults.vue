@@ -1,32 +1,3 @@
-<template>
-  <ion-page>
-    <stack-toolbar />
-    <ion-content>
-      <stack-input v-model="website" input-type="url" />
-      <ion-grid>
-        <stack-buttons
-          init-btn-name="start pagespeed"
-          :init-validate="validateWebsite"
-          @init-function="getPagespeed"
-          clear-btn-name="reset pagespeed"
-          :clear-validate="isEmptyResults"
-          @clear-function="resetPagespeed"
-        />
-      </ion-grid>
-      <pagespeed-result
-        pagespeedMode="Desktop"
-        :pagespeedURL="desktopURL"
-        :pagespeedScore="desktopScore"
-      />
-      <pagespeed-result
-        pagespeedMode="Mobile"
-        :pagespeedURL="mobileURL"
-        :pagespeedScore="mobileScore"
-      />
-    </ion-content>
-  </ion-page>
-</template>
-
 <script setup lang="ts">
 // composable
 const {website, validateWebsite} = useHttp();
@@ -81,3 +52,32 @@ const resetPagespeed = () => {
   mobileURL.value = '';
 };
 </script>
+
+<template>
+  <ion-page>
+    <stack-toolbar />
+    <ion-content>
+      <stack-input v-model="website" input-type="url" />
+      <ion-grid>
+        <stack-buttons
+          init-btn-name="start pagespeed"
+          :init-validate="validateWebsite"
+          @init-function="getPagespeed"
+          clear-btn-name="reset pagespeed"
+          :clear-validate="isEmptyResults"
+          @clear-function="resetPagespeed"
+        />
+      </ion-grid>
+      <pagespeed-result
+        pagespeedMode="Desktop"
+        :pagespeedURL="desktopURL"
+        :pagespeedScore="desktopScore"
+      />
+      <pagespeed-result
+        pagespeedMode="Mobile"
+        :pagespeedURL="mobileURL"
+        :pagespeedScore="mobileScore"
+      />
+    </ion-content>
+  </ion-page>
+</template>

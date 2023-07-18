@@ -1,13 +1,3 @@
-<template>
-  <ion-item>
-    <ion-badge slot="end" :color="resultColor(pagespeedScore)">
-    {{ pagespeedScore }} / 100
-    </ion-badge>
-    <ion-label position="stacked">{{ pagespeedMode }}:</ion-label>
-    <ion-text>{{ pagespeedURL || "no website" }}</ion-text>
-  </ion-item>
-</template>
-
 <script setup lang="ts">
 import {
   IonItem,
@@ -43,3 +33,13 @@ const resultColor = (score: number) => {
   }
 }
 </script>
+
+<template>
+  <ion-item>
+    <ion-badge slot="end" :color="resultColor(pagespeedScore)">
+    {{ pagespeedScore }} / 100
+    </ion-badge>
+    <ion-label position="stacked">{{ pagespeedMode }}:</ion-label>
+    <ion-text>{{ pagespeedURL || "no website" }}</ion-text>
+  </ion-item>
+</template>

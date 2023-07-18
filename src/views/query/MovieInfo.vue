@@ -1,34 +1,3 @@
-<template>
-  <ion-page>
-    <stack-toolbar />
-    <ion-content>
-      <stack-input 
-        v-model="movieTitle" 
-        label-txt="enter a movie:" 
-        input-type="text" 
-      />
-      
-      <ion-grid>
-        <stack-buttons
-          init-btn-name="get github user"
-          :init-validate="false"
-          @init-function="getMovies"
-          clear-btn-name="clear github user"
-          :clear-validate="isEmptyMovies"
-          @clear-function="clearMovies"
-        />
-        <ion-row>
-          <movie-card 
-            v-for="movie of movies"
-            :key="movie.id"
-            :movieData="movie"
-          />
-        </ion-row>
-      </ion-grid>
-    </ion-content>
-  </ion-page>
-</template>
-
 <script setup lang="ts">
 // states
 const movieTitle = ref("");
@@ -74,3 +43,42 @@ const getMovies = async () => {
   movieTitle.value = "";
 };
 </script>
+
+<template>
+  <ion-page>
+    <stack-toolbar />
+    
+    <ion-content>
+      <stack-input 
+        v-model="movieTitle" 
+        label-txt="enter a movie:" 
+        input-type="text" 
+      />
+      
+      <stack-buttons
+        init-btn-name="get movie list"
+        clear-btn-name="clear movie list"
+        :init-validate="false"
+        :clear-validate="isEmptyMovies"
+        @init-function="getMovies"
+        @clear-function="clearMovies"
+      />
+      
+      <ion-grid>
+        <ion-row>
+          <movie-card 
+            v-for="movie of movies"
+            :key="movie.id"
+            :movieData="movie"
+          />
+        </ion-row>
+      </ion-grid>
+    </ion-content>
+  </ion-page>
+</template>
+
+<style scoped>
+ion-grid {
+ columns: 4 320px;
+}
+</style>

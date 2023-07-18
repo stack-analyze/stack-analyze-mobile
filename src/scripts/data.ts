@@ -5,7 +5,7 @@ const Cards: Card[] = [
     img: "/assets/img/logo-mobile.png",
     name: "app logo",
     title: "stack-analyze",
-    details: `version: 1.8.0`,
+    details: `version: 1.9.0`,
     social: [
       {
         logo: logoGithub,
@@ -62,34 +62,34 @@ const Cards: Card[] = [
 // omega5300 recomendations
 const recomendations: SocialMedia[] = [
   {
-    name: "dorian designs",
+    name: "dorian designs (recommended)",
     logo: logoYoutube,
     color: "youtube",
-    link: "https://www.youtube.com/user/DorianDesigns"
+    link: "https://www.youtube.com/@DorianDesings"
   },
   {
-    name: "bluuweb",
+    name: "bluuweb (recommended)",
     logo: logoYoutube,
     color: "youtube",
-    link: "https://www.youtube.com/user/Bluuweb"
+    link: "https://www.youtube.com/@Bluuweb"
   },
   {
-    name: "fazt",
+    name: "fazt (recommended)",
     logo: logoYoutube,
     color: "youtube",
-    link: "https://www.youtube.com/channel/UCX9NJ471o7Wie1DQe94RVIg"
+    link: "https://www.youtube.com/@FaztTech"
   },
   {
-    name: "fernando herrera",
+    name: "fernando herrera (recommended)",
     logo: logoYoutube,
     color: "youtube",
-    link: "https://www.youtube.com/channel/UCuaPTYj15JSkETGnEseaFFg"
+    link: "https://www.youtube.com/@DevTalles"
   },
   {
-    name: "leonidas esteban",
+    name: "leonidas esteban (neutral)",
     logo: logoYoutube,
     color: "youtube",
-    link: "https://www.youtube.com/user/LeonidasEsteban"
+    link: "https://www.youtube.com/@LeonidasEsteban"
   },
   {
     name: "Doofy's Projects",
@@ -98,10 +98,10 @@ const recomendations: SocialMedia[] = [
     link: "https://dprojects.org"
   },
   {
-    name: "chun_li1995",
+    name: "melodikaktus",
     logo: logoInstagram,
     color: "instagram",
-    link: "https://www.instagram.com/chun_li1995"
+    link: "https://www.instagram.com/melodikaktus"
   },
   {
     name: "seyyahikaktus",
@@ -121,6 +121,12 @@ const recomendations: SocialMedia[] = [
     logo: logoTwitch,
     color: "twitch",
     link: "https://www.twitch.tv/dannyagii"
+  },
+  {
+    name: "japonHR",
+    logo: logoTwitch,
+    color: "twitch",
+    link: "https://www.twitch.tv/japon_hr"
   },
 ];
 

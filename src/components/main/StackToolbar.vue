@@ -1,3 +1,21 @@
+<script setup lang="ts">
+const iconTheme = ref(
+  document.body.classList.contains('dark')  ? moon : sunny
+);
+
+const changeTheme = () => {
+  if(document.body.classList.contains('dark')) {
+    localStorage.theme = 'light';
+    iconTheme.value = sunny;
+  } else {
+    localStorage.theme = 'dark';
+    iconTheme.value = moon;
+  }
+
+  document.body.classList.toggle('dark');
+};
+</script>
+
 <template>
   <ion-header>
     <ion-toolbar color="secondary">
@@ -15,37 +33,3 @@
     </ion-toolbar>
   </ion-header>
 </template>
-
-<script setup lang="ts">
-import {
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonMenuButton,
-  IonButtons,
-  IonButton,
-  IonIcon,
-} from "@ionic/vue";
-
-import { settingsOutline, sunny, moon } from "ionicons/icons";
-
-const iconTheme = ref(
-  document.body.classList.contains('dark')  ? moon : sunny
-);
-
-const changeTheme = () => {
-  /* localStorage.theme = document.body.classList.contains('dark') 
-  ? 'light' 
-  : 'dark' */
-  
-  if(document.body.classList.contains('dark')) {
-    localStorage.theme = 'light';
-    iconTheme.value = sunny;
-  } else {
-    localStorage.theme = 'dark';
-    iconTheme.value = moon;
-  }
-
-  document.body.classList.toggle('dark');
-};
-</script>

@@ -1,43 +1,3 @@
-<template>
-  <ion-page>
-    <stack-toolbar />
-    <ion-content>
-      <stack-input 
-        v-model="bitlyURL" 
-        label-txt="enter a bitly link:" 
-        input-type="url" 
-      />
-
-      <ion-grid>
-        <stack-buttons
-          init-btn-name="start bitly info"
-          :init-validate="validateBitly"
-          @init-function="getBitlyInfo"
-          clear-btn-name="clear bitly info"
-          :clear-validate="isEmptyBitlyInfo"
-          @clear-function="resetBitlyInfo"
-        />
-      </ion-grid>
-
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>
-           short url: {{ bitlyResults.link || 'no bitly link' }}
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-card-subtitle>
-            created at: {{ format(bitlyResults.created_at) }}
-          </ion-card-subtitle>
-          <ion-item>
-            long url: {{ bitlyResults.long_url || 'no long url' }}
-          </ion-item>
-        </ion-card-content>
-      </ion-card>
-    </ion-content>
-  </ion-page>
-</template>
-
 <script setup lang="ts">
 // regexp
 const bitlyRegexp = /bit\.ly\//;
@@ -84,3 +44,43 @@ const getBitlyInfo = async () => {
 };
 
 </script>
+
+<template>
+  <ion-page>
+    <stack-toolbar />
+    <ion-content>
+      <stack-input 
+        v-model="bitlyURL" 
+        label-txt="enter a bitly link:" 
+        input-type="url" 
+      />
+
+      <ion-grid>
+        <stack-buttons
+          init-btn-name="start bitly info"
+          :init-validate="validateBitly"
+          @init-function="getBitlyInfo"
+          clear-btn-name="clear bitly info"
+          :clear-validate="isEmptyBitlyInfo"
+          @clear-function="resetBitlyInfo"
+        />
+      </ion-grid>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+           short url: {{ bitlyResults.link || 'no bitly link' }}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-card-subtitle>
+            created at: {{ format(bitlyResults.created_at) }}
+          </ion-card-subtitle>
+          <ion-item>
+            long url: {{ bitlyResults.long_url || 'no long url' }}
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+  </ion-page>
+</template>

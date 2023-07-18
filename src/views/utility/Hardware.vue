@@ -1,7 +1,22 @@
+<script setup lang="ts">
+const modelInfo = ref<Partial<DeviceInfo>>({});
+
+const deviceLanguage = ref("");
+
+const networkInfo = ref<Partial<ConnectionStatus>>({});
+
+watchEffect(async () => {
+  modelInfo.value = await Device.getInfo();
+  networkInfo.value = await Network.getStatus();
+  deviceLanguage.value = (await Device.getLanguageCode()).value;
+});
+</script>
+
 <template>
   <ion-page>
     <ion-content>
       <stack-toolbar />
+      
       <ion-card mode="ios" class="stack-card">
         <ion-card-header>
           <ion-img
@@ -74,17 +89,3 @@
     </ion-content>
   </ion-page>
 </template>
-
-<script setup lang="ts">
-const modelInfo = ref<Partial<DeviceInfo>>({});
-
-const deviceLanguage = ref("");
-
-const networkInfo = ref<Partial<ConnectionStatus>>({});
-
-watchEffect(async () => {
-  modelInfo.value = await Device.getInfo();
-  networkInfo.value = await Network.getStatus();
-  deviceLanguage.value = (await Device.getLanguageCode()).value;
-});
-</script>

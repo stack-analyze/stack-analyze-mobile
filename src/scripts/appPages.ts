@@ -56,6 +56,11 @@ const queryToolsPages: Pages[] = [
         icon: videocamOutline
     },
     {
+        title: "pokemon",
+        url: "/query/pokemon",
+        icon: sparklesOutline
+    },
+    {
         title: "twitch",
         url: "/query/twitch",
         icon: logoTwitch
@@ -77,6 +82,11 @@ const utilityToolsPages: Pages[] = [
 
 const appPages: Pages[] = [    
     {
+      title: "home page",
+      url: "/",
+      icon: home,
+    },
+    {
         title: "web tools",
         url: "/web/",
         icon: globeOutline,
@@ -87,8 +97,8 @@ const appPages: Pages[] = [
         icon: informationCircleOutline,
     },
     {
-       title: 'query tools',
-       url: '/query/',
+       title: "query tools",
+       url: "/query/",
        icon: searchOutline
     },
     {

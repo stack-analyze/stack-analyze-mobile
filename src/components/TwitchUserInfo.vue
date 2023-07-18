@@ -1,3 +1,9 @@
+<script setup lang="ts">
+const { twitchUser } = defineProps<{
+  twitchUser: TwitchUser;
+}>();
+</script>
+
 <template>
   <ion-col
     size-lg="3"
@@ -30,9 +36,3 @@
     </ion-card>
   </ion-col>
 </template>
-
-<script setup lang="ts">
-const { twitchUser } = defineProps<{
-  twitchUser: TwitchUser;
-}>();
-</script>

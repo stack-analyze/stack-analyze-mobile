@@ -1,9 +1,33 @@
+<script setup lang="ts">
+const { animeID } = defineProps<{ animeID: number }>();
+
+const emit = defineEmits<{
+  closeModal: [value: boolean]
+}>()
+
+const animeSchema = ref<Partial<Anime>>({});
+
+watchEffect(async () => {
+  try {
+    const { data: animeResult } = await animeApi.get(`/anime/${animeID}`);
+
+    animeSchema.value = animeResult.data;
+  } catch (err) {
+    presentAlert({
+      msg: (err as AxiosError).message,
+      header: "Error anime",
+      subHeader: "problem to anime search by id",
+    });
+  }
+});
+</script>
+
 <template>
   <ion-header>
     <ion-toolbar>
       <ion-title>anime info</ion-title>
       <ion-buttons slot="end">
-        <ion-button @click="closeModal" color="danger">
+        <ion-button @click="emit('closeModal')" color="danger">
           <ion-icon :icon="closeCircleOutline"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -52,32 +76,6 @@
     </ion-card>
   </ion-content>
 </template>
-
-<script setup lang="ts">
-const { animeID } = defineProps<{ animeID: number }>();
-
-const animeSchema = ref<Partial<Anime>>({});
-
-watchEffect(async () => {
-  try {
-    const { data: animeResult } = await animeApi.get(`/anime/${animeID}`);
-
-    animeSchema.value = animeResult.data;
-  } catch (err) {
-    presentAlert({
-      msg: (err as AxiosError).message,
-      header: "Error anime",
-      subHeader: "problem to anime search by id",
-    });
-  }
-});
-
-function closeModal() {
-  modalController.dismiss({
-    dismissed: true,
-  });
-}
-</script>
 
 <style scoped>
 .poster {

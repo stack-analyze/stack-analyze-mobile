@@ -24,7 +24,12 @@ const SwiperResolver = (): ComponentResolver => ({
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(), 
+    vue({
+      script: {
+        propsDestructure: true,
+        defineModel: true
+      }
+    }), 
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
@@ -119,8 +124,8 @@ export default defineConfig({
           'vue-router': ['RouteRecordRaw'],
           '@ionic/vue-router': ['createRouter', 'createWebHistory'],
           '@ionic/vue': [
-            'IonicVue', 'alertController','toastController', 'modalController',
-            'loadingController', 'RefresherEventDetail', 'SearchbarChangeEventDetail', 'onIonViewWillEnter', 
+            'IonicVue', 'alertController','toastController', 'loadingController', 
+            'RefresherEventDetail', 'SearchbarChangeEventDetail', 'onIonViewWillEnter', 
             'onIonViewWillLeave', 'menuController', 'IonicSlides'
           ],
           'ionicons/icons': [
@@ -132,10 +137,11 @@ export default defineConfig({
             'terminalOutline', 'walletOutline', 'videocamOutline', 'logoTwitch',
             'thumbsUpOutline', 'codeSlashOutline', 'attachOutline', 'lockClosedOutline',
             'newspaperOutline', 'layersOutline', 'searchOutline', 'constructOutline',
-            'closeCircleOutline'
+            'closeCircleOutline', 'sunny', 'moon', 'settingsOutline', 'volumeMuteOutline', 
+            'volumeHighOutline', 'playOutline', 'stopOutline', 'sparklesOutline'
           ],
           'axios': [ 'AxiosError', ['default', 'axios'] ],
-          'swiper': ['Pagination'],
+          'swiper/modules': ['Pagination'],
           'timeago.js': ['format'],
           '@capacitor/device': ['Device', 'DeviceInfo'],
           '@capacitor/network': ['Network', 'ConnectionStatus'],
@@ -146,12 +152,13 @@ export default defineConfig({
         'src/scripts'
       ],
       vueTemplate: true,
+      dts: true,
     }),
     Components({
       dirs: ['src/components', 'src/components/**'],
       extensions: ['vue'],
       resolvers: [IonicResolver(), SwiperResolver()],
-      exclude: ['src/components/modals']
+      dts: true,
     }),
   ],
   resolve: {

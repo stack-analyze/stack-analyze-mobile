@@ -1,3 +1,32 @@
+<script setup lang="ts">
+// state
+const password = ref("");
+
+// computers
+const isEmptyPassword = computed(() => !password.value);
+
+// methods
+const genPassword = (): void => {
+  const chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const length = 12;
+  
+  let retVal = "";
+  
+  for (let i = 0, n = chars.length; i < length; ++i) {
+  retVal += chars.charAt(Math.floor(Math.random() * n));
+  }
+  
+  password.value = retVal;
+}
+
+const copyPassword = async () => {
+  await navigator.clipboard.writeText(password.value);
+  openToast("password is Copied", "success");
+};
+
+const resetPassword = () => (password.value = '');
+</script>
+
 <template>
   <ion-page>
     <stack-toolbar />
@@ -41,35 +70,3 @@
     </ion-content>
   </ion-page>
 </template>
-
-<script setup lang="ts">
-// icons
-import { diceOutline, refreshOutline, copyOutline } from "ionicons/icons";
-
-// state
-const password = ref("");
-
-// computers
-const isEmptyPassword = computed(() => !password.value);
-
-// methods
-const genPassword = (): void => {
-  const chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const length = 12;
-  
-  let retVal = "";
-  
-  for (let i = 0, n = chars.length; i < length; ++i) {
-  retVal += chars.charAt(Math.floor(Math.random() * n));
-  }
-  
-  password.value = retVal;
-}
-
-const copyPassword = async () => {
-  await navigator.clipboard.writeText(password.value);
-  openToast("password is Copied", "success");
-};
-
-const resetPassword = () => (password.value = '');
-</script>

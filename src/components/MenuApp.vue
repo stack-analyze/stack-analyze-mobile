@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import Changelog from './modals/Changelog.vue';
+
+const { menuId } = defineProps<{
+  menuId: string;
+}>();
+</script>
+
 <template>
   <ion-menu :contentId="menuId" side="start" type="overlay">
     <ion-header>
@@ -15,13 +23,6 @@
           <ion-label>tools</ion-label>
         </ion-item-divider>
 
-        <ion-menu-toggle :auto-hide="false">
-          <ion-item button @click="openChangelog">
-            <ion-icon slot="start" color="secondary" :icon="libraryOutline"> </ion-icon>
-            <ion-label>Changelog</ion-label>
-          </ion-item>
-        </ion-menu-toggle>
-
         <ion-menu-toggle :auto-hide="false" v-for="(p, i) in appPages" :key="i">
           <ion-item button router-direction="root" :router-link="p.url">
             <ion-icon slot="start" :icon="p.icon" color="secondary" />
@@ -32,25 +33,6 @@
     </ion-content>
   </ion-menu>
 </template>
-
-<script setup lang="ts">
-import Changelog from './modals/Changelog.vue';
-
-defineProps<{
-  menuId: string;
-}>();
-
-const openChangelog = async () => {
-  const modal = await modalController.create({
-    component: Changelog,
-    backdropDismiss: false,
-    mode: "ios",
-    cssClass: "modal",
-  });
-
-  return modal.present();
-};
-</script>
 
 <style>
 .horizontal {

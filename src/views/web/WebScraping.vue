@@ -1,46 +1,3 @@
-<template>
-  <ion-page>
-    <stack-toolbar />
-    <ion-content>
-      <stack-input v-model="website" input-type="url" />
-      <ion-item>
-        <ion-select
-          class="scraping-select"
-          placeholder="enter a selector"
-          v-model="scrapingOpt"
-          label="scraping elements"
-          interface="action-sheet"
-          :interface-options="popoverOptions"
-          :disabled="validateWebsite"
-        >
-          <ion-select-option
-            v-for="option in scrapingOptList"
-            :value="option"
-            :key="option"
-          >
-            {{ option }}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-grid>
-        <stack-buttons
-          init-btn-name="start scraping"
-          :init-validate="validateScraping"
-          @init-function="startScraping"
-          clear-btn-name="clear scraping"
-          :clear-validate="isEmptyScraping"
-          @clear-function="resetScraping"
-        />
-      </ion-grid>
-      <ion-item>
-        <pre :class="['stack-result', 'shell', shellClass]">{{
-          resultScraping || "wait scraping results"
-        }}</pre>
-      </ion-item>
-    </ion-content>
-  </ion-page>
-</template>
-
 <script setup lang="ts">
 // static
 const scrapingOptList: string[] = [
@@ -95,3 +52,46 @@ const resetScraping = () => {
   resultScraping.value = '';
 };
 </script>
+
+<template>
+  <ion-page>
+    <stack-toolbar />
+    <ion-content>
+      <stack-input v-model="website" input-type="url" />
+      <ion-item>
+        <ion-select
+          class="scraping-select"
+          placeholder="enter a selector"
+          v-model="scrapingOpt"
+          label="scraping elements"
+          interface="action-sheet"
+          :interface-options="popoverOptions"
+          :disabled="validateWebsite"
+        >
+          <ion-select-option
+            v-for="option in scrapingOptList"
+            :value="option"
+            :key="option"
+          >
+            {{ option }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-grid>
+        <stack-buttons
+          init-btn-name="start scraping"
+          :init-validate="validateScraping"
+          @init-function="startScraping"
+          clear-btn-name="clear scraping"
+          :clear-validate="isEmptyScraping"
+          @clear-function="resetScraping"
+        />
+      </ion-grid>
+      <ion-item>
+        <pre :class="['stack-result', 'shell', shellClass]">{{
+          resultScraping || "wait scraping results"
+        }}</pre>
+      </ion-item>
+    </ion-content>
+  </ion-page>
+</template>

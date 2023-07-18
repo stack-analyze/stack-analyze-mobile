@@ -1,9 +1,37 @@
+<script setup lang="ts">
+const { movieId } = defineProps<{
+  movieId: number;
+}>();
+
+const emit = defineEmits<{
+  closeModal: [value: boolean]
+}>()
+
+const movieResult = ref<Movie>(({} as Movie));
+
+watchEffect(async () => {
+  try {
+    const { data } = await movieApi.get(`/movie/${movieId}`, {
+      params: { api_key: import.meta.env.VITE_APP_MOVIE_CODE },
+    });
+
+    movieResult.value = data;
+  } catch (err) {
+    presentAlert({
+      msg: (err as AxiosError).message,
+      header: "Error movie info by id",
+      subHeader: "problem to req api",
+    });
+  }
+});
+</script>
+
 <template>
   <ion-header>
     <ion-toolbar>
       <ion-title>movie info</ion-title>
       <ion-buttons slot="end">
-        <ion-button @click="closeModal" color="danger">
+        <ion-button @click="emit('closeModal')" color="danger">
           <ion-icon :icon="closeCircleOutline"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -37,36 +65,6 @@
     </ion-card>
   </ion-content>
 </template>
-
-<script setup lang="ts">
-const { movieId } = defineProps<{
-  movieId: number;
-}>();
-
-const movieResult = ref<Movie>(({} as Movie));
-
-watchEffect(async () => {
-  try {
-    const { data } = await movieApi.get(`/movie/${movieId}`, {
-      params: { api_key: import.meta.env.VITE_APP_MOVIE_CODE },
-    });
-
-    movieResult.value = data;
-  } catch (err) {
-    presentAlert({
-      msg: (err as AxiosError).message,
-      header: "Error movie info by id",
-      subHeader: "problem to req api",
-    });
-  }
-});
-
-function closeModal() {
-  modalController.dismiss({
-    dismissed: true,
-  });
-}
-</script>
 
 <style scoped>
 .poster {

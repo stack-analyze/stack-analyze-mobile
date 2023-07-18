@@ -1,3 +1,13 @@
+<script setup lang="ts">
+onIonViewWillEnter(() => {
+  menuController.enable(false);
+});
+
+onIonViewWillLeave(() => {
+  menuController.enable(true);
+});
+</script>
+
 <template>
   <ion-page>
     <ion-header>
@@ -78,16 +88,6 @@
     </ion-content>
   </ion-page>
 </template>
-
-<script setup lang="ts">
-onIonViewWillEnter(() => {
-  menuController.enable(false);
-});
-
-onIonViewWillLeave(() => {
-  menuController.enable(true);
-});
-</script>
 
 <style>
 .disabled-select {

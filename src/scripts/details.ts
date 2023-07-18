@@ -5,6 +5,21 @@ type detailsVersion = {
 
 export const versionsNotes: detailsVersion[] = [
   {
+    version: '1.9.0',
+    details: `
+      added:
+      	1. new tool pokemonInfo.
+      	2. mixtreria radio & home page.
+      fixed:
+      	1. add a error method in tech-stack.
+      	2. update modules.
+      	3. fixed search in crypto market info.
+      changed:
+      	1. movies & anime search using columns design.
+      	2. all modals using new ion-modal mode.
+    `
+  },
+  {
     version: '1.8.0',
     details: `
       added:

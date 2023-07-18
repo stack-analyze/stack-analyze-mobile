@@ -1,3 +1,16 @@
+<script setup lang="ts">
+const formatter = new Intl.ListFormat('en', { style: 'short', type: 'unit' });
+
+const { stackData } = defineProps<{
+  stackData: TechStack;
+}>();
+
+const errorImg = (e) => {
+  // e.target.style.display = "none";
+  e.target.src = "assets/img/No-image-found.jpg"
+}
+</script>
+
 <template>
   <ion-col
     size-lg="3"
@@ -11,6 +24,8 @@
           :src="`https://stack-analyze.web.app/logos/${stackData.icon}`"
           :alt="stackData.name"
           class="stack-img"
+          ref="image"
+          @ion-error="errorImg"
         />
       </ion-card-header>
       <ion-card-content mode="md">
@@ -31,11 +46,3 @@
     </ion-card>
   </ion-col>
 </template>
-
-<script setup lang="ts">
-const formatter = new Intl.ListFormat('en', { style: 'short', type: 'unit' });
-
-const { stackData } = defineProps<{
-  stackData: TechStack;
-}>();
-</script>

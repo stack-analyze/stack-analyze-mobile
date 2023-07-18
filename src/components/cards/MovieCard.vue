@@ -1,10 +1,23 @@
+<script setup lang="ts">
+import ModalMovie from '../modals/ModalMovie.vue'
+
+const { movieData } = defineProps<{
+  movieData: Movie
+}>();
+
+const isOpen = ref(false)
+
+const toggleModal = (modalOpen: boolean) => {
+ isOpen.value = modalOpen;
+};
+
+const poster = movieData?.poster_path 
+  ? `http://image.tmdb.org/t/p/w500/${movieData.poster_path}`
+  : "assets/img/No-image-found.jpg"
+</script>
+
 <template>
-  <ion-col
-    size-lg="3"
-    size-md="4"
-    size-sm="6"
-    size="12"
-  >
+  <ion-col>
     <ion-card>
       <ion-card-header>
         <ion-img
@@ -14,38 +27,25 @@
       </ion-card-header>
       <ion-card-content>
         <ion-card-title>{{ movieData.title }}</ion-card-title>
-        <ion-button @click="openModal(movieData.id)">show info</ion-button>
+        <ion-button @click="toggleModal(true)">
+        	show info
+        </ion-button>
       </ion-card-content>
     </ion-card>
+    
+    <ion-modal
+    	mode="ios"
+    	class="modal-movie"
+    	:is-open="isOpen"
+    	:backdrop-dismiss="false"
+    >
+      <modal-movie 
+        :movieId="movieData.id"
+        @close-modal="toggleModal(false)"
+      />
+    </ion-modal>
   </ion-col>
 </template>
-
-<script setup lang="ts">
-import ModalMovie from '../modals/ModalMovie.vue'
-
-const { movieData } = defineProps<{
-  movieData: Movie
-}>();
-
-const openModal = async (id: number) => {
-  const modal = await modalController.create({
-    component: ModalMovie,
-    componentProps: {
-      movieId: id,
-    },
-    backdropDismiss: false,
-    cssClass: "modal-movie",
-    mode: "ios",
-  });
-
-  return modal.present();
-};
-
-const poster = movieData?.poster_path 
-  ? `http://image.tmdb.org/t/p/w500/${movieData.poster_path}`
-  : "assets/img/No-image-found.jpg"
-
-</script>
 
 <style>
 .poster {

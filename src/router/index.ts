@@ -1,7 +1,8 @@
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    redirect: '/web/tech-stack'
+    name: 'stack-analyze',
+    component: () => import('@/views/Home.vue')
   },
   webRoute,
   infoRoute,

@@ -1,6 +1,3 @@
-const webToolsApi = axios.create({
+export const webToolsApi = axios.create({
   baseURL: "https://api-scraping.vercel.app/api",
 });
-
-export default webToolsApi;
-
