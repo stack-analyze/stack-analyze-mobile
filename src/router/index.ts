@@ -22,6 +22,11 @@ const routes: RouteRecordRaw[] = [
     path: '/prevent-ig-fake',
     name: 'prevent ig fakes',
     component: () => import('@/views/PreventIGFake.vue')
+  },
+  {
+  	path: '/wallpapers',
+  	name: 'wallpapers',
+  	component: () => import('@/views/Wallpapers.vue')
   }
 ]
 

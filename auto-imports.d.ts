@@ -36,6 +36,7 @@ declare global {
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
   const defineComponent: typeof import('vue')['defineComponent']
   const diceOutline: typeof import('ionicons/icons')['diceOutline']
+  const dimensions: typeof import('./src/scripts/wallpapers')['dimensions']
   const earthOutline: typeof import('ionicons/icons')['earthOutline']
   const effectScope: typeof import('vue')['effectScope']
   const extensionPuzzleOutline: typeof import('ionicons/icons')['extensionPuzzleOutline']
@@ -46,6 +47,7 @@ declare global {
   const h: typeof import('vue')['h']
   const home: typeof import('ionicons/icons')['home']
   const hourglassOutline: typeof import('ionicons/icons')['hourglassOutline']
+  const imagesOutline: typeof import('ionicons/icons')['imagesOutline']
   const infoRoute: typeof import('./src/router/infoRoute')['default']
   const infoToolsPages: typeof import('./src/scripts/appPages')['infoToolsPages']
   const informationCircleOutline: typeof import('ionicons/icons')['informationCircleOutline']
@@ -110,6 +112,7 @@ declare global {
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
+  const solMoon: typeof import('./src/scripts/wallpapers')['solMoon']
   const sparklesOutline: typeof import('ionicons/icons')['sparklesOutline']
   const startWithHttp: typeof import('./src/scripts/data')['startWithHttp']
   const stopOutline: typeof import('ionicons/icons')['stopOutline']
@@ -138,6 +141,7 @@ declare global {
   const volumeHighOutline: typeof import('ionicons/icons')['volumeHighOutline']
   const volumeMuteOutline: typeof import('ionicons/icons')['volumeMuteOutline']
   const walletOutline: typeof import('ionicons/icons')['walletOutline']
+  const wallpapers: typeof import('./src/scripts/wallpapers')['wallpapers']
   const warningOutline: typeof import('ionicons/icons')['warningOutline']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
@@ -150,7 +154,8 @@ declare global {
 // for type re-export
 declare global {
   // @ts-ignore
-  export type { Component, ComponentPublicInstance, ComputedRef, InjectionKey, PropType, Ref, VNode } from 'vue'
+  export type { Component, ComponentPublicInstance, ComputedRef, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, VNode, WritableComputedRef } from 'vue'
+  import('vue')
 }
 // for vue template auto import
 import { UnwrapRef } from 'vue'
@@ -196,6 +201,7 @@ declare module 'vue' {
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly home: UnwrapRef<typeof import('ionicons/icons')['home']>
     readonly hourglassOutline: UnwrapRef<typeof import('ionicons/icons')['hourglassOutline']>
+    readonly imagesOutline: UnwrapRef<typeof import('ionicons/icons')['imagesOutline']>
     readonly infoRoute: UnwrapRef<typeof import('./src/router/infoRoute')['default']>
     readonly infoToolsPages: UnwrapRef<typeof import('./src/scripts/appPages')['infoToolsPages']>
     readonly informationCircleOutline: UnwrapRef<typeof import('ionicons/icons')['informationCircleOutline']>
@@ -288,6 +294,7 @@ declare module 'vue' {
     readonly volumeHighOutline: UnwrapRef<typeof import('ionicons/icons')['volumeHighOutline']>
     readonly volumeMuteOutline: UnwrapRef<typeof import('ionicons/icons')['volumeMuteOutline']>
     readonly walletOutline: UnwrapRef<typeof import('ionicons/icons')['walletOutline']>
+    readonly wallpapers: UnwrapRef<typeof import('./src/scripts/wallpapers')['wallpapers']>
     readonly warningOutline: UnwrapRef<typeof import('ionicons/icons')['warningOutline']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>
@@ -340,6 +347,7 @@ declare module '@vue/runtime-core' {
     readonly h: UnwrapRef<typeof import('vue')['h']>
     readonly home: UnwrapRef<typeof import('ionicons/icons')['home']>
     readonly hourglassOutline: UnwrapRef<typeof import('ionicons/icons')['hourglassOutline']>
+    readonly imagesOutline: UnwrapRef<typeof import('ionicons/icons')['imagesOutline']>
     readonly infoRoute: UnwrapRef<typeof import('./src/router/infoRoute')['default']>
     readonly infoToolsPages: UnwrapRef<typeof import('./src/scripts/appPages')['infoToolsPages']>
     readonly informationCircleOutline: UnwrapRef<typeof import('ionicons/icons')['informationCircleOutline']>
@@ -432,6 +440,7 @@ declare module '@vue/runtime-core' {
     readonly volumeHighOutline: UnwrapRef<typeof import('ionicons/icons')['volumeHighOutline']>
     readonly volumeMuteOutline: UnwrapRef<typeof import('ionicons/icons')['volumeMuteOutline']>
     readonly walletOutline: UnwrapRef<typeof import('ionicons/icons')['walletOutline']>
+    readonly wallpapers: UnwrapRef<typeof import('./src/scripts/wallpapers')['wallpapers']>
     readonly warningOutline: UnwrapRef<typeof import('ionicons/icons')['warningOutline']>
     readonly watch: UnwrapRef<typeof import('vue')['watch']>
     readonly watchEffect: UnwrapRef<typeof import('vue')['watchEffect']>

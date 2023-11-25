@@ -5,6 +5,15 @@ type detailsVersion = {
 
 export const versionsNotes: detailsVersion[] = [
   {
+  	version: '2.0.0',
+  	details: `
+  		added:
+  			1. wallpapers tool
+  				1.1. sol, moon
+  				1.2. dimensions
+  	`
+  },
+  {
     version: '1.9.0',
     details: `
       added:

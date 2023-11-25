@@ -107,6 +107,11 @@ const appPages: Pages[] = [
         icon: constructOutline,
     },
     {
+    	title: "wallpapers",
+    	url: "/wallpapers",
+    	icon: imagesOutline
+    },
+    {
         title: "about",
         url: "/about",
         icon: peopleOutline

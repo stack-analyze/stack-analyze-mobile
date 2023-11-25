@@ -138,7 +138,8 @@ export default defineConfig({
             'thumbsUpOutline', 'codeSlashOutline', 'attachOutline', 'lockClosedOutline',
             'newspaperOutline', 'layersOutline', 'searchOutline', 'constructOutline',
             'closeCircleOutline', 'sunny', 'moon', 'settingsOutline', 'volumeMuteOutline', 
-            'volumeHighOutline', 'playOutline', 'stopOutline', 'sparklesOutline'
+            'volumeHighOutline', 'playOutline', 'stopOutline', 'sparklesOutline',
+            "imagesOutline"
           ],
           'axios': [ 'AxiosError', ['default', 'axios'] ],
           'swiper/modules': ['Pagination'],

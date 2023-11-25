@@ -70,5 +70,6 @@ declare module 'vue' {
     Swiper: typeof import('swiper/vue')['Swiper']
     SwiperSlide: typeof import('swiper/vue')['SwiperSlide']
     TwitchUserInfo: typeof import('./src/components/TwitchUserInfo.vue')['default']
+    WallpaperCard: typeof import('./src/components/cards/WallpaperCard.vue')['default']
   }
 }
