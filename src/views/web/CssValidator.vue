@@ -55,7 +55,7 @@ const clearValidator = () => {
     	</ion-grid>
     
     	<ion-item>
-    		<pre class="shell stack-result shell-results">{{ resultValidator.trim() }}</pre>
+    		<pre class="shell stack-result shell-results">{{ resultValidator }}</pre>
     	</ion-item>
     
     	<ion-item :class="$style.warn">
