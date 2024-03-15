@@ -1,11 +1,9 @@
 import App from './App.vue'
 
 /* Core CSS required for Ionic components to work properly */
-import '@ionic/vue/css/ionic.bundle.css';
+import '@ionic/vue/css/ionic.bundle.css'
 
 /* swiper styles */
-import 'swiper/css';
-import 'swiper/css/pagination';
 import '@ionic/vue/css/ionic-swiper.css';
 
 /* Theme variables */

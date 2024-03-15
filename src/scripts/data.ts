@@ -5,7 +5,7 @@ const Cards: Card[] = [
     img: "/assets/img/logo-mobile.png",
     name: "app logo",
     title: "stack-analyze",
-    details: `version: 1.9.0`,
+    details: `version: 2.1.0`,
     social: [
       {
         logo: logoGithub,
@@ -90,12 +90,6 @@ const recomendations: SocialMedia[] = [
     logo: logoYoutube,
     color: "youtube",
     link: "https://www.youtube.com/@LeonidasEsteban"
-  },
-  {
-    name: "Doofy's Projects",
-    logo: earthOutline,
-    color: "primary",
-    link: "https://dprojects.org"
   },
   {
     name: "melodikaktus",

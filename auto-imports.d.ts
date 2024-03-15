@@ -26,6 +26,7 @@ declare global {
   const axios: typeof import('axios')['default']
   const closeCircleOutline: typeof import('ionicons/icons')['closeCircleOutline']
   const codeSlashOutline: typeof import('ionicons/icons')['codeSlashOutline']
+  const codeWorkingOutline: typeof import('ionicons/icons')['codeWorkingOutline']
   const computed: typeof import('vue')['computed']
   const constructOutline: typeof import('ionicons/icons')['constructOutline']
   const copyOutline: typeof import('ionicons/icons')['copyOutline']
@@ -103,6 +104,7 @@ declare global {
   const recomendations: typeof import('./src/scripts/data')['recomendations']
   const ref: typeof import('vue')['ref']
   const refreshOutline: typeof import('ionicons/icons')['refreshOutline']
+  const register: typeof import('swiper/element/bundle')['register']
   const resolveComponent: typeof import('vue')['resolveComponent']
   const revealLinks: typeof import('./src/scripts/dataRevealLinks')['revealLinks']
   const router: typeof import('./src/router/index')['default']
@@ -160,6 +162,7 @@ declare global {
 // for vue template auto import
 import { UnwrapRef } from 'vue'
 declare module 'vue' {
+  interface GlobalComponents {}
   interface ComponentCustomProperties {
     readonly AxiosError: UnwrapRef<typeof import('axios')['AxiosError']>
     readonly Cards: UnwrapRef<typeof import('./src/scripts/data')['Cards']>
@@ -170,7 +173,6 @@ declare module 'vue' {
     readonly IonicSlides: UnwrapRef<typeof import('@ionic/vue')['IonicSlides']>
     readonly IonicVue: UnwrapRef<typeof import('@ionic/vue')['IonicVue']>
     readonly Network: UnwrapRef<typeof import('@capacitor/network')['Network']>
-    readonly Pagination: UnwrapRef<typeof import('swiper/modules')['Pagination']>
     readonly RefresherEventDetail: UnwrapRef<typeof import('@ionic/vue')['RefresherEventDetail']>
     readonly RouteRecordRaw: UnwrapRef<typeof import('vue-router')['RouteRecordRaw']>
     readonly SearchbarChangeEventDetail: UnwrapRef<typeof import('@ionic/vue')['SearchbarChangeEventDetail']>
@@ -181,6 +183,7 @@ declare module 'vue' {
     readonly axios: UnwrapRef<typeof import('axios')['default']>
     readonly closeCircleOutline: UnwrapRef<typeof import('ionicons/icons')['closeCircleOutline']>
     readonly codeSlashOutline: UnwrapRef<typeof import('ionicons/icons')['codeSlashOutline']>
+    readonly codeWorkingOutline: UnwrapRef<typeof import('ionicons/icons')['codeWorkingOutline']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly constructOutline: UnwrapRef<typeof import('ionicons/icons')['constructOutline']>
     readonly copyOutline: UnwrapRef<typeof import('ionicons/icons')['copyOutline']>
@@ -306,6 +309,7 @@ declare module 'vue' {
   }
 }
 declare module '@vue/runtime-core' {
+  interface GlobalComponents {}
   interface ComponentCustomProperties {
     readonly AxiosError: UnwrapRef<typeof import('axios')['AxiosError']>
     readonly Cards: UnwrapRef<typeof import('./src/scripts/data')['Cards']>
@@ -316,7 +320,6 @@ declare module '@vue/runtime-core' {
     readonly IonicSlides: UnwrapRef<typeof import('@ionic/vue')['IonicSlides']>
     readonly IonicVue: UnwrapRef<typeof import('@ionic/vue')['IonicVue']>
     readonly Network: UnwrapRef<typeof import('@capacitor/network')['Network']>
-    readonly Pagination: UnwrapRef<typeof import('swiper/modules')['Pagination']>
     readonly RefresherEventDetail: UnwrapRef<typeof import('@ionic/vue')['RefresherEventDetail']>
     readonly RouteRecordRaw: UnwrapRef<typeof import('vue-router')['RouteRecordRaw']>
     readonly SearchbarChangeEventDetail: UnwrapRef<typeof import('@ionic/vue')['SearchbarChangeEventDetail']>
@@ -327,6 +330,7 @@ declare module '@vue/runtime-core' {
     readonly axios: UnwrapRef<typeof import('axios')['default']>
     readonly closeCircleOutline: UnwrapRef<typeof import('ionicons/icons')['closeCircleOutline']>
     readonly codeSlashOutline: UnwrapRef<typeof import('ionicons/icons')['codeSlashOutline']>
+    readonly codeWorkingOutline: UnwrapRef<typeof import('ionicons/icons')['codeWorkingOutline']>
     readonly computed: UnwrapRef<typeof import('vue')['computed']>
     readonly constructOutline: UnwrapRef<typeof import('ionicons/icons')['constructOutline']>
     readonly copyOutline: UnwrapRef<typeof import('ionicons/icons')['copyOutline']>

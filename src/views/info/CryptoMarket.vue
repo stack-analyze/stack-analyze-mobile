@@ -3,9 +3,8 @@
 const coinList = ref<Crypto[]>([]);
 const filterCoins = ref<Crypto[]>([]);
 
-// watchEffect
-watchEffect(async () => {
-  try {
+onMounted(async () => {
+	try {
     const { data } = await axios.get("https://api.coingecko.com/api/v3/coins/markets", {
       params: { vs_currency: "usd" },
     });
@@ -19,6 +18,26 @@ watchEffect(async () => {
       subHeader: "problem to crypto market",
     });
   }
+})
+
+// watchEffect
+watchEffect(() => {
+  setTimeout(() => {
+    	axios.get("https://api.coingecko.com/api/v3/coins/markets", {
+      	params: { vs_currency: "usd" },
+    	})
+    		.then(({ data }) => {
+    			coinList.value = data;
+    			filterCoins.value = data;
+    		})
+    		.catch(err => {
+    			presentAlert({
+    				msg: err.message,
+    				header: "Error crypto market",
+    				subHeader: "problem to crypto market",
+    			});
+    		});
+  }, 60000)
 });
 
 const currency = Intl.NumberFormat("en-us", {

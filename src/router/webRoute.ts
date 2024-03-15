@@ -25,6 +25,11 @@ const webRoute: RouteRecordRaw = {
       path: "scraping",
       name: "web scraping",
       component: () => import('@/views/web/WebScraping.vue')
+    },
+    {
+    	path: "validator",
+    	name: "css validator",
+    	component: () => import('@/views/web/CssValidator.vue')
     }
   ]
 };

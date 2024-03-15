@@ -1,16 +1,21 @@
 <script setup lang="ts">
-const modules = [Pagination, IonicSlides];
+import { register } from 'swiper/element/bundle';
+
+const modules = [IonicSlides];
+
+register();
 </script>
 
 <template>
   <ion-page>
     <stack-toolbar />
+    
     <ion-content>
-      <swiper
-        :loop="true"
-        :modules="modules"
+      <swiper-container 
+      	:loop="true" 
+      	:modules="modules"
       >
-        <swiper-slide v-for="card of Cards" :key="card.id">
+      	<swiper-slide v-for="card of Cards" :key="card.id">
           <ion-card mode="ios" color="light">
             <ion-card-header mode="md">
               <ion-img :src="card.img" :alt="card.id"></ion-img>
@@ -31,7 +36,14 @@ const modules = [Pagination, IonicSlides];
             </ion-card-content>
           </ion-card>
         </swiper-slide>
-      </swiper>
+      </swiper-container>
+      <!-- <swiper
+        :loop="true"
+        :modules="modules"
+      >
+        
+      </swiper> -->
     </ion-content>
   </ion-page>
 </template>
+

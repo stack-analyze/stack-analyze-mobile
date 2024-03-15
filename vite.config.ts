@@ -12,22 +12,12 @@ import Components from 'unplugin-vue-components/vite';
 
 import { IonicResolver } from 'unplugin-vue-components/resolvers';
 
-const SwiperResolver = (): ComponentResolver => ({
-  type: 'component',
-  resolve(name: string) {
-    if (name.startsWith('Swiper')) {
-      return { name, from: 'swiper/vue' };
-    }
-  }
-});
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue({
       script: {
-        propsDestructure: true,
-        defineModel: true
+        propsDestructure: true
       }
     }), 
     VitePWA({
@@ -139,10 +129,9 @@ export default defineConfig({
             'newspaperOutline', 'layersOutline', 'searchOutline', 'constructOutline',
             'closeCircleOutline', 'sunny', 'moon', 'settingsOutline', 'volumeMuteOutline', 
             'volumeHighOutline', 'playOutline', 'stopOutline', 'sparklesOutline',
-            "imagesOutline"
+            "imagesOutline", "codeWorkingOutline"
           ],
           'axios': [ 'AxiosError', ['default', 'axios'] ],
-          'swiper/modules': ['Pagination'],
           'timeago.js': ['format'],
           '@capacitor/device': ['Device', 'DeviceInfo'],
           '@capacitor/network': ['Network', 'ConnectionStatus'],
@@ -158,7 +147,7 @@ export default defineConfig({
     Components({
       dirs: ['src/components', 'src/components/**'],
       extensions: ['vue'],
-      resolvers: [IonicResolver(), SwiperResolver()],
+      resolvers: [IonicResolver()],
       dts: true,
     }),
   ],

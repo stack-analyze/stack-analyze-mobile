@@ -5,12 +5,22 @@ type detailsVersion = {
 
 export const versionsNotes: detailsVersion[] = [
   {
+  	version: '2.1.0',
+  	details: `
+  	added:
+  		1. css validator tool.
+  	changed:
+  		1. migrate swiper vue to swiper element.
+  		2. remove some vite configs
+  	`
+  },
+  {
   	version: '2.0.0',
   	details: `
-  		added:
-  			1. wallpapers tool
-  				1.1. sol, moon
-  				1.2. dimensions
+  	added:
+  		1. wallpapers tool
+  			1.1. sol, moon
+  			1.2. dimensions
   	`
   },
   {

@@ -19,6 +19,11 @@ const webToolsPages: Pages[] = [
         url: "/web/scraping",
         icon: codeSlashOutline,
     },
+    {
+        title: "css validator",
+        url: "/web/validator",
+        icon: codeWorkingOutline,
+    },
 ];
 
 const infoToolsPages: Pages[] = [

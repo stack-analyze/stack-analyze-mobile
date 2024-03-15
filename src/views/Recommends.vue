@@ -34,15 +34,6 @@ const twitchList = recomendations.filter(
     <stack-toolbar />
     
     <ion-content>
-      <ion-item button @click="setOpen(true)">
-        <ion-icon 
-        	slot="start" 
-        	color="secondary" 
-        	:icon="libraryOutline" 
-        />
-        <ion-label>Mua discovery</ion-label>
-      </ion-item>
-      
       <ion-accordion-group value="lists" ref="accordionGroup">
     		<ion-accordion value="Youtube">
       		<ion-item slot="header">
@@ -66,32 +57,6 @@ const twitchList = recomendations.filter(
           
           		<ion-label :color="youtube.color">
           			{{youtube.name}}
-          		</ion-label>
-        		</ion-item>
-      		</ion-list>
-    		</ion-accordion>
-    
-    		<ion-accordion value="web">
-      		<ion-item slot="header">
-        		<ion-label>web</ion-label>
-      		</ion-item>
-
-      		<ion-list slot="content">
-        		<ion-item
-          		v-for="(web, i) of webList" 
-          		:key="i"
-          		slot="start"
-          		:href="web.link"
-          		@click="closeAccordion()"
-          		target="_blank"
-        		>
-          		<ion-icon 
-            		:color="web.color" 
-            		slot="start" 
-            		:icon="web.logo"
-          		/>
-          		<ion-label :color="web.color">
-          			{{web.name}}
           		</ion-label>
         		</ion-item>
       		</ion-list>
@@ -151,15 +116,6 @@ const twitchList = recomendations.filter(
       		</ion-list>
     		</ion-accordion>
   		</ion-accordion-group>
-  
-  		<ion-modal
-    		class="modal"
-    		mode="ios"
-    		:is-open="isOpen"
-    		:backdrop-dismiss="false"
-  		>
-    		<mua-easter @set-open="setOpen(false)" />
-  		</ion-modal>
     </ion-content>
   </ion-page>
 </template>
