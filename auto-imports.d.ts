@@ -72,6 +72,7 @@ declare global {
   const menuController: typeof import('@ionic/vue')['menuController']
   const moon: typeof import('ionicons/icons')['moon']
   const movieApi: typeof import('./src/api/movieApi')['default']
+  const musicalNoteOutline: typeof import('ionicons/icons')['musicalNoteOutline']
   const newspaperOutline: typeof import('ionicons/icons')['newspaperOutline']
   const nextTick: typeof import('vue')['nextTick']
   const onActivated: typeof import('vue')['onActivated']
@@ -228,6 +229,7 @@ declare module 'vue' {
     readonly menuController: UnwrapRef<typeof import('@ionic/vue')['menuController']>
     readonly moon: UnwrapRef<typeof import('ionicons/icons')['moon']>
     readonly movieApi: UnwrapRef<typeof import('./src/api/movieApi')['default']>
+    readonly musicalNoteOutline: UnwrapRef<typeof import('ionicons/icons')['musicalNoteOutline']>
     readonly newspaperOutline: UnwrapRef<typeof import('ionicons/icons')['newspaperOutline']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>
@@ -375,6 +377,7 @@ declare module '@vue/runtime-core' {
     readonly menuController: UnwrapRef<typeof import('@ionic/vue')['menuController']>
     readonly moon: UnwrapRef<typeof import('ionicons/icons')['moon']>
     readonly movieApi: UnwrapRef<typeof import('./src/api/movieApi')['default']>
+    readonly musicalNoteOutline: UnwrapRef<typeof import('ionicons/icons')['musicalNoteOutline']>
     readonly newspaperOutline: UnwrapRef<typeof import('ionicons/icons')['newspaperOutline']>
     readonly nextTick: UnwrapRef<typeof import('vue')['nextTick']>
     readonly onActivated: UnwrapRef<typeof import('vue')['onActivated']>

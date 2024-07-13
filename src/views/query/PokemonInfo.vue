@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import "@/pokeTypes.css";
+import { register } from 'swiper/element/bundle';
 
 // states
 const pokemon = ref<string | number>("");
@@ -18,7 +19,7 @@ const statsColors = [
 	"primary", "success", "tertiary"
 ]
 
-const modules = [Pagination, IonicSlides];
+const modules = [IonicSlides];
 
 // methods
 const pokemonInfo = async () => {
@@ -69,6 +70,8 @@ const clearPokemonInfo = () => {
   pokesprites.value = [];
   pokemonStats.value = [];
 };
+
+register();
 </script>
 
 <template>
@@ -100,10 +103,9 @@ const clearPokemonInfo = () => {
       </ion-grid>
       
       <ion-card mode="ios">
-        <swiper 
+        <swiper-container 
         	:modules="modules"
-        	:loop="true" 
-        	:pagination="true"
+        	:loop="true"
         >
           <swiper-slide 
           	v-for="(sprite, i) in pokesprites"
@@ -115,7 +117,7 @@ const clearPokemonInfo = () => {
           		alt="default sprite" 
           	/>
           </swiper-slide>
-        </swiper>
+        </swiper-container>
         
         <ion-card-header 
         	class="ion-align-items-center" 

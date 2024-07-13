@@ -19,4 +19,13 @@ export const wallpapers = {
 		"assets/dimensions/dimensions-9.jpeg", "assets/dimensions/dimensions-10.jpeg",
 		"assets/dimensions/dimensions-11.jpeg", "assets/dimensions/dimensions-12.jpeg",
 	],
+	seyyahi2: [
+		"assets/seyyahi2/seyyahi2-1.jpeg", "assets/seyyahi2/seyyahi2-2.jpeg",
+		"assets/seyyahi2/seyyahi2-3.jpeg", "assets/seyyahi2/seyyahi2-4.jpeg",
+		"assets/seyyahi2/seyyahi2-5.jpeg", "assets/seyyahi2/seyyahi2-6.jpeg",
+		"assets/seyyahi2/seyyahi2-7.jpeg", "assets/seyyahi2/seyyahi2-8.jpeg",
+		"assets/seyyahi2/seyyahi2-9.jpeg", "assets/seyyahi2/seyyahi2-10.jpeg",
+		"assets/seyyahi2/seyyahi2-11.jpeg", "assets/seyyahi2/seyyahi2-12.jpeg",
+		"assets/seyyahi2/seyyahi2-13.jpeg", "assets/seyyahi2/seyyahi2-14.jpeg",
+	]
 };

@@ -70,6 +70,11 @@ const queryToolsPages: Pages[] = [
         url: "/query/twitch",
         icon: logoTwitch
     },
+    {
+    	title: "deezer",
+    	url: "/query/deezer",
+    	icon: musicalNoteOutline
+    }
 ];
 
 const utilityToolsPages: Pages[] = [

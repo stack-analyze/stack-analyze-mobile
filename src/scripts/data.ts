@@ -10,7 +10,7 @@ const Cards: Card[] = [
       {
         logo: logoGithub,
         color: "github",
-        link: "https://github.com/intermachine-developers/stack-analyze-mobile",
+        link: "https://github.com/stack-analyze/stack-analyze-mobile",
       }
     ]
   },
@@ -117,10 +117,10 @@ const recomendations: SocialMedia[] = [
     link: "https://www.twitch.tv/dannyagii"
   },
   {
-    name: "japonHR",
+    name: "miss stepfi polestar",
     logo: logoTwitch,
     color: "twitch",
-    link: "https://www.twitch.tv/japon_hr"
+    link: "https://www.twitch.tv/stepfi_polestar"
   },
 ];
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 	// static
-	const wallpaperOpts = [ 'solMoon', 'dimensions' ]
+	const wallpaperOpts = [ 'solMoon', 'dimensions', 'seyyahi2' ]
 	
 	const wallpaperInterface = {
 		backdropDismiss: false,
@@ -22,6 +22,7 @@
 		
 		<ion-content>
 			<ion-select 
+				class="ion-padding-horizontal"
 				label="enter a wallpaper select"
 				interface="popover"
 				:interface-options="wallpaperInterface"

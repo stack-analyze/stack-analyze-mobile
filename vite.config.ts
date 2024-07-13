@@ -15,11 +15,7 @@ import { IonicResolver } from 'unplugin-vue-components/resolvers';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue({
-      script: {
-        propsDestructure: true
-      }
-    }), 
+    vue(), 
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
@@ -129,7 +125,7 @@ export default defineConfig({
             'newspaperOutline', 'layersOutline', 'searchOutline', 'constructOutline',
             'closeCircleOutline', 'sunny', 'moon', 'settingsOutline', 'volumeMuteOutline', 
             'volumeHighOutline', 'playOutline', 'stopOutline', 'sparklesOutline',
-            "imagesOutline", "codeWorkingOutline"
+            'imagesOutline', 'codeWorkingOutline', 'musicalNoteOutline'
           ],
           'axios': [ 'AxiosError', ['default', 'axios'] ],
           'timeago.js': ['format'],

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 const iconTheme = ref(
-  document.body.classList.contains('dark')  ? moon : sunny
+  document.body.classList.contains('ion-palette-dark') ? moon : sunny
 );
 
 const changeTheme = () => {
-  if(document.body.classList.contains('dark')) {
+  if(document.body.classList.contains('ion-palette-dark')) {
     localStorage.theme = 'light';
     iconTheme.value = sunny;
   } else {
@@ -12,7 +12,7 @@ const changeTheme = () => {
     iconTheme.value = moon;
   }
 
-  document.body.classList.toggle('dark');
+  document.body.classList.toggle('ion-palette-dark');
 };
 </script>
 

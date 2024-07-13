@@ -20,7 +20,7 @@ watchEffect(async () => {
       <ion-card mode="ios" class="stack-card">
         <ion-card-header>
           <ion-img
-            src="assets/hardware-info/cpu.svg"
+            src="/assets/hardware-info/cpu.svg"
             alt="hardware info img"
             class="hardware-img"
           />
