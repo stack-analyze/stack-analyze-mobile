@@ -4,7 +4,6 @@ export default async function pagespeedApi(url: string, strategy: StrategyOpt): 
   const { data } = await axios.get<Pagespeed>("https://www.googleapis.com/pagespeedonline/v5/runPagespeed", {
     params: {
       url,
-      key: "AIzaSyBEDaW4FxSZ2s1vz5CdD5Ai6PGZGdAzij0",
       strategy
     }
   });

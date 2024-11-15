@@ -52,6 +52,7 @@ declare module 'vue' {
     IonTabButton: typeof import('@ionic/vue')['IonTabButton']
     IonTabs: typeof import('@ionic/vue')['IonTabs']
     IonText: typeof import('@ionic/vue')['IonText']
+    IonThumbnail: typeof import('@ionic/vue')['IonThumbnail']
     IonTitle: typeof import('@ionic/vue')['IonTitle']
     IonToast: typeof import('@ionic/vue')['IonToast']
     IonToolbar: typeof import('@ionic/vue')['IonToolbar']

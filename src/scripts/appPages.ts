@@ -74,7 +74,12 @@ const queryToolsPages: Pages[] = [
     	title: "deezer",
     	url: "/query/deezer",
     	icon: musicalNoteOutline
-    }
+    },
+    {
+    	title: "potter search",
+    	url: "/query/potter",
+    	icon: colorWandOutline
+    },
 ];
 
 const utilityToolsPages: Pages[] = [

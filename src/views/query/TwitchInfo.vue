@@ -64,10 +64,10 @@ const resetTwitch = () => {
 
       <ion-grid>
         <stack-buttons
-          init-btn-name="get twitch users"
+          init-btn-name="get users"
           :init-validate="false"
           @init-function="twitchInfo"
-          clear-btn-name="clear twitch users"
+          clear-btn-name="clear users"
           :clear-validate="isEmptyUsers"
           @clear-function="resetTwitch"
         />

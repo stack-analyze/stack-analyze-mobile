@@ -30,6 +30,11 @@ const queryRoute: RouteRecordRaw = {
     	path: "deezer",
     	name: "deezer search",
     	component: () => import('@/views/query/Deezer.vue')
+    },
+    {
+    	path: "potter",
+    	name: "potter search",
+    	component: () => import('@/views/query/PotterSearch.vue')
     }
   ]
 };

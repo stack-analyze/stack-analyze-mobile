@@ -125,7 +125,7 @@ export default defineConfig({
             'newspaperOutline', 'layersOutline', 'searchOutline', 'constructOutline',
             'closeCircleOutline', 'sunny', 'moon', 'settingsOutline', 'volumeMuteOutline', 
             'volumeHighOutline', 'playOutline', 'stopOutline', 'sparklesOutline',
-            'imagesOutline', 'codeWorkingOutline', 'musicalNoteOutline'
+            'imagesOutline', 'codeWorkingOutline', 'musicalNoteOutline', 'colorWandOutline'
           ],
           'axios': [ 'AxiosError', ['default', 'axios'] ],
           'timeago.js': ['format'],

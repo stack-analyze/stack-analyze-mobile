@@ -45,8 +45,8 @@ const clearAnimeSearch = () => {
       />
       
       <stack-buttons
-        init-btn-name="get anime search"
-        clear-btn-name="clear anime search"
+        init-btn-name="get animes"
+        clear-btn-name="clear animes"
         :init-validate="false"
         :clear-validate="isEmptyResults"
         @init-function="getAnimeSearch"
