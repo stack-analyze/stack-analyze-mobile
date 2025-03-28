@@ -99,6 +99,7 @@ declare global {
   const pagespeedApi: typeof import('./src/api/pagespeedApi')['default']
   const peopleOutline: typeof import('ionicons/icons')['peopleOutline']
   const playOutline: typeof import('ionicons/icons')['playOutline']
+  const pokerApi: typeof import('./src/api/pokerApi')['default']
   const presentAlert: typeof import('./src/scripts/alertMsg')['presentAlert']
   const provide: typeof import('vue')['provide']
   const queryRoute: typeof import('./src/router/queryRoute')['default']
@@ -262,6 +263,7 @@ declare module 'vue' {
     readonly pagespeedApi: UnwrapRef<typeof import('./src/api/pagespeedApi')['default']>
     readonly peopleOutline: UnwrapRef<typeof import('ionicons/icons')['peopleOutline']>
     readonly playOutline: UnwrapRef<typeof import('ionicons/icons')['playOutline']>
+    readonly pokerApi: UnwrapRef<typeof import('./src/api/pokerApi')['default']>
     readonly presentAlert: UnwrapRef<typeof import('./src/scripts/alertMsg')['presentAlert']>
     readonly provide: UnwrapRef<typeof import('vue')['provide']>
     readonly queryRoute: UnwrapRef<typeof import('./src/router/queryRoute')['default']>

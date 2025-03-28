@@ -5,6 +5,12 @@ type detailsVersion = {
 
 export const versionsNotes: detailsVersion[] = [
   {
+    version: '2.4.0',
+    details: `
+      1. added: poker game rule.
+    `
+  },
+  {
     version: '2.3.0',
     details: `
       1. added: potter search

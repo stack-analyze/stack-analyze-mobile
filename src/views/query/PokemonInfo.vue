@@ -39,7 +39,8 @@ const pokemonInfo = async () => {
     
     pokemonData.value = data;
     pokesprites.value = Object.values(data.sprites)
-    	.filter(x => typeof x === "string");
+    	.filter(x => typeof x === "string")
+    	.toSorted();
     	
     data.stats.forEach(({base_stat, stat}, i) => {
     	pokemonStats.value.push({

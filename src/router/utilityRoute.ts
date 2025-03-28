@@ -16,6 +16,11 @@ const utilityRoute: RouteRecordRaw = {
       name: 'password generator',
       component: () => import('@/views/utility/PasswordGenerator.vue')
     },
+    {
+      path: 'poker',
+      name: 'poker game rule',
+      component: () => import('@/views/utility/PokerGame.vue')
+    }
   ]
 };
 

@@ -37,12 +37,6 @@ register();
           </ion-card>
         </swiper-slide>
       </swiper-container>
-      <!-- <swiper
-        :loop="true"
-        :modules="modules"
-      >
-        
-      </swiper> -->
     </ion-content>
   </ion-page>
 </template>

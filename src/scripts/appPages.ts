@@ -93,6 +93,11 @@ const utilityToolsPages: Pages[] = [
        url: "/utility/password",
        icon: lockClosedOutline
     },
+    {
+    	title: "poker game",
+    	url: "/utility/poker",
+    	icon: searchCircleOutline
+    }
 ];
 
 const appPages: Pages[] = [    
