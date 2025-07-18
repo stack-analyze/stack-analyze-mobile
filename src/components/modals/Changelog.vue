@@ -1,7 +1,16 @@
 <script setup lang="ts">
+import {
+  IonHeader, IonToolbar, IonTitle, IonButtons,
+  IonButton, IonIcon, IonContent,
+  IonCard, IonCardHeader, IonCardContent, IonCardTitle,
+} from '@ionic/vue';
+
+import {closeCircleOutline} from 'ionicons/icons';
+import { versionsNotes } from '@/scripts/details';
+
 const emit = defineEmits<{
-  setOpen: [status: boolean]
-}>()
+  (e: 'setOpen'): void
+}>();
 </script>
 
 <template>

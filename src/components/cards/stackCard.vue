@@ -1,13 +1,20 @@
 <script setup lang="ts">
+import {
+  IonCol, IonImg, IonButton, IonCard,
+  IonCardHeader, IonCardContent, IonCardTitle, IonCardSubtitle,
+} from '@ionic/vue'
+
+import { type TechStack } from '@/interfaces/TechStackInterface';
+
 const formatter = new Intl.ListFormat('en', { style: 'short', type: 'unit' });
 
 const { stackData } = defineProps<{
   stackData: TechStack;
 }>();
 
-const errorImg = (e) => {
+const errorImg = (e:Event) => {
   // e.target.style.display = "none";
-  e.target.src = "assets/img/No-image-found.jpg"
+  (e.target as HTMLImageElement).src = "assets/img/No-image-found.jpg"
 }
 </script>
 

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import {
+  IonCol, IonCard, IonImg, IonButton
+} from '@ionic/vue';
+
 defineProps<{
   path: string;
   name: string;
@@ -15,7 +19,7 @@ defineProps<{
 				expand="block"
 				fill="outline"
 				:href="path"
-				download
+				:download="name"
 			>
 				download: {{ name }}
 			</ion-button>

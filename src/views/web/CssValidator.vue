@@ -1,4 +1,22 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue';
+import { type AxiosError } from 'axios';
+
+import {
+	IonPage, IonContent, IonGrid, IonItem
+} from '@ionic/vue';
+
+import { type CssValidator } from '@/interfaces/CssValidatorInterface';
+import { useHttp } from '@/composables/webComposable';
+import { presentAlert } from '@/scripts/alertMsg';
+import { startWithHttp } from '@/scripts/data';
+import { webToolsApi } from '@/api/apiExtras';
+import { openToast } from '@/scripts/warning-message';
+
+import StackButtons from '@/components/main/StackButtons.vue';
+import StackInput from '@/components/main/StackInput.vue';
+import StackToolbar from '@/components/main/StackToolbar.vue';
+
 // composable
 const { validateWebsite, website } = useHttp();
 
@@ -46,7 +64,7 @@ const clearValidator = () => {
 			<ion-grid>
       	<stack-buttons
         	init-btn-name="start validator"
-        	:init-validate="false"
+        	:init-validate="validateWebsite"
         	@init-function="startValidator"
         	clear-btn-name="reset validator"
         	:clear-validate="isEmptyResults"

@@ -1,5 +1,13 @@
 <script setup lang="ts">
-// import ModalAnime from '../modals/ModalAnime.vue'
+import { ref } from 'vue';
+import {
+  IonCol, IonImg, IonButton, IonModal,
+  IonCard, IonCardHeader, IonCardContent, IonCardTitle,
+} from '@ionic/vue'
+
+import { Anime } from '@/interfaces/AnimeInterface';
+
+import ModalAnime from '../modals/ModalAnime.vue'
 
 const { animeData } = defineProps<{ animeData: Anime }>();
 
@@ -13,8 +21,8 @@ const toggleModal = (modalOpen: boolean) => {
  isOpen.value = modalOpen;
 };
 
-const fallbackImg = (e) => {
-  e.target.src = "/assets/img/No-image-found.jpg"
+const fallbackImg = (e: Event) => {
+  (e.target as HTMLImageElement).src = "/assets/img/No-image-found.jpg"
 }
 </script>
 

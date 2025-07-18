@@ -1,3 +1,13 @@
+import { createRouter, createWebHistory, } from '@ionic/vue-router'
+import { type RouteRecordRaw } from 'vue-router'
+
+// routes
+import infoRoute from './infoRoute'
+import queryRoute from './queryRoute'
+import utilityRoute from './utilityRoute'
+import webRoute from './webRoute'
+
+// config
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -27,6 +37,11 @@ const routes: RouteRecordRaw[] = [
   	path: '/wallpapers',
   	name: 'wallpapers',
   	component: () => import('@/views/Wallpapers.vue')
+  },
+  {
+    path: '/quotes',
+    name: 'quotes',
+    component: () => import('@/views/Quotes.vue')
   }
 ]
 

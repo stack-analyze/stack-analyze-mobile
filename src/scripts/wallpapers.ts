@@ -1,4 +1,8 @@
-export const wallpapers = {
+interface Wallpapers {
+	[x: string]: string[]
+}
+
+export const wallpapers: Wallpapers = {
 	solMoon: [
 		"assets/sol-moon/sol-moon-1.jpeg", "assets/sol-moon/sol-moon-2.jpeg",
 		"assets/sol-moon/sol-moon-3.jpeg", "assets/sol-moon/sol-moon-4.jpeg",
@@ -27,5 +31,16 @@ export const wallpapers = {
 		"assets/seyyahi2/seyyahi2-9.jpeg", "assets/seyyahi2/seyyahi2-10.jpeg",
 		"assets/seyyahi2/seyyahi2-11.jpeg", "assets/seyyahi2/seyyahi2-12.jpeg",
 		"assets/seyyahi2/seyyahi2-13.jpeg", "assets/seyyahi2/seyyahi2-14.jpeg",
-	]
+	],
+	ancientMistery: [
+		"assets/ancient-mistery/ancient-mistery1.jpeg", "assets/ancient-mistery/ancient-mistery2.jpeg", 
+		"assets/ancient-mistery/ancient-mistery3.jpeg", "assets/ancient-mistery/ancient-mistery4.jpeg", 
+		"assets/ancient-mistery/ancient-mistery5.jpeg", "assets/ancient-mistery/ancient-mistery6.jpeg",
+	],
+	tsukyNoEmily: [
+		"assets/tsuky-no-emily/tsuky-no-emily1.jpeg", "assets/tsuky-no-emily/tsuky-no-emily2.jpeg", 
+		"assets/tsuky-no-emily/tsuky-no-emily3.jpeg", "assets/tsuky-no-emily/tsuky-no-emily4.jpeg", 
+		"assets/tsuky-no-emily/tsuky-no-emily5.jpeg", "assets/tsuky-no-emily/tsuky-no-emily6.jpeg",
+	],
+
 };

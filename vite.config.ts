@@ -6,16 +6,20 @@ import vue from '@vitejs/plugin-vue';
 
 import { VitePWA } from 'vite-plugin-pwa';
 
-import AutoImport from 'unplugin-auto-import/vite';
-import { ComponentResolver } from 'unplugin-vue-components/types';
-import Components from 'unplugin-vue-components/vite';
-
 import { IonicResolver } from 'unplugin-vue-components/resolvers';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(), 
+    vue({
+      template: {
+      compileOptions: {
+        isCumstomOptions: {
+          isCustomElement: (tag) => tag.includes('swiper-')
+        }
+      }
+      }
+    }), 
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
@@ -100,51 +104,6 @@ export default defineConfig({
         display: "standalone",
         background_color: "#ffffff"
       }
-    }),
-    AutoImport({
-      include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/,],
-      imports: [
-        'vue',
-        'vue-router',
-        {
-          'vue-router': ['RouteRecordRaw'],
-          '@ionic/vue-router': ['createRouter', 'createWebHistory'],
-          '@ionic/vue': [
-            'IonicVue', 'alertController','toastController', 'loadingController', 
-            'RefresherEventDetail', 'SearchbarChangeEventDetail', 'onIonViewWillEnter', 
-            'onIonViewWillLeave', 'menuController', 'IonicSlides'
-          ],
-          'ionicons/icons': [
-            'diceOutline', 'refreshOutline', 'copyOutline', 'warningOutline',
-            'libraryOutline', 'home', 'logoInstagram', 'logoGithub',
-            'logoCodepen', 'logoTwitch', 'logoYoutube', 'logoTiktok',
-            'earthOutline', 'hourglassOutline', 'extensionPuzzleOutline', 'peopleOutline',
-            'globeOutline', 'informationCircleOutline', 'informationOutline', 'searchCircleOutline',
-            'terminalOutline', 'walletOutline', 'videocamOutline', 'logoTwitch',
-            'thumbsUpOutline', 'codeSlashOutline', 'attachOutline', 'lockClosedOutline',
-            'newspaperOutline', 'layersOutline', 'searchOutline', 'constructOutline',
-            'closeCircleOutline', 'sunny', 'moon', 'settingsOutline', 'volumeMuteOutline', 
-            'volumeHighOutline', 'playOutline', 'stopOutline', 'sparklesOutline',
-            'imagesOutline', 'codeWorkingOutline', 'musicalNoteOutline', 'colorWandOutline'
-          ],
-          'axios': [ 'AxiosError', ['default', 'axios'] ],
-          'timeago.js': ['format'],
-          '@capacitor/device': ['Device', 'DeviceInfo'],
-          '@capacitor/network': ['Network', 'ConnectionStatus'],
-        }
-      ],
-      dirs: [
-        'src/router', 'src/api', 'src/composables', 'src/interface',
-        'src/scripts'
-      ],
-      vueTemplate: true,
-      dts: true,
-    }),
-    Components({
-      dirs: ['src/components', 'src/components/**'],
-      extensions: ['vue'],
-      resolvers: [IonicResolver()],
-      dts: true,
     }),
   ],
   resolve: {

@@ -1,4 +1,4 @@
-// import { RevealDocs } from '@/interfaces/revealLinkDocs';
+import { type RevealDocs } from '@/interfaces/revealLinkDocs';
 
 export const revealLinks: RevealDocs[] = [
     {

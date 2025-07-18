@@ -1,19 +1,6 @@
 <script setup lang="ts">
-const iconTheme = ref(
-  document.body.classList.contains('ion-palette-dark') ? moon : sunny
-);
-
-const changeTheme = () => {
-  if(document.body.classList.contains('ion-palette-dark')) {
-    localStorage.theme = 'light';
-    iconTheme.value = sunny;
-  } else {
-    localStorage.theme = 'dark';
-    iconTheme.value = moon;
-  }
-
-  document.body.classList.toggle('ion-palette-dark');
-};
+import { IonHeader, IonToolbar, IonButtons, IonTitle, IonMenuButton, IonIcon } from '@ionic/vue'
+import {settingsOutline} from 'ionicons/icons'
 </script>
 
 <template>
@@ -24,11 +11,6 @@ const changeTheme = () => {
         <ion-menu-button color="light">
           <ion-icon :icon="settingsOutline" />
         </ion-menu-button>
-      </ion-buttons>
-      <ion-buttons slot="end">
-        <ion-button color="light" @click="changeTheme">
-          <ion-icon :icon="iconTheme" />
-        </ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>

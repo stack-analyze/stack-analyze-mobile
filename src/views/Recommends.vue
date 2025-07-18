@@ -1,5 +1,14 @@
 <script setup lang="ts">
-const accordionGroup = ref();
+import { ref, useTemplateRef } from 'vue';
+
+import {
+  IonPage, IonContent, IonAccordionGroup, IonAccordion,
+  IonItem, IonLabel, IonList, IonIcon
+} from '@ionic/vue';
+
+import { recomendations } from '@/scripts/data';
+
+const accordionGroup = useTemplateRef('accordionGroup');
 const isOpen = ref(false)
 
 const closeAccordion = () => {
@@ -7,10 +16,6 @@ const closeAccordion = () => {
     accordionGroup.value.$el.value = undefined;
   }
 }
-
-const setOpen = (modalOpen: boolean) => {
-  isOpen.value = modalOpen;
-};
 
 const youtubeList = recomendations.filter(
   (item) => item.color === 'youtube'

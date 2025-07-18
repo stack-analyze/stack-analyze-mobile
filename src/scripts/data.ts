@@ -1,3 +1,10 @@
+import { 
+  logoCodepen, logoGithub, logoInstagram, 
+  logoTiktok, logoTwitch, logoYoutube 
+} from 'ionicons/icons'
+import { SocialMedia, type Card } from '@/interfaces/CardInterface'
+import { versionsNotes } from './details';
+
 // card info
 const Cards: Card[] = [
   {
@@ -5,7 +12,7 @@ const Cards: Card[] = [
     img: "/assets/img/logo-mobile.png",
     name: "app logo",
     title: "stack-analyze",
-    details: `version: 2.4.0`,
+    details: `version: ${versionsNotes[0].version}`,
     social: [
       {
         logo: logoGithub,

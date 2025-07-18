@@ -1,4 +1,16 @@
 <script setup lang="ts">
+import { 
+  onIonViewWillEnter, menuController, onIonViewWillLeave,
+  IonPage, IonHeader, IonToolbar, IonTitle, IonButtons,
+  IonButton, IonBackButton, IonContent, IonItem,
+  IonText, IonIcon, IonGrid, IonRow, IonCol,
+  IonCard, IonCardHeader, IonCardContent, IonCardTitle,
+} from '@ionic/vue';
+
+import { homeOutline,logoInstagram, } from 'ionicons/icons'
+
+import { revealLinks } from '@/scripts/dataRevealLinks';
+
 onIonViewWillEnter(() => {
   menuController.enable(false);
 });
@@ -14,7 +26,7 @@ onIonViewWillLeave(() => {
       <ion-toolbar color="tertiary">
         <ion-title>tips</ion-title>
         <ion-buttons slot="start">
-          <ion-back-button defaultHref="/" :icon="home"></ion-back-button>
+          <ion-back-button defaultHref="/" :icon="homeOutline"></ion-back-button>
         </ion-buttons>
       </ion-toolbar>
     </ion-header>

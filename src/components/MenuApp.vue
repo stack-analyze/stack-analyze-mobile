@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import Changelog from './modals/Changelog.vue';
+import {
+  IonMenu, IonHeader, IonToolbar, IonAvatar, IonImg,
+  IonTitle, IonContent, IonItemGroup, IonItemDivider,
+  IonLabel, IonMenuToggle, IonItem, IonIcon
+} from '@ionic/vue'
+
+import { appPages } from '@/scripts/appPages';
 
 const { menuId } = defineProps<{
   menuId: string;

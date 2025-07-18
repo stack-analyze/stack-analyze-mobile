@@ -1,4 +1,12 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+
+import {
+  IonCol, IonImg, IonButton, IonModal,
+  IonCard, IonCardHeader, IonCardContent, IonCardTitle,
+} from '@ionic/vue'
+
+import { type Movie } from '@/interfaces/MovieInterface';
 import ModalMovie from '../modals/ModalMovie.vue'
 
 const { movieData } = defineProps<{
@@ -8,10 +16,10 @@ const { movieData } = defineProps<{
 const isOpen = ref(false)
 
 const toggleModal = (modalOpen: boolean) => {
- isOpen.value = modalOpen;
+  isOpen.value = modalOpen;
 };
 
-const poster = movieData?.poster_path 
+const poster = movieData?.poster_path
   ? `http://image.tmdb.org/t/p/w500/${movieData.poster_path}`
   : "assets/img/No-image-found.jpg"
 </script>
@@ -20,28 +28,24 @@ const poster = movieData?.poster_path
   <ion-col>
     <ion-card>
       <ion-card-header>
-        <ion-img
-          :src="poster"
-          :alt="movieData.title"
-        />
+        <ion-img :src="poster" :alt="movieData.title" />
       </ion-card-header>
       <ion-card-content>
         <ion-card-title>{{ movieData.title }}</ion-card-title>
         <ion-button @click="toggleModal(true)">
-        	show info
+          show info
         </ion-button>
       </ion-card-content>
     </ion-card>
-    
-    <ion-modal
-    	mode="ios"
-    	class="modal-movie"
-    	:is-open="isOpen"
-    	:backdrop-dismiss="false"
+
+    <ion-modal 
+      mode="ios" 
+      class="modal-movie" 
+      :is-open="isOpen" 
+      :backdrop-dismiss="false"
     >
       <modal-movie 
-        :movieId="movieData.id"
-        @close-modal="toggleModal(false)"
+        :movieId="movieData.id" @close-modal="toggleModal(false)" 
       />
     </ion-modal>
   </ion-col>

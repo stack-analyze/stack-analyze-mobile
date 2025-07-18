@@ -1,7 +1,13 @@
-import App from './App.vue'
+import { createApp } from 'vue';
+import { IonicVue } from '@ionic/vue';
+
+import router from './router';
+
+import App from './App.vue';
 
 /* Core CSS required for Ionic components to work properly */
-import '@ionic/vue/css/ionic.bundle.css'
+import '@ionic/vue/css/ionic.bundle.css';
+import '@ionic/vue/css/palettes/dark.system.css';
 
 /* swiper styles */
 import '@ionic/vue/css/ionic-swiper.css';
@@ -10,15 +16,7 @@ import '@ionic/vue/css/ionic-swiper.css';
 import './theme/variables.css';
 
 /* general styles */
-import './main.css'
-
-/* detect dark mode */
-if(localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-  document.body.classList.add('ion-palette-dark')
-  localStorage.theme = 'dark'
-} else {
-  localStorage.theme = 'light'
-}
+import './main.css';
 
 /* start vue init */
 const app = createApp(App)

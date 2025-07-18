@@ -1,10 +1,25 @@
 <script setup lang="ts">
-const radio = ref<HTMLAudioElement | null>(null);
+import { ref, computed, useTemplateRef } from 'vue';
+
+import {
+  IonPage, IonContent, IonButton, IonIcon,
+  IonRange, IonText, IonItem, IonLabel,
+  IonModal
+} from '@ionic/vue'
+import { 
+  playOutline, stopOutline, volumeMuteOutline, volumeHighOutline,
+  libraryOutline
+} from 'ionicons/icons'
+
+import StackToolbar from '@/components/main/StackToolbar.vue';
+import Changelog from '@/components/modals/Changelog.vue';
+
+const radio = useTemplateRef<HTMLAudioElement>('radio');
 
 const radioVolume = ref(0.5);
 const radioStatusPlaying = ref(false);
 const radioCurrentTime = ref('00:00');
-const isOpen = ref(false)
+const isOpen = ref(false);
 
 const radioStatusIcon = computed(
   () => radioStatusPlaying.value ? stopOutline : playOutline
@@ -21,7 +36,7 @@ const togglePlayer = () => {
   }
 };
 
-function radioTime(time: number): string {
+const radioTime = (time: number): string => {
   const roundTime = Math.round(time);
 
   let min = Math.floor(roundTime / 60);
@@ -39,7 +54,7 @@ const setOpen = (modalOpen: boolean) => {
 };
 
 const radioUpdateTime = () => {
-  radioCurrentTime.value = radioTime(radio.value?.currentTime);
+  radioCurrentTime.value = radioTime(radio.value?.currentTime ?? 0);
 };
 </script>
 
@@ -54,7 +69,7 @@ const radioUpdateTime = () => {
         ref="radio" 
         :volume="radioVolume"
         @timeupdate="radioUpdateTime"
-        />
+        ></audio>
         
         <ion-button 
           color="secondary" 
@@ -68,8 +83,8 @@ const radioUpdateTime = () => {
         <ion-range 
           aria-label="radio" 
           color="secondary" 
-          max="1"
-          step="0.01"
+          :max="1"
+          :step="0.01"
           v-model="radioVolume"
         >
           <ion-icon slot="start" :icon="volumeMuteOutline" />

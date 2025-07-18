@@ -1,3 +1,5 @@
+import { type RouteRecordRaw } from 'vue-router';
+
 const webRoute: RouteRecordRaw = {
   path: "/web/",
   component: () => import('@/views/web/WebTabs.vue'),
@@ -9,27 +11,27 @@ const webRoute: RouteRecordRaw = {
     {
       path: "tech-stack",
       name: "tech stack",
-      component: () => import('@/views/web/TechStack.vue')
+      component: () => import('@/views/web/TechStack.vue'),
     },
     {
       path: "pagespeed",
       name: "pagespeed",
-      component: () => import('@/views/web/PagespeedResults.vue')
+      component: () => import('@/views/web/PagespeedResults.vue'),
     },
     {
       path: "whois",
       name: "whois",
-      component: () => import('@/views/web/WhoisInfo.vue')
+      component: () => import('@/views/web/WhoisInfo.vue'),
     },
     {
       path: "scraping",
       name: "web scraping",
-      component: () => import('@/views/web/WebScraping.vue')
+      component: () => import('@/views/web/WebScraping.vue'),
     },
     {
     	path: "validator",
     	name: "css validator",
-    	component: () => import('@/views/web/CssValidator.vue')
+    	component: () => import('@/views/web/CssValidator.vue'),
     }
   ]
 };

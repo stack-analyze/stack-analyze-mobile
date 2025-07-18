@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { ref, watchEffect } from 'vue';
+import { AxiosError } from 'axios';
+import movieApi from '@/api/movieApi';
+import { Movie } from '@/interfaces/MovieInterface';
+import { presentAlert } from '@/scripts/alertMsg';
+
 const { movieId } = defineProps<{
   movieId: number;
 }>();

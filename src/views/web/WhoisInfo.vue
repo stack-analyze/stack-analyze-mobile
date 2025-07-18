@@ -1,4 +1,23 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue';
+import { type AxiosError } from 'axios';
+
+import {
+  IonPage, IonGrid, IonCard, IonCardHeader, IonCardTitle, 
+  IonCardContent
+} from '@ionic/vue'
+
+import { type Whois } from '@/interfaces/WhoisInterface';
+import { webToolsApi } from '@/api/apiExtras';
+import { useHttp } from '@/composables/webComposable';
+import { presentAlert } from '@/scripts/alertMsg';
+import { startWithHttp } from '@/scripts/data';
+import { openToast } from '@/scripts/warning-message';
+
+import StackToolbar from '@/components/main/StackToolbar.vue';
+import StackInput from '@/components/main/StackInput.vue';
+import StackButtons from '@/components/main/StackButtons.vue';
+
 const { website, validateWebsite } = useHttp();
 
 const whoisInfo = ref<Partial<Whois>>({});

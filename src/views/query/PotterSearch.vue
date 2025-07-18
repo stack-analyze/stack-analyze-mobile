@@ -1,4 +1,20 @@
 <script lang="ts" setup>
+import { ref, computed } from 'vue';
+import axios, { AxiosError } from 'axios';
+
+import {
+  IonPage, IonContent, IonList, IonItem, IonNote,
+  IonThumbnail, IonImg, IonLabel, IonText,
+} from '@ionic/vue'
+
+import { PotterCharacter } from '@/interfaces/PotterInfoInterface';
+import { presentAlert } from '@/scripts/alertMsg';
+import { openToast } from '@/scripts/warning-message';
+
+import StackToolbar from '@/components/main/StackToolbar.vue';
+import StackInput from '@/components/main/StackInput.vue';
+import StackButtons from '@/components/main/StackButtons.vue';
+
 const query = ref('');
 
 const potterCharacters = ref<PotterCharacter[]>([]);

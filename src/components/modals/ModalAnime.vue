@@ -1,8 +1,16 @@
 <script setup lang="ts">
+import { ref, watchEffect } from 'vue';
+import { closeCircleOutline } from 'ionicons/icons';
+import { type AxiosError } from 'axios';
+
+import { type Anime } from '@/interfaces/AnimeInterface';
+import animeApi from '@/api/animeApi';
+import { presentAlert } from '@/scripts/alertMsg';
+
 const { animeID } = defineProps<{ animeID: number }>();
 
 const emit = defineEmits<{
-  closeModal: [value: boolean]
+  (e: 'closeModal'): void
 }>()
 
 const animeSchema = ref<Partial<Anime>>({});
@@ -46,11 +54,15 @@ watchEffect(async () => {
       </ion-card-header>
       <ion-card-content>
         <ion-item>
-          <ion-label position="stacked"> rating: {{ animeSchema.rating }} </ion-label>
+          <ion-label position="stacked"> 
+            rating: {{ animeSchema.rating }}
+          </ion-label>
           <ion-text>status: {{ animeSchema.status }}</ion-text>
         </ion-item>
         <ion-item>
-          <ion-label> episodes: {{ animeSchema.episodes || "current" }} </ion-label>
+          <ion-label> 
+            episodes: {{ animeSchema.episodes || "current" }} 
+          </ion-label>
           <ion-text>type: {{ animeSchema.type }}</ion-text>
         </ion-item>
         <ion-item>
@@ -67,7 +79,9 @@ watchEffect(async () => {
               <ion-item slot="header">
                 <ion-label>aired time:</ion-label>
               </ion-item>
-              <ion-item slot="content">{{ animeSchema.aired?.string }}</ion-item>
+              <ion-item slot="content">
+                {{ animeSchema.aired?.string }}
+              </ion-item>
             </ion-accordion>
           </ion-accordion-group>
         </ion-item>

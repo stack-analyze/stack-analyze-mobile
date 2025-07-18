@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { type DeviceInfo, Device } from '@capacitor/device';
+import { type ConnectionStatus, Network } from '@capacitor/network';
+import { ref, watchEffect } from 'vue';
+
+import {warningOutline} from 'ionicons/icons';
+
 const modelInfo = ref<Partial<DeviceInfo>>({});
 
 const deviceLanguage = ref("");

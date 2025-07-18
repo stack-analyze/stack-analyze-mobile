@@ -1,3 +1,15 @@
+import { 
+    attachOutline, codeSlashOutline, codeWorkingOutline, 
+    colorWandOutline, constructOutline, extensionPuzzleOutline, 
+    globeOutline, homeOutline, hourglassOutline,
+    imagesOutline, informationCircleOutline, informationOutline, 
+    layersOutline, lockClosedOutline, logoTwitch, musicalNoteOutline, 
+    newspaperOutline, peopleOutline, readerOutline, searchCircleOutline, 
+    searchOutline, sparklesOutline, terminalOutline, thumbsUpOutline, videocamOutline, walletOutline 
+} from 'ionicons/icons'
+
+import { type Pages } from "@/interfaces/RouteInterface";
+
 const webToolsPages: Pages[] = [
     {
         title: "tech stack",
@@ -71,14 +83,14 @@ const queryToolsPages: Pages[] = [
         icon: logoTwitch
     },
     {
-    	title: "deezer",
-    	url: "/query/deezer",
-    	icon: musicalNoteOutline
+        title: "deezer",
+        url: "/query/deezer",
+        icon: musicalNoteOutline
     },
     {
-    	title: "potter search",
-    	url: "/query/potter",
-    	icon: colorWandOutline
+        title: "potter search",
+        url: "/query/potter",
+        icon: colorWandOutline
     },
 ];
 
@@ -89,22 +101,22 @@ const utilityToolsPages: Pages[] = [
         icon: terminalOutline
     },
     {
-       title: "password generator",
-       url: "/utility/password",
-       icon: lockClosedOutline
+        title: "password generator",
+        url: "/utility/password",
+        icon: lockClosedOutline
     },
     {
-    	title: "poker game",
-    	url: "/utility/poker",
-    	icon: searchCircleOutline
+        title: "poker game",
+        url: "/utility/poker",
+        icon: searchCircleOutline
     }
 ];
 
-const appPages: Pages[] = [    
+const appPages: Pages[] = [
     {
-      title: "home page",
-      url: "/",
-      icon: home,
+        title: "home page",
+        url: "/",
+        icon: homeOutline,
     },
     {
         title: "web tools",
@@ -117,9 +129,9 @@ const appPages: Pages[] = [
         icon: informationCircleOutline,
     },
     {
-       title: "query tools",
-       url: "/query/",
-       icon: searchOutline
+        title: "query tools",
+        url: "/query/",
+        icon: searchOutline
     },
     {
         title: "utility tools",
@@ -127,9 +139,14 @@ const appPages: Pages[] = [
         icon: constructOutline,
     },
     {
-    	title: "wallpapers",
-    	url: "/wallpapers",
-    	icon: imagesOutline
+        title: "wallpapers",
+        url: "/wallpapers",
+        icon: imagesOutline
+    },
+    {
+        title: 'quotes',
+        url: '/quotes',
+        icon: readerOutline
     },
     {
         title: "about",
@@ -149,9 +166,9 @@ const appPages: Pages[] = [
 ];
 
 export {
-  appPages,
-  webToolsPages,
-  infoToolsPages,
-  queryToolsPages,
-  utilityToolsPages
+    appPages,
+    webToolsPages,
+    infoToolsPages,
+    queryToolsPages,
+    utilityToolsPages
 };

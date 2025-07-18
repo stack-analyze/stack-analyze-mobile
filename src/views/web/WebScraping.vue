@@ -1,4 +1,20 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue';
+import axios, { AxiosError } from 'axios';
+
+import {
+  IonPage, IonContent, IonItem, IonSelect, IonSelectOption, IonGrid
+} from '@ionic/vue';
+
+import { type WebScraping } from '@/interfaces/WebScrapingInterface';
+import { useHttp } from '@/composables/webComposable';
+import { startWithHttp } from '@/scripts/data';
+import { openToast } from '@/scripts/warning-message';
+
+import StackToolbar from '@/components/main/StackToolbar.vue';
+import StackInput from '@/components/main/StackInput.vue';
+import StackButtons from '@/components/main/StackButtons.vue';
+
 // static
 const scrapingOptList: string[] = [
   'title', 'images', 'metadata', 'headings',

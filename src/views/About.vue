@@ -1,5 +1,14 @@
 <script setup lang="ts">
+import {
+  IonicSlides, IonPage, IonContent, 
+  IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle,
+  IonCardContent, IonImg, IonButton, IonIcon
+} from '@ionic/vue';
+
 import { register } from 'swiper/element/bundle';
+import { Cards } from '@/scripts/data';
+
+import StackToolbar from '@/components/main/StackToolbar.vue';
 
 const modules = [IonicSlides];
 
@@ -14,11 +23,12 @@ register();
       <swiper-container 
       	:loop="true" 
       	:modules="modules"
+        :pagination="true"
       >
       	<swiper-slide v-for="card of Cards" :key="card.id">
           <ion-card mode="ios" color="light">
             <ion-card-header mode="md">
-              <ion-img :src="card.img" :alt="card.id"></ion-img>
+              <ion-img :src="card.img" :alt="card.id" />
               <ion-card-subtitle>{{ card.details }}</ion-card-subtitle>
               <ion-card-title>{{ card.title }}</ion-card-title>
             </ion-card-header>
@@ -31,7 +41,7 @@ register();
                 target="_blank"
                 :color="social.color"
               >
-                <ion-icon slot="icon-only" :icon="social.logo"></ion-icon>
+                <ion-icon slot="icon-only" :icon="social.logo" />
               </ion-button>
             </ion-card-content>
           </ion-card>

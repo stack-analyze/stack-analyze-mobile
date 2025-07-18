@@ -1,4 +1,22 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue';
+import axios, { AxiosError } from 'axios';
+
+import {
+  IonPage, IonContent, IonGrid, IonRow
+} from '@ionic/vue';
+
+import { useHttp } from '@/composables/webComposable';
+import { TechStack } from '@/interfaces/TechStackInterface';
+import { presentAlert } from '@/scripts/alertMsg';
+import { startWithHttp } from '@/scripts/data';
+import { openToast } from '@/scripts/warning-message';
+
+import StackButtons from '@/components/main/StackButtons.vue';
+import StackInput from '@/components/main/StackInput.vue';
+import StackToolbar from '@/components/main/StackToolbar.vue';
+import stackCard from '@/components/cards/stackCard.vue';
+
 // composables
 const { validateWebsite, website } = useHttp();
 

@@ -47,6 +47,7 @@ swiper-slide img {
   width: 100%;
   height: 40vh;
   overflow: auto;
+  text-wrap: wrap;
 }
 
 /* web scraping styles*/
@@ -115,30 +116,28 @@ ion-tab-button {
 }
 
 /* transition */
-@supports (::view-transition-old(root), ::view-transition-new(root)) {
-	@view-transition {
-    navigation: auto;
-  }
+@view-transition {
+  navigation: auto;
+}
   
-  ::view-transition-group(root) {
-    animation-duration: 0.5s;
-  }
-  
-  @keyframes move-out {
-  	from { transform: translateY(0%); }
-  	to { transform: translateY(-100%); }
-  }
-  
-  @keyframes move-in {
-  	from { transform: translateY(100%); }
-  	to { transform: translateY(0%); }
-  }
-  
-  ::view-transition-old(root) {
-  	animation: 0.4s ease-in both move-out;
-  }
-  
-  ::view-transition-new(root) {
-  	animation: 0.4s ease-in both move-in;
-  }
+::view-transition-group(root) {
+  animation-duration: 0.5s;
+}
+
+@keyframes move-out {
+	from { transform: translateY(0%); }
+	to { transform: translateY(-100%); }
+}
+
+@keyframes move-in {
+	from { transform: translateY(100%); }
+	to { transform: translateY(0%); }
+}
+
+::view-transition-old(root) {
+	animation: 0.4s ease-in both move-out;
+}
+
+::view-transition-new(root) {
+	animation: 0.4s ease-in both move-in;
 }

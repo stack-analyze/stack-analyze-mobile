@@ -1,19 +1,33 @@
 <script setup lang="ts">
-	// static
-	const wallpaperOpts = [ 'solMoon', 'dimensions', 'seyyahi2' ]
-	
-	const wallpaperInterface = {
-		backdropDismiss: false,
-		mode: 'ios'
-	}
-	
-	// state
-	const opt = ref('')
-	
-	// methods
-	const clearResults = () => {
-		opt.value = ''
-	}
+import { ref } from 'vue'
+import {
+  IonPage, IonContent, IonSelect, IonSelectOption,
+  IonButton, IonGrid, IonRow
+} from '@ionic/vue'
+
+import { wallpapers } from '@/scripts/wallpapers'
+
+import StackToolbar from '@/components/main/StackToolbar.vue'
+import WallpaperCard from '@/components/cards/WallpaperCard.vue'
+
+// static
+const wallpaperOpts = [ 
+	'solMoon', 'dimensions', 'seyyahi2', 'ancientMistery', 
+  'tsukyNoEmily',
+]
+
+const wallpaperInterface = {
+	backdropDismiss: false,
+	mode: 'ios'
+}
+
+// state
+const opt = ref('')
+
+// methods
+const clearResults = () => {
+	opt.value = ''
+}
 </script>
 
 <template>

@@ -1,12 +1,33 @@
 <script setup lang="ts">
-import "@/pokeTypes.css";
+import { ref, computed } from "vue";
 import { register } from 'swiper/element/bundle';
+
+import { 
+  IonicSlides, IonPage, IonContent, IonItem,
+  IonInput, IonGrid, IonChip, IonCard, IonImg,
+  IonCardHeader, IonCardTitle, IonCardContent,
+} from "@ionic/vue";
+
+import { type Pokemon } from "@/interfaces/PokemonInterface";
+import { presentAlert } from "@/scripts/alertMsg";
+import { openToast } from "@/scripts/warning-message";
+
+import "@/pokeTypes.css";
+
+import StackToolbar from "@/components/main/StackToolbar.vue";
+import StackButtons from "@/components/main/StackButtons.vue";
+
+interface PokemonStat {
+  name: string
+  color: string
+  value: number
+}
 
 // states
 const pokemon = ref<string | number>("");
 const pokemonData = ref<Partial<Pokemon>>({});
 const pokesprites = ref<string[]>([]);
-const pokemonStats = ref([]);
+const pokemonStats = ref<PokemonStat[]>([]);
 
 // computers
 const isEmptyPokeInfo = computed(
@@ -23,7 +44,7 @@ const modules = [IonicSlides];
 
 // methods
 const pokemonInfo = async () => {
-  if(!pokemon.value || pokemon.value <= 0) {
+  if(!pokemon.value) {
   	return openToast(
   		"pokemon name is required avoid pokemon id: 0 & negative number", 
   		"warning"
@@ -35,22 +56,24 @@ const pokemonInfo = async () => {
   try {
     const data = await (
     	await fetch(`${pokeApi}/${pokemon.value}`)
-    ).json();
+    ).json() as Pokemon;
     
     pokemonData.value = data;
     pokesprites.value = Object.values(data.sprites)
     	.filter(x => typeof x === "string")
     	.toSorted();
     	
+    
+
     data.stats.forEach(({base_stat, stat}, i) => {
-    	pokemonStats.value.push({
+    	pokemonStats.value[i] = {
     		name: stat.name,
     		color: statsColors[i],
     		value: base_stat
-    	})
+    	}
     })
     
-    pokemonStats.value.push({
+    pokemonStats.value[6] = ({
 			name: 'xp',
 			color: 'secondary',
 			value: data.base_experience

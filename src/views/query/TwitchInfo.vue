@@ -1,4 +1,20 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue';
+import axios, { AxiosError } from 'axios';
+
+import {
+  IonPage, IonContent, IonGrid, IonRow,
+} from '@ionic/vue'
+
+import { TwitchUser } from '@/interfaces/TwitchInterface';
+import { presentAlert } from '@/scripts/alertMsg';
+import { openToast } from '@/scripts/warning-message';
+
+import StackToolbar from '@/components/main/StackToolbar.vue';
+import StackInput from '@/components/main/StackInput.vue';
+import StackButtons from '@/components/main/StackButtons.vue';
+import TwitchUserInfo from '@/components/TwitchUserInfo.vue';
+
 // states
 const userStr = ref("");
 const twitchUsers = ref<TwitchUser[]>([]);

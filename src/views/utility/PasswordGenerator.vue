@@ -1,4 +1,16 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue';
+import { 
+  diceOutline, refreshOutline, copyOutline 
+} from 'ionicons/icons'
+import { openToast } from '@/scripts/warning-message';
+
+import {
+  IonPage, IonContent, IonItem, IonButton, IonIcon, IonLabel,
+} from '@ionic/vue';
+
+import StackToolbar from '@/components/main/StackToolbar.vue';
+
 // state
 const password = ref("");
 

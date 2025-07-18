@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import {
+  IonPage, IonTabs, IonRouterOutlet, IonTabBar, IonTabButton,
+  IonIcon, IonLabel,
+} from '@ionic/vue';
+import { utilityToolsPages } from '@/scripts/appPages';
+</script>
+
 <template>
   <ion-page>
     <ion-tabs>

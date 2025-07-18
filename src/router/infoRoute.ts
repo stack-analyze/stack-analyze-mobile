@@ -1,3 +1,5 @@
+import { type RouteRecordRaw } from 'vue-router';
+
 const infoRoute: RouteRecordRaw = {
   path: "/info/",
   component: () => import('@/views/info/InfoTabs.vue'),

@@ -1,4 +1,21 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue';
+import { AxiosError } from 'axios';
+
+import {
+  IonPage, IonContent, IonGrid, IonRow,
+} from '@ionic/vue';
+
+import animeApi from '@/api/animeApi';
+import { type Anime } from '@/interfaces/AnimeInterface';
+import { presentAlert } from '@/scripts/alertMsg';
+import { openToast } from '@/scripts/warning-message';
+
+import StackToolbar from '@/components/main/StackToolbar.vue';
+import StackInput from '@/components/main/StackInput.vue';
+import StackButtons from '@/components/main/StackButtons.vue';
+import animeCard from '@/components/cards/animeCard.vue';
+
 // states
 const query = ref("");
 const animeData = ref<Anime[]>([]);

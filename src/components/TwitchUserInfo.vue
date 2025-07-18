@@ -1,4 +1,14 @@
 <script setup lang="ts">
+import {
+  IonCol, IonItem, IonImg,
+  IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle,
+  IonCardContent,
+} from '@ionic/vue'
+
+import { format } from 'timeago.js'
+
+import { type TwitchUser } from '@/interfaces/TwitchInterface';
+
 const { twitchUser } = defineProps<{
   twitchUser: TwitchUser;
 }>();

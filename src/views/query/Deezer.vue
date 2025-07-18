@@ -1,4 +1,21 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+import axios, { AxiosError } from 'axios'
+
+import {
+  IonPage, IonContent, IonItem, IonInput,
+  IonGrid, IonRow, IonCol, IonImg,
+  IonCard, IonCardHeader, IonCardTitle,
+  IonCardSubtitle, IonCardContent, IonList,
+} from '@ionic/vue'
+
+import { type Deezer } from '@/interfaces/DeezerInterface'
+import { presentAlert } from '@/scripts/alertMsg'
+import { openToast } from '@/scripts/warning-message'
+
+import StackToolbar from '@/components/main/StackToolbar.vue'
+import StackButtons from '@/components/main/StackButtons.vue'
+
 // states
 const query = ref('')
 const albums = ref<Deezer[]>([])
@@ -74,7 +91,9 @@ const getLyricsType = (isExplicit: boolean) => isExplicit
         	>
         		<ion-card>
         			<ion-card-header>
-        				<ion-img :src="album.cover_xl" :alt="album.id" />
+        				<ion-img 
+                  :src="album.cover_xl" :alt="album.id.toString()" 
+                />
         				
         				<ion-card-title>{{ album.title }}</ion-card-title>
         				

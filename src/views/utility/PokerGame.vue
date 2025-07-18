@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import axios, { AxiosError } from 'axios'
+import { presentAlert } from '@/scripts/alertMsg'
+
 interface PokerRule {
   title: string
   age: string
   players: string
-  howplay: string[]
+  howPlay: string[]
 }
 
 // static
@@ -14,7 +18,7 @@ const pokerGameList: string[] = [
 
 const pokerGame = ref('')
 
-const pokerRule: PokerRule = ref<PokerRule>({
+const pokerRule = ref<PokerRule>({
   title: '',
   age: '',
   players: '',
@@ -59,7 +63,7 @@ const clearPokerRule = () => {
     title: '', 
     age: '', 
     players: '', 
-    howplay: []
+    howPlay: []
   }
 }
 </script>

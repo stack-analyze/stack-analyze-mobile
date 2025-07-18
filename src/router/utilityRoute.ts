@@ -1,3 +1,5 @@
+import { type RouteRecordRaw } from 'vue-router';
+
 const utilityRoute: RouteRecordRaw = {
   path: '/utility/',
   component: () => import('@/views/utility/UtilityTabs.vue'),

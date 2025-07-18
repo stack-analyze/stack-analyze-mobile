@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import {
-  IonItem,
-  IonLabel,
-  IonBadge,
-  IonText,
+  IonItem, IonLabel, IonNote, IonText,
 } from "@ionic/vue";
 
 const {
@@ -18,18 +15,10 @@ const {
 
 const resultColor = (score: number) => {
   switch (true) {
-    case score === 0:
-      return "dark";
-      break;
-    case score === 1 || score <= 49:
-      return "danger";
-      break;
-    case score === 50 || score <= 89:
-      return "warning";
-      break;
-    case score >= 90 || score === 100:
-      return "success";
-      break;
+    case score === 0: return "dark";
+    case score === 1 || score <= 49: return "danger";
+    case score === 50 || score <= 89: return "warning";
+    case score >= 90 || score === 100: return "success";
   }
 }
 </script>
@@ -37,7 +26,7 @@ const resultColor = (score: number) => {
 <template>
   <ion-item>
     <ion-note slot="end" :color="resultColor(pagespeedScore)">
-    {{ pagespeedScore }} / 100
+      {{ pagespeedScore }} / 100
     </ion-note>
     <ion-label position="stacked">{{ pagespeedMode }}:</ion-label>
     <ion-text>{{ pagespeedURL || "no website" }}</ion-text>

@@ -1,4 +1,21 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue';
+import { AxiosError } from 'axios';
+
+import {
+  IonPage, IonContent, IonGrid, IonRow
+} from '@ionic/vue'
+
+import { type Movie } from '@/interfaces/MovieInterface';
+import { presentAlert } from '@/scripts/alertMsg';
+import { openToast } from '@/scripts/warning-message';
+import movieApi from '@/api/movieApi';
+
+import StackToolbar from '@/components/main/StackToolbar.vue';
+import StackInput from '@/components/main/StackInput.vue';
+import StackButtons from '@/components/main/StackButtons.vue';
+import MovieCard from '@/components/cards/MovieCard.vue';
+
 // states
 const movieTitle = ref("");
 const movies = ref<Movie[]>([]);
