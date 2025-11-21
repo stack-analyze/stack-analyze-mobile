@@ -3,6 +3,14 @@ import { ref } from 'vue'
 import axios, { AxiosError } from 'axios'
 import { presentAlert } from '@/scripts/alertMsg'
 
+import {
+  IonPage, IonContent, IonItem, IonSelect, IonSelectOption,
+  IonCard, IonCardHeader, IonCardTitle, IonCardContent,
+  IonGrid, IonRow, IonCol, IonList, IonLabel,
+} from '@ionic/vue'
+import StackToolbar from '@/components/main/StackToolbar.vue'
+import StackButtons from '@/components/main/StackButtons.vue'
+
 interface PokerRule {
   title: string
   age: string
@@ -70,9 +78,9 @@ const clearPokerRule = () => {
 
 <template>
   <ion-page>
+    <stack-toolbar />
+
     <ion-content>
-      <stack-toolbar />
-      
       <ion-item>
         <ion-select 
           label="select a poker game"

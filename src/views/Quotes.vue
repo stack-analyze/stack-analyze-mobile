@@ -9,7 +9,7 @@ import { useQuote } from '@/composables/quotesComposable';
 import StackToolbar from '@/components/main/StackToolbar.vue';
 import StackButtons from '@/components/main/StackButtons.vue';
 
-const placeholder = 'enter a quote for seach or leave blank if your search is anime'
+const placeholder = 'enter a quote for seach or leave blank in some quotes'
 const {
   quotesOpts, quotesSearch, quotesSelect, isEmptyQuoteInfo,
   quoteInfo, quotesMethods

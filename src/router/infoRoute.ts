@@ -27,6 +27,11 @@ const infoRoute: RouteRecordRaw = {
       path: "bundlephobia",
       name: "bundlephobia info",
       component: () => import('@/views/info/Bundlephobia.vue')
+    },
+    {
+      path: "tcgp",
+      name: "tcgp card info",
+      component: () => import('@/views/info/Tgcp.vue')
     }
   ]
 };

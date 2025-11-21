@@ -1,20 +1,17 @@
 import { computed, ref } from 'vue';
 import axios, { AxiosError } from 'axios';
 import { presentAlert } from '@/scripts/alertMsg';
-import { AnimeQuote } from '@/interfaces/QuotesInterface';
+import { Quote } from '@/interfaces/QuotesInterface';
 
 interface QuoteFunction {
   [x: string]: () => Promise<void> | void
 }
 
 export const useQuote = () => {
-  // static
-  const quotesOpts = ['anime']
-
   // state
   const quotesSelect = ref('')
   const quotesSearch = ref('')
-  const quoteInfo = ref<Partial<AnimeQuote>>({})
+  const quoteInfo = ref<Partial<Quote>>({})
 
   // computers
   const isEmptyQuoteInfo = computed(
@@ -25,7 +22,7 @@ export const useQuote = () => {
   const quotesMethods: QuoteFunction = {
     anime: async () => {
       try {
-        const { data } = await axios.get<AnimeQuote>('https://api.animechan.io/v1/quotes/random', {
+        const { data } = await axios.get<Quote>('https://api.animechan.io/v1/quotes/random', {
           params: {
             anime: quotesSearch.value
           }
@@ -43,10 +40,28 @@ export const useQuote = () => {
       quotesSelect.value = ''
       quotesSearch.value = ''
     },
+    swift: async () => {
+      try {
+        const { data } = await axios.get<Quote>("https://taylorswiftapi.onrender.com/get");
+
+        quoteInfo.value = data
+      } catch (err) {
+        presentAlert({
+          header: 'quote problem',
+          subHeader: 'details',
+          msg: (err as AxiosError).message
+        })
+      }
+
+      quotesSelect.value = ''
+    },
     clearQuoteInfo: () => {
       quoteInfo.value = {}
     }
   }
+
+  // static
+  const quotesOpts = Object.keys(quotesMethods, ).slice(0, -1)
 
   return {
     quotesOpts, quotesSelect, quotesSearch, isEmptyQuoteInfo,

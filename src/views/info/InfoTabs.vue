@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import {
+  IonPage, IonTabs, IonTabBar, IonTabButton, 
+  IonIcon, IonLabel, IonRouterOutlet
+} from '@ionic/vue'
+import { infoToolsPages } from '@/scripts/appPages'
+import { ssrContextKey } from 'vue';
+
+</script>
+
 <template>
   <ion-page>
     <ion-tabs>
@@ -9,7 +19,7 @@
           :tab="page.title" 
           :href="page.url"
         >
-          <ion-icon :icon="page.icon" />
+          <ion-icon :icon="page.icon" :src="page.src" />
           <ion-label>{{ page.title }}</ion-label>
         </ion-tab-button>
       </ion-tab-bar>

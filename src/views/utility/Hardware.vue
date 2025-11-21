@@ -3,7 +3,15 @@ import { type DeviceInfo, Device } from '@capacitor/device';
 import { type ConnectionStatus, Network } from '@capacitor/network';
 import { ref, watchEffect } from 'vue';
 
-import {warningOutline} from 'ionicons/icons';
+import { warningOutline } from 'ionicons/icons';
+
+import {
+  IonPage, IonContent, IonGrid, IonRow, IonCol, IonItem,
+  IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle,
+  IonCardContent, IonLabel, IonText, IonImg, IonToast
+} from '@ionic/vue';
+
+import StackToolbar from '@/components/main/StackToolbar.vue';
 
 const modelInfo = ref<Partial<DeviceInfo>>({});
 
@@ -20,16 +28,12 @@ watchEffect(async () => {
 
 <template>
   <ion-page>
+    <stack-toolbar />
+
     <ion-content>
-      <stack-toolbar />
-      
       <ion-card mode="ios" class="stack-card">
         <ion-card-header>
-          <ion-img
-            src="/assets/hardware-info/cpu.svg"
-            alt="hardware info img"
-            class="hardware-img"
-          />
+          <ion-img src="/assets/hardware-info/cpu.svg" alt="hardware info img" class="hardware-img" />
           <ion-card-title>{{ modelInfo.model }}</ion-card-title>
           <ion-card-subtitle>
             os:
@@ -59,9 +63,7 @@ watchEffect(async () => {
               </ion-col>
               <ion-col size="6">
                 <ion-item>
-                  <ion-label position="stacked"
-                    >platform: {{ modelInfo.platform }}</ion-label
-                  >
+                  <ion-label position="stacked">platform: {{ modelInfo.platform }}</ion-label>
                   <ion-text>
                     device: {{ modelInfo.isVirtual ? "virtual" : "phisical" }}
                   </ion-text>
@@ -75,9 +77,7 @@ watchEffect(async () => {
               </ion-col>
               <ion-col size="6">
                 <ion-item>
-                  <ion-label position="stacked"
-                    >connected: {{ networkInfo.connected ? "yes" : "no" }}</ion-label
-                  >
+                  <ion-label position="stacked">connected: {{ networkInfo.connected ? "yes" : "no" }}</ion-label>
                   <ion-text> type: {{ networkInfo.connectionType }} </ion-text>
                 </ion-item>
               </ion-col>
@@ -85,12 +85,9 @@ watchEffect(async () => {
           </ion-grid>
         </ion-card-content>
       </ion-card>
-      <ion-toast
-        color="warning"
+      <ion-toast color="warning"
         message="the hardware information tool in some browsers works only partially or is incompatible at all."
-        :icon="warningOutline"
-        :duration="2000"
-      >
+        :icon="warningOutline" :duration="2000">
       </ion-toast>
     </ion-content>
   </ion-page>

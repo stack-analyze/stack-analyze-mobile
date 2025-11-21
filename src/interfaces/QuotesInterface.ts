@@ -11,7 +11,13 @@ interface Data {
   character: Anime
 }
 
-export interface AnimeQuote {
-  status: string
-  data: Data
+interface TaylorSwift {
+  quote?: string
+  song?: string
+  album?: string
+}
+
+export interface Quote extends TaylorSwift {
+  status?: string
+  data?: Data
 }

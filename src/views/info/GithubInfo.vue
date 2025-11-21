@@ -1,4 +1,21 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+import { format } from 'timeago.js'
+import axios, { AxiosError } from 'axios'
+import { type GithubSchema } from '@/interfaces/GithubInterface'
+import { presentAlert } from '@/scripts/alertMsg'
+import { openToast } from '@/scripts/warning-message'
+
+import {
+  IonPage, IonContent, IonGrid, IonLabel, IonText, IonItem, IonImg,
+  IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle,
+  IonCardContent
+} from '@ionic/vue'
+
+import StackToolbar from '@/components/main/StackToolbar.vue'
+import StackButtons from '@/components/main/StackButtons.vue'
+import StackInput from '@/components/main/StackInput.vue'
+
 // states
 const user = ref("");
 const githubUser = ref<Partial<GithubSchema>>({});
@@ -97,7 +114,7 @@ const clearGitUser = () => {
               <ion-col size="6">
                 <ion-item>
                   <ion-label position="stacked">Account age:</ion-label>
-                  <ion-text>{{ format(githubUser.created_at) }}</ion-text>
+                  <ion-text>{{ format(githubUser.created_at || Date.now()) }}</ion-text>
                 </ion-item>
               </ion-col>
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, useTemplateRef } from 'vue';
+import { useTemplateRef } from 'vue';
 
 import {
   IonPage, IonContent, IonAccordionGroup, IonAccordion,
@@ -9,7 +9,6 @@ import {
 import { recomendations } from '@/scripts/data';
 
 const accordionGroup = useTemplateRef('accordionGroup');
-const isOpen = ref(false)
 
 const closeAccordion = () => {
   if (accordionGroup.value) {

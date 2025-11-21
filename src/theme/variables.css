@@ -46,6 +46,30 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-youtube-contrast-rgb: 255, 255, 255;
   --ion-color-youtube-shade: #960000;
   --ion-color-youtube-tint: #b31a1a;
+
+  /* tcg fighting */
+  --ion-color-tcgFighting: #EE8130;
+	--ion-color-tcgFighting-rgb: 238,129,48;
+	--ion-color-tcgFighting-contrast: #000000;
+	--ion-color-tcgFighting-contrast-rgb: 0,0,0;
+	--ion-color-tcgFighting-shade: #d1722a;
+	--ion-color-tcgFighting-tint: #f08e45;
+
+  /* tcg dragon */
+  --ion-color-tcgdragon: #B6A136;
+	--ion-color-tcgdragon-rgb: 182,161,54;
+	--ion-color-tcgdragon-contrast: #000000;
+	--ion-color-tcgdragon-contrast-rgb: 0,0,0;
+	--ion-color-tcgdragon-shade: #a08e30;
+	--ion-color-tcgdragon-tint: #bdaa4a;
+
+  /* tcg dark */
+  --ion-color-tcgdark: #2596be;
+	--ion-color-tcgdark-rgb: 37,150,190;
+	--ion-color-tcgdark-contrast: #000000;
+	--ion-color-tcgdark-contrast-rgb: 0,0,0;
+	--ion-color-tcgdark-shade: #2184a7;
+	--ion-color-tcgdark-tint: #3ba1c5;
 }
 
 :root.ios {
@@ -104,6 +128,34 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-contrast-rgb: var(--ion-color-youtube-contrast-rgb);
   --ion-color-shade: var(--ion-color-youtube-shade);
   --ion-color-tint: var(--ion-color-youtube-tint);
+}
+
+/* tcg colors */
+.ion-color-tcgFighting {
+	--ion-color-base: var(--ion-color-tcgFighting);
+	--ion-color-base-rgb: var(--ion-color-tcgFighting-rgb);
+	--ion-color-contrast: var(--ion-color-tcgFighting-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-tcgFighting-contrast-rgb);
+	--ion-color-shade: var(--ion-color-tcgFighting-shade);
+	--ion-color-tint: var(--ion-color-tcgFighting-tint);
+}
+
+.ion-color-tcgdragon {
+	--ion-color-base: var(--ion-color-tcgdragon);
+	--ion-color-base-rgb: var(--ion-color-tcgdragon-rgb);
+	--ion-color-contrast: var(--ion-color-tcgdragon-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-tcgdragon-contrast-rgb);
+	--ion-color-shade: var(--ion-color-tcgdragon-shade);
+	--ion-color-tint: var(--ion-color-tcgdragon-tint);
+}
+
+.ion-color-tcgdark {
+	--ion-color-base: var(--ion-color-tcgdark);
+	--ion-color-base-rgb: var(--ion-color-tcgdark-rgb);
+	--ion-color-contrast: var(--ion-color-tcgdark-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-tcgdark-contrast-rgb);
+	--ion-color-shade: var(--ion-color-tcgdark-shade);
+	--ion-color-tint: var(--ion-color-tcgdark-tint);
 }
 
 @media (prefers-color-scheme: dark) {

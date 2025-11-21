@@ -2,20 +2,18 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite';
 
-import vue from '@vitejs/plugin-vue';
+import Vue from '@vitejs/plugin-vue';
 
 import { VitePWA } from 'vite-plugin-pwa';
-
-import { IonicResolver } from 'unplugin-vue-components/resolvers';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue({
+    Vue({
       template: {
       compileOptions: {
         isCumstomOptions: {
-          isCustomElement: (tag) => tag.includes('swiper-')
+          isCustomElement: (tag) => tag.includes('swiper')
         }
       }
       }

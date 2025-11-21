@@ -1,4 +1,18 @@
 <script setup lang="ts">
+import { ref, onMounted, watchEffect } from 'vue';
+import { RefresherEventDetail, loadingController } from '@ionic/vue';
+import axios, { AxiosError } from 'axios';
+
+import type { Crypto } from '@/interfaces/CryptoInterface';
+import { presentAlert } from '@/scripts/alertMsg';
+
+import {
+  IonPage, IonContent, IonRefresher, IonRefresherContent,
+  IonSearchbar, IonList, IonItem, IonAvatar, IonImg,
+  IonLabel, IonText, IonNote
+} from '@ionic/vue'
+import StackToolbar from '@/components/main/StackToolbar.vue';
+
 // state
 const coinList = ref<Crypto[]>([]);
 const filterCoins = ref<Crypto[]>([]);

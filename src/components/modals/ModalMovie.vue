@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue';
 import { AxiosError } from 'axios';
+import { closeCircleOutline } from 'ionicons/icons'
 import movieApi from '@/api/movieApi';
 import { Movie } from '@/interfaces/MovieInterface';
 import { presentAlert } from '@/scripts/alertMsg';
@@ -37,7 +38,7 @@ watchEffect(async () => {
     <ion-toolbar>
       <ion-title>movie info</ion-title>
       <ion-buttons slot="end">
-        <ion-button @click="emit('closeModal')" color="danger">
+        <ion-button @click="emit('closeModal', false)" color="danger">
           <ion-icon :icon="closeCircleOutline"></ion-icon>
         </ion-button>
       </ion-buttons>

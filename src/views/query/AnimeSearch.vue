@@ -19,7 +19,6 @@ import animeCard from '@/components/cards/animeCard.vue';
 // states
 const query = ref("");
 const animeData = ref<Anime[]>([]);
-const animeProps = ref<Partial<Anime>>({});
 
 const isEmptyResults = computed(() => animeData.value.length === 0);
 

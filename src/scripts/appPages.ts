@@ -59,6 +59,11 @@ const infoToolsPages: Pages[] = [
         url: "/info/bundlephobia",
         icon: layersOutline
     },
+    {
+        title: 'tcgp',
+        url: '/info/tcgp',
+        src: '/assets/energy-icons/pokeball.svg'
+    }
 ];
 
 const queryToolsPages: Pages[] = [

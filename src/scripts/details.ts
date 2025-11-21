@@ -5,6 +5,17 @@ type detailsVersion = {
 
 export const versionsNotes: detailsVersion[] = [
   {
+    version: '2.6.0',
+    details: `
+    added:
+      1. tcg pocket card info
+      2. taylor swift quotes (neo-jquery easter egg)
+    fixed:
+      1. added missing import in some pages.
+      2. add DOM.iterable in tsconfig.
+    `
+  },
+  {
     version: '2.5.0',
     details: `
     added:

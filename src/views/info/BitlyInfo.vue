@@ -1,4 +1,20 @@
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+import axios, { AxiosError } from 'axios'
+import { presentAlert } from '@/scripts/alertMsg'
+import { format } from 'timeago.js'
+
+import { Bitly } from '@/interfaces/BitlyInterface'
+
+import {
+  IonPage, IonContent, IonGrid, IonItem,
+  IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonCardSubtitle,
+} from '@ionic/vue'
+import StackToolbar from '@/components/main/StackToolbar.vue'
+import StackInput from '@/components/main/StackInput.vue'
+import StackButtons from '@/components/main/StackButtons.vue'
+
+
 // regexp
 const bitlyRegexp = /bit\.ly\//;
 
@@ -48,6 +64,7 @@ const getBitlyInfo = async () => {
 <template>
   <ion-page>
     <stack-toolbar />
+    
     <ion-content>
       <stack-input 
         v-model="bitlyURL" 
@@ -74,7 +91,7 @@ const getBitlyInfo = async () => {
         </ion-card-header>
         <ion-card-content>
           <ion-card-subtitle>
-            created at: {{ format(bitlyResults.created_at) }}
+            created at: {{ format(bitlyResults.created_at || 0) }}
           </ion-card-subtitle>
           <ion-item>
             long url: {{ bitlyResults.long_url || 'no long url' }}
