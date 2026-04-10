@@ -11,4 +11,6 @@ export const TCGP_SETS: Readonly<{ [s: string]: number; }> = {
   a4: 241,
   a4a: 105,
   b1: 331,
+  b1a: 103,
+  b2: 234,
 }

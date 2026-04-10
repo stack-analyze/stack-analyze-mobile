@@ -15,12 +15,15 @@ import '@ionic/vue/css/ionic-swiper.css';
 /* Theme variables */
 import './theme/variables.css';
 
+/* vue virtual scroll css */
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+
 /* general styles */
 import './main.css';
 
 /* start vue init */
 const app = createApp(App)
-  .use(IonicVue, {rippleEffect: false, mode: 'md'})
+  .use(IonicVue, { rippleEffect: false, mode: 'md' })
   .use(router);
 
 router.isReady().then(() => {

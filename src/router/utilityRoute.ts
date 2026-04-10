@@ -22,6 +22,11 @@ const utilityRoute: RouteRecordRaw = {
       path: 'poker',
       name: 'poker game rule',
       component: () => import('@/views/utility/PokerGame.vue')
+    },
+    {
+      path: 'magic-ball',
+      name: 'magic ball',
+      component: () => import('@/views/utility/MagicBall.vue')
     }
   ]
 };
