@@ -3,7 +3,7 @@ import { ref, computed } from 'vue';
 import { 
   diceOutline, refreshOutline, copyOutline 
 } from 'ionicons/icons'
-import { openToast } from '@/scripts/warning-message';
+import { openToast } from '../../scripts/warning-message';
 
 import {
   IonPage, IonContent, IonItem, IonButton, IonIcon, IonLabel,

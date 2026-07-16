@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import axios, { AxiosError } from 'axios'
-import { presentAlert } from '@/scripts/alertMsg'
 import { format } from 'timeago.js'
 
-import { Bitly } from '@/interfaces/BitlyInterface'
+import type { Bitly } from '../../interfaces/BitlyInterface'
+import { presentAlert } from '../../scripts/alertMsg'
 
 import {
   IonPage, IonContent, IonGrid, IonItem,

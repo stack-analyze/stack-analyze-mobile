@@ -2,9 +2,9 @@
 import { ref, computed } from 'vue'
 import { format } from 'timeago.js'
 import axios, { AxiosError } from 'axios'
-import { type GithubSchema } from '@/interfaces/GithubInterface'
-import { presentAlert } from '@/scripts/alertMsg'
-import { openToast } from '@/scripts/warning-message'
+import { type GithubSchema } from '../../interfaces/GithubInterface'
+import { presentAlert } from '../../scripts/alertMsg'
+import { openToast } from '../../scripts/warning-message'
 
 import {
   IonPage, IonContent, IonGrid, IonLabel, IonText, IonItem, IonImg,

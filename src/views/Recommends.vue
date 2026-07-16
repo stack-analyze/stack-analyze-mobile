@@ -6,7 +6,7 @@ import {
   IonItem, IonLabel, IonList, IonIcon
 } from '@ionic/vue';
 
-import { recomendations } from '@/scripts/data';
+import { recomendations } from '../scripts/data';
 
 const accordionGroup = useTemplateRef('accordionGroup');
 
@@ -18,10 +18,6 @@ const closeAccordion = () => {
 
 const youtubeList = recomendations.filter(
   (item) => item.color === 'youtube'
-);
-
-const webList = recomendations.filter(
-	(item) => item.color === 'primary'
 );
 
 const igList = recomendations.filter(

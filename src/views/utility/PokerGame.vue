@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import axios, { AxiosError } from 'axios'
-import { presentAlert } from '@/scripts/alertMsg'
+import { presentAlert } from '../../scripts/alertMsg'
 
 import {
   IonPage, IonContent, IonItem, IonSelect, IonSelectOption,

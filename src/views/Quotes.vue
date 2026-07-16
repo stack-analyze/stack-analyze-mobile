@@ -5,7 +5,7 @@ import {
   IonInput, IonSelect, IonSelectOption
 } from '@ionic/vue';
 
-import { useQuote } from '@/composables/quotesComposable';
+import { useQuote } from '../composables/quotesComposable';
 import StackToolbar from '@/components/main/StackToolbar.vue';
 import StackButtons from '@/components/main/StackButtons.vue';
 

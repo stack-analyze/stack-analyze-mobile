@@ -4,7 +4,7 @@ import {
   IonTabs, IonTabBar, IonTabButton,
 } from '@ionic/vue'
 
-import { queryToolsPages } from '@/scripts/appPages';
+import { queryToolsPages } from '../../scripts/appPages';
 </script>
 
 

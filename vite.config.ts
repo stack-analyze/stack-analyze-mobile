@@ -1,4 +1,5 @@
 import { fileURLToPath, URL } from 'node:url'
+import { Agent } from 'node:http'
 
 import { defineConfig } from 'vite';
 
@@ -11,13 +12,11 @@ export default defineConfig({
   plugins: [
     Vue({
       template: {
-      compileOptions: {
-        isCumstomOptions: {
+        compilerOptions: {
           isCustomElement: (tag) => tag.includes('swiper')
         }
       }
-      }
-    }), 
+    }),
     VitePWA({
       registerType: "autoUpdate",
       manifest: {
@@ -107,6 +106,20 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  server: {
+    proxy: {
+      '/shortwave': {
+        target: 'https://shortwave.live/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/shortwave/, ''),
+      },
+      '/deezer': {
+        target: 'https://api.deezer.com/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/deezer/, ''),
+      },
     },
   },
 });

@@ -6,10 +6,10 @@ import {
   layersOutline, lockClosedOutline, logoTwitch, musicalNoteOutline,
   newspaperOutline, peopleOutline, radioOutline, readerOutline, searchCircleOutline,
   searchOutline, sparklesOutline, terminalOutline, thumbsUpOutline, videocamOutline, walletOutline,
-  eyeOutline
+  eyeOutline, filterOutline
 } from 'ionicons/icons'
 
-import { type Pages } from "@/interfaces/RouteInterface";
+import { type Pages } from "../interfaces/RouteInterface";
 
 const webToolsPages: Pages[] = [
   {
@@ -64,6 +64,11 @@ const infoToolsPages: Pages[] = [
     title: 'tcgp',
     url: '/info/tcgp',
     src: '/assets/energy-icons/pokeball.svg'
+  },
+  {
+    title: 'shortwave',
+    url: '/info/shortwave',
+    icon: filterOutline
   }
 ];
 

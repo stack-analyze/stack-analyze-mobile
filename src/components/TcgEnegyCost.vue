@@ -1,41 +1,39 @@
 <script setup lang="ts">
 import { IonIcon } from '@ionic/vue';
 
+type tcgObject = { [s: string]: string; }
+
 const { energyType } = defineProps<{
   energyType: string;
 }>()
 
-const tcgEnegyIcon = () => {
-  switch (energyType) {
-    case 'Grass': return '/assets/energy-icons/grass.svg';
-    case 'Fire': return '/assets/energy-icons/fire.svg';
-    case 'Water': return '/assets/energy-icons/water.svg';
-    case 'Lightning': return '/assets/energy-icons/lightning.svg';
-    case 'Psychic': return '/assets/energy-icons/psychic.svg';
-    case 'Fighting': return '/assets/energy-icons/fighting.svg';
-    case 'Darkness': return '/assets/energy-icons/darkness.svg';
-    case 'Metal': return '/assets/energy-icons/metal.svg';
-    case 'Dragon': return '/assets/energy-icons/dragon.svg';
-    default: return '/assets/energy-icons/colorless.svg';
-  }
+const tcgEnegyIcon: tcgObject = {
+  Grass: '/assets/energy-icons/grass.svg',
+  Fire: '/assets/energy-icons/fire.svg',
+  Water: '/assets/energy-icons/water.svg',
+  Lightning: '/assets/energy-icons/lightning.svg',
+  Psychic: '/assets/energy-icons/psychic.svg',
+  Fighting: '/assets/energy-icons/fighting.svg',
+  Darkness: '/assets/energy-icons/darkness.svg',
+  Metal: '/assets/energy-icons/metal.svg',
+  Dragon: '/assets/energy-icons/dragon.svg',
+  colorless: '/assets/energy-icons/colorless.svg',
 }
 
-const tcgEnegyColor = () => {
-  switch (energyType) {
-    case 'Grass': return 'success';
-    case 'Fire': return 'danger';
-    case 'Water': return 'primary';
-    case 'Lightning': return 'warning';
-    case 'Psychic': return 'tertiary';
-    case 'Fighting': return 'tcgFighting';
-    case 'Darkness': return 'tcgDark';
-    case 'Metal': return 'medium';
-    case 'Dragon': return 'tcgDragon';
-    default: return 'dark';
-  }
+const tcgEnegyColor: tcgObject = {
+  Grass: 'success',
+  Fire: 'danger',
+  Water: 'primary',
+  Lightning: 'warning',
+  Psychic: 'tertiary',
+  Fighting: 'tcgFighting',
+  Darkness: 'tcgDark',
+  Metal: 'medium',
+  Dragon: 'tcgDragon',
+  dark: 'dark',
 }
 </script>
 
 <template>
-  <ion-icon size="large" :src="tcgEnegyIcon()" :color="tcgEnegyColor()"  />
+  <ion-icon size="large" :src="tcgEnegyIcon[energyType]" :color="tcgEnegyColor[energyType]" />
 </template>

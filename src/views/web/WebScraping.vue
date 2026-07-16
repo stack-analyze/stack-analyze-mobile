@@ -6,10 +6,10 @@ import {
   IonPage, IonContent, IonItem, IonSelect, IonSelectOption, IonGrid
 } from '@ionic/vue';
 
-import { type WebScraping } from '@/interfaces/WebScrapingInterface';
-import { useHttp } from '@/composables/webComposable';
-import { startWithHttp } from '@/scripts/data';
-import { openToast } from '@/scripts/warning-message';
+import { type WebScraping } from '../../interfaces/WebScrapingInterface';
+import { useHttp } from '../../composables/webComposable'; 
+import { startWithHttp } from '../../scripts/data';
+import { openToast } from '../../scripts/warning-message';
 
 import StackToolbar from '@/components/main/StackToolbar.vue';
 import StackInput from '@/components/main/StackInput.vue';

@@ -2,9 +2,9 @@
 import { ref, watchEffect } from 'vue';
 import { AxiosError } from 'axios';
 import { closeCircleOutline } from 'ionicons/icons'
-import movieApi from '@/api/movieApi';
-import { Movie } from '@/interfaces/MovieInterface';
-import { presentAlert } from '@/scripts/alertMsg';
+import movieApi from '../../api/movieApi';
+import type { Movie } from '../../interfaces/MovieInterface';
+import { presentAlert } from '../../scripts/alertMsg';
 
 const { movieId } = defineProps<{
   movieId: number;

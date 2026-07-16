@@ -3,9 +3,7 @@ import {
   IonPage, IonTabs, IonTabBar, IonTabButton, 
   IonIcon, IonLabel, IonRouterOutlet
 } from '@ionic/vue'
-import { infoToolsPages } from '@/scripts/appPages'
-import { ssrContextKey } from 'vue';
-
+import { infoToolsPages } from '../../scripts/appPages'
 </script>
 
 <template>

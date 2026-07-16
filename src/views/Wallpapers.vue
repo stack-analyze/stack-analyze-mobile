@@ -5,7 +5,7 @@ import {
   IonButton, IonGrid, IonRow
 } from '@ionic/vue'
 
-import { wallpapers } from '@/scripts/wallpapers'
+import { wallpapers } from '../scripts/wallpapers'
 
 import StackToolbar from '@/components/main/StackToolbar.vue'
 import WallpaperCard from '@/components/cards/WallpaperCard.vue'

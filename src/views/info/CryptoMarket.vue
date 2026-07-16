@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, onMounted, watchEffect } from 'vue';
-import { RefresherEventDetail, loadingController } from '@ionic/vue';
+import { type RefresherEventDetail, loadingController } from '@ionic/vue';
 import axios, { AxiosError } from 'axios';
 
-import type { Crypto } from '@/interfaces/CryptoInterface';
-import { presentAlert } from '@/scripts/alertMsg';
+import type { Crypto } from '../../interfaces/CryptoInterface';
+import { presentAlert } from '../../scripts/alertMsg';
 
 import {
   IonPage, IonContent, IonRefresher, IonRefresherContent,

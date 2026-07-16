@@ -6,9 +6,9 @@ import {
   IonPage, IonContent, IonGrid, IonRow,
 } from '@ionic/vue'
 
-import { TwitchUser } from '@/interfaces/TwitchInterface';
-import { presentAlert } from '@/scripts/alertMsg';
-import { openToast } from '@/scripts/warning-message';
+import type { TwitchUser } from '../../interfaces/TwitchInterface';
+import { presentAlert } from '../../scripts/alertMsg';
+import { openToast } from '../../scripts/warning-message';
 
 import StackToolbar from '@/components/main/StackToolbar.vue';
 import StackInput from '@/components/main/StackInput.vue';

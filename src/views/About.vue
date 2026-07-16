@@ -6,9 +6,10 @@ import {
 } from '@ionic/vue';
 
 import { register } from 'swiper/element/bundle';
-import { Cards } from '@/scripts/data';
 
-import StackToolbar from '@/components/main/StackToolbar.vue';
+import { Cards } from '../scripts/data';
+
+import StackToolbar from '../components/main/StackToolbar.vue';
 
 const modules = [IonicSlides];
 

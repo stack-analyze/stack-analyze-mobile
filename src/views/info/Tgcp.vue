@@ -3,16 +3,15 @@ import { computed, ref } from 'vue'
 
 import { ellipse } from 'ionicons/icons'
 
-import { type TcgpCard } from '@/interfaces/TcgpInteface'
-import { TCGP_SETS } from '@/scripts/tcgpSets'
-import { presentAlert } from '@/scripts/alertMsg'
+import { type TcgpCard } from '../../interfaces/TcgpInteface'
+import { TCGP_SETS } from '../../scripts/tcgpSets'
+import { presentAlert } from '../../scripts/alertMsg'
 
 import {
   IonPage, IonContent, IonGrid, IonRow, IonCol,
   IonInput, IonSelect, IonSelectOption, IonItem,
   IonCard, IonCardHeader, IonCardContent, IonCardTitle,
   IonCardSubtitle, IonImg, IonLabel, IonBadge, IonIcon, IonText,
-  IonThumbnail
 } from '@ionic/vue'
 
 import StackToolbar from '@/components/main/StackToolbar.vue'

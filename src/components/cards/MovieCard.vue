@@ -6,7 +6,7 @@ import {
   IonCard, IonCardHeader, IonCardContent, IonCardTitle,
 } from '@ionic/vue'
 
-import { type Movie } from '@/interfaces/MovieInterface';
+import { type Movie } from '../../interfaces/MovieInterface';
 import ModalMovie from '../modals/ModalMovie.vue'
 
 const { movieData } = defineProps<{

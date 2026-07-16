@@ -4,7 +4,7 @@ import {
   IonCardHeader, IonCardContent, IonCardTitle, IonCardSubtitle,
 } from '@ionic/vue'
 
-import { type TechStack } from '@/interfaces/TechStackInterface';
+import { type TechStack } from '../../interfaces/TechStackInterface';
 
 const formatter = new Intl.ListFormat('en', { style: 'short', type: 'unit' });
 

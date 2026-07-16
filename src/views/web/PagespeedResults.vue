@@ -6,11 +6,11 @@ import {
   IonPage, IonContent, IonGrid
 } from '@ionic/vue';
 
-import pagespeedApi from '@/api/pagespeedApi';
-import { useHttp } from '@/composables/webComposable';
-import { presentAlert } from '@/scripts/alertMsg';
-import { startWithHttp } from '@/scripts/data';
-import { openToast } from '@/scripts/warning-message';
+import pagespeedApi from '../../api/pagespeedApi';
+import { useHttp } from '../../composables/webComposable';
+import { presentAlert } from '../../scripts/alertMsg';
+import { startWithHttp } from '../../scripts/data';
+import { openToast } from '../../scripts/warning-message';
 
 import StackButtons from '@/components/main/StackButtons.vue';
 import StackInput from '@/components/main/StackInput.vue';

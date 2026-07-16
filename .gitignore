@@ -16,6 +16,8 @@ $RECYCLE.BIN/
 .env
 
 package-lock.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
 
 *.log
 log.txt

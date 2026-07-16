@@ -7,9 +7,9 @@ import {
   IonThumbnail, IonImg, IonLabel, IonText,
 } from '@ionic/vue'
 
-import { PotterCharacter } from '@/interfaces/PotterInfoInterface';
-import { presentAlert } from '@/scripts/alertMsg';
-import { openToast } from '@/scripts/warning-message';
+import type { PotterCharacter } from '../../interfaces/PotterInfoInterface';
+import { presentAlert } from '../../scripts/alertMsg';
+import { openToast } from '../../scripts/warning-message';
 
 import StackToolbar from '@/components/main/StackToolbar.vue';
 import StackInput from '@/components/main/StackInput.vue';

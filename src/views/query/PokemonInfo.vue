@@ -8,9 +8,9 @@ import {
   IonCardHeader, IonCardTitle, IonCardContent,
 } from "@ionic/vue";
 
-import { type Pokemon } from "@/interfaces/PokemonInterface";
-import { presentAlert } from "@/scripts/alertMsg";
-import { openToast } from "@/scripts/warning-message";
+import { type Pokemon } from "../../interfaces/PokemonInterface";
+import { presentAlert } from "../../scripts/alertMsg";
+import { openToast } from "../../scripts/warning-message";
 
 import "@/pokeTypes.css";
 

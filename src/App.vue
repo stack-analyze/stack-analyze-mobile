@@ -5,7 +5,7 @@ import {
   IonRouterOutlet
 } from "@ionic/vue";
 
-import MenuStack from "@/components/MenuApp.vue";
+import MenuStack from "./components/MenuApp.vue";
 </script>
 
 <template>

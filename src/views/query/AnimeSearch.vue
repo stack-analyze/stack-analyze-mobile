@@ -6,10 +6,10 @@ import {
   IonPage, IonContent, IonGrid, IonRow,
 } from '@ionic/vue';
 
-import animeApi from '@/api/animeApi';
-import { type Anime } from '@/interfaces/AnimeInterface';
-import { presentAlert } from '@/scripts/alertMsg';
-import { openToast } from '@/scripts/warning-message';
+import animeApi from '../../api/animeApi';
+import { type Anime } from '../../interfaces/AnimeInterface';
+import { presentAlert } from '../../scripts/alertMsg';
+import { openToast } from '../../scripts/warning-message';
 
 import StackToolbar from '@/components/main/StackToolbar.vue';
 import StackInput from '@/components/main/StackInput.vue';

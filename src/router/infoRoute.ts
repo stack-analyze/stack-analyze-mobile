@@ -32,6 +32,11 @@ const infoRoute: RouteRecordRaw = {
       path: "tcgp",
       name: "tcgp card info",
       component: () => import('@/views/info/Tgcp.vue')
+    },
+    {
+      path: "shortwave",
+      name: "shortwave stations",
+      component: () => import('@/views/info/Shortwave.vue')
     }
   ]
 };

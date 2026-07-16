@@ -6,10 +6,10 @@ import {
   IonPage, IonContent, IonGrid, IonRow
 } from '@ionic/vue'
 
-import { type Movie } from '@/interfaces/MovieInterface';
-import { presentAlert } from '@/scripts/alertMsg';
-import { openToast } from '@/scripts/warning-message';
-import movieApi from '@/api/movieApi';
+import { type Movie } from '../../interfaces/MovieInterface';
+import { presentAlert } from '../../scripts/alertMsg';
+import { openToast } from '../../scripts/warning-message';
+import movieApi from '../../api/movieApi';
 
 import StackToolbar from '@/components/main/StackToolbar.vue';
 import StackInput from '@/components/main/StackInput.vue';

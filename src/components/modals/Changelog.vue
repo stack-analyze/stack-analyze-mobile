@@ -6,7 +6,7 @@ import {
 } from '@ionic/vue';
 
 import {closeCircleOutline} from 'ionicons/icons';
-import { versionsNotes } from '@/scripts/details';
+import { versionsNotes } from '../../scripts/details';
 
 const emit = defineEmits<{
   (e: 'setOpen'): void

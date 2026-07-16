@@ -3,7 +3,7 @@ import {
   IonPage, IonTabs, IonRouterOutlet, IonTabBar, IonTabButton,
   IonIcon, IonLabel,
 } from '@ionic/vue';
-import { utilityToolsPages } from '@/scripts/appPages';
+import { utilityToolsPages } from '../../scripts/appPages';
 </script>
 
 <template>

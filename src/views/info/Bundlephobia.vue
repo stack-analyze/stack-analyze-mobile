@@ -3,10 +3,10 @@ import { ref, computed } from 'vue';
 import axios, { AxiosError } from 'axios';
 import { logoGithub } from 'ionicons/icons'
 
-import { BundlePhobia } from '@/interfaces/BundlephobiaInterface';
+import type { BundlePhobia } from '../../interfaces/BundlephobiaInterface';
 
-import { presentAlert } from '@/scripts/alertMsg';
-import { openToast } from '@/scripts/warning-message';
+import { presentAlert } from '../../scripts/alertMsg';
+import { openToast } from '../../scripts/warning-message';
 
 import {
   IonPage, IonContent, IonGrid, IonItem, IonBadge, IonButton, IonIcon,

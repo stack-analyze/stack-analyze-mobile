@@ -3,9 +3,9 @@ import { ref, watchEffect } from 'vue';
 import { closeCircleOutline } from 'ionicons/icons';
 import { type AxiosError } from 'axios';
 
-import { type Anime } from '@/interfaces/AnimeInterface';
-import animeApi from '@/api/animeApi';
-import { presentAlert } from '@/scripts/alertMsg';
+import { type Anime } from '../../interfaces/AnimeInterface';
+import animeApi from '../../api/animeApi';
+import { presentAlert } from '../../scripts/alertMsg';
 
 const { animeID } = defineProps<{ animeID: number }>();
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, useTemplateRef } from 'vue';
+import { ref } from 'vue';
 import axios, { AxiosError } from 'axios';
 
 import {
@@ -7,20 +7,16 @@ import {
   IonLabel, IonButton, IonBadge, IonFooter,
 } from '@ionic/vue'
 
-import { RecycleScroller } from 'vue-virtual-scroller'
-
 import { playOutline, pauseOutline } from 'ionicons/icons'
 
-import type { Station } from '@/interfaces/StationInterface';
+import type { Station } from '../interfaces/StationInterface';
 
-import { presentAlert } from '@/scripts/alertMsg';
-import { openToast } from '@/scripts/warning-message';
+import { presentAlert } from '../scripts/alertMsg';
+import { openToast } from '../scripts/warning-message';
 
 import StackToolbar from '@/components/main/StackToolbar.vue';
 import StackInput from '@/components/main/StackInput.vue';
 import StackButtons from '@/components/main/StackButtons.vue';
-
-RecycleScroller
 
 // 
 const audio = new Audio()

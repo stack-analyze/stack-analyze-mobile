@@ -9,7 +9,7 @@ import {
 
 import { homeOutline,logoInstagram, } from 'ionicons/icons'
 
-import { revealLinks } from '@/scripts/dataRevealLinks';
+import { revealLinks } from '../scripts/dataRevealLinks';
 
 onIonViewWillEnter(() => {
   menuController.enable(false);

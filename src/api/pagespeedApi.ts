@@ -1,5 +1,5 @@
 import axios from "axios";
-import { type Pagespeed } from "@/interfaces/PagespeedInterface";
+import { type Pagespeed } from "../interfaces/PagespeedInterface";
 
 type StrategyOpt = "mobile" | "desktop";
 

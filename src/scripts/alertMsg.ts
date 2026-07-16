@@ -1,4 +1,4 @@
-import { type Alert } from "@/interfaces/AlertInterface";
+import { type Alert } from "../interfaces/AlertInterface";
 import { alertController } from "@ionic/vue";
 
 export async function presentAlert({ msg, header, subHeader }: Alert) {

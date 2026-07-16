@@ -5,7 +5,7 @@ import {
   IonCard, IonCardHeader, IonCardContent, IonCardTitle,
 } from '@ionic/vue'
 
-import { Anime } from '@/interfaces/AnimeInterface';
+import type { Anime } from '../../interfaces/AnimeInterface';
 
 import ModalAnime from '../modals/ModalAnime.vue'
 

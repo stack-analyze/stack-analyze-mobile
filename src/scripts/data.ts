@@ -2,7 +2,7 @@ import {
   logoCodepen, logoGithub, logoInstagram, 
   logoTiktok, logoTwitch, logoYoutube 
 } from 'ionicons/icons'
-import { SocialMedia, type Card } from '@/interfaces/CardInterface'
+import type { SocialMedia, Card } from '../interfaces/CardInterface'
 import { versionsNotes } from './details';
 
 // card info
@@ -122,12 +122,6 @@ const recomendations: SocialMedia[] = [
     logo: logoTwitch,
     color: "twitch",
     link: "https://www.twitch.tv/dannyagii"
-  },
-  {
-    name: "miss stepfi polestar",
-    logo: logoTwitch,
-    color: "twitch",
-    link: "https://www.twitch.tv/stepfi_polestar"
   },
 ];
 

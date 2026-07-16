@@ -5,7 +5,7 @@ import {
   IonLabel, IonMenuToggle, IonItem, IonIcon
 } from '@ionic/vue'
 
-import { appPages } from '@/scripts/appPages';
+import { appPages } from '../scripts/appPages';
 
 const { menuId } = defineProps<{
   menuId: string;
