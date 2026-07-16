@@ -2,6 +2,7 @@
   "name": "stack-anlyze",
   "version": "2.8.0",
   "private": true,
+  "author": "stack-analyze",
   "type": "module",
   "description": "mobile or pwa based of stack-analyze npm version 1.0.7",
   "scripts": {
