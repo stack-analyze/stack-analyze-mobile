@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url'
-import { Agent } from 'node:http'
 
 import { defineConfig } from 'vite';
 

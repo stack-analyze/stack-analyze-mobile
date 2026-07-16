@@ -1,7 +1,7 @@
 import { computed, ref } from 'vue';
 import axios, { AxiosError } from 'axios';
-import { presentAlert } from '@/scripts/alertMsg';
-import { Quote } from '@/interfaces/QuotesInterface';
+import { presentAlert } from '../scripts/alertMsg';
+import { type Quote } from '../interfaces/QuotesInterface';
 
 interface QuoteFunction {
   [x: string]: () => Promise<void> | void

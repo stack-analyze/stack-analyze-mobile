@@ -6,12 +6,12 @@ import {
 	IonPage, IonContent, IonGrid, IonItem
 } from '@ionic/vue';
 
-import { type CssValidator } from '@/interfaces/CssValidatorInterface';
-import { useHttp } from '@/composables/webComposable';
-import { presentAlert } from '@/scripts/alertMsg';
-import { startWithHttp } from '@/scripts/data';
-import { webToolsApi } from '@/api/apiExtras';
-import { openToast } from '@/scripts/warning-message';
+import { type CssValidator } from '../../interfaces/CssValidatorInterface';
+import { useHttp } from '../../composables/webComposable';
+import { presentAlert } from '../../scripts/alertMsg';
+import { startWithHttp } from '../../scripts/data';
+import { webToolsApi } from '../../api/apiExtras';
+import { openToast } from '../../scripts/warning-message';
 
 import StackButtons from '@/components/main/StackButtons.vue';
 import StackInput from '@/components/main/StackInput.vue';
