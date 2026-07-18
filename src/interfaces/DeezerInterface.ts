@@ -16,11 +16,11 @@ export interface Deezer {
     md5_image:       string;
     genre_id:        number;
     nb_tracks:       number;
-    record_type:     RecordTypeEnum;
+    record_type:     'album' | 'ep' | 'single';
     tracklist:       string;
     explicit_lyrics: boolean;
     artist:          Artist;
-    type:            RecordTypeEnum;
+    type:            'album' | 'ep' | 'single';
 }
 
 export interface Artist {
@@ -33,15 +33,5 @@ export interface Artist {
     picture_big:    string;
     picture_xl:     string;
     tracklist:      string;
-    type:           ArtistType;
-}
-
-export enum ArtistType {
-    Artist = "artist",
-}
-
-export enum RecordTypeEnum {
-    Album = "album",
-    Ep = "ep",
-    Single = "single",
+    type:           'artist';
 }
