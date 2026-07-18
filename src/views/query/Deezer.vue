@@ -31,9 +31,8 @@ const getAlbums = async () => {
 	}
 
 	try {
-		const { data } = await axios.get('/deezer/search/album', {
-			params: { q: query.value, limit: 100 }
-		})
+		const api = `https://corsproxy.io/?https://api.deezer.com/?q=${query.value}&limit=100`
+		const { data } = await axios.get(api)
 
 		albums.value = data.data
 	} catch (err) {

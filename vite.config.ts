@@ -107,18 +107,4 @@ export default defineConfig({
       "@": fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  server: {
-    proxy: {
-      '/shortwave': {
-        target: 'https://shortwave.live/',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/shortwave/, ''),
-      },
-      '/deezer': {
-        target: 'https://api.deezer.com/',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/deezer/, ''),
-      },
-    },
-  },
 });

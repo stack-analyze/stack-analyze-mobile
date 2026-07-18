@@ -4,9 +4,7 @@
     {
       "source": "/(.*)",
       "destination": "/"
-    },
-    { "source": "/shortwave", "destination": "https://shortwave.live/" },
-    { "source": "/deezer", "destination": "https://api.deezer.com/" }
+    }
   ],
   "headers": [
     {
