@@ -8,6 +8,22 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    proxy: {
+      '/shortwave': {
+        target: 'https://shortwave.live',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/shortwave/, '')
+      }
+    },
+    headers: {
+      "access-control-allow-credentials": 'true',
+      "access-control-allow-origin": '*',
+      'access-control-allow-methods': 'GET,OPTIONS,PATCH,DELETE,POST,PUT',
+      'access-control-allow-headers': 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+    }
+  },
   plugins: [
     Vue({
       template: {

@@ -29,8 +29,11 @@ const shortwaveFreqValidate = computed(() => shortwaveFreq.value >= MIN_SW_FREQ 
 
 const getStations = async () => {
   try {
-    const api = `https://corsproxy.io/?https://shortwave.live/khz?q=${shortwaveFreq.value}`
-    const { data } = await axios.get(api)
+    /* const api = `https://corsproxy.io/?https://shortwave.live/khz?q=${shortwaveFreq.value}`
+    const { data } = await axios.get(api) */
+    const {data} = await axios.get('/shortwave/khz', {
+      params: { q: shortwaveFreq.value }
+    })
 
     const parser = new DOMParser()
 
