@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { AxiosError } from 'axios'
+import axios, { AxiosError } from 'axios'
 import { presentAlert } from '../../scripts/alertMsg'
 
 import {
