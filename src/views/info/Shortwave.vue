@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 
-import axios, { type AxiosError } from 'axios';
+import { type AxiosError } from 'axios';
 import { presentAlert } from '../../scripts/alertMsg.ts';
 
 import {
@@ -10,6 +10,7 @@ import {
 } from "@ionic/vue";
 import StackToolbar from "@/components/main/StackToolbar.vue";
 import StackButtons from '../../components/main/StackButtons.vue';
+import { webToolsApi } from '../../api/apiExtras.ts';
 
 type ShortwaveStations = {
   name: string
@@ -29,23 +30,11 @@ const shortwaveFreqValidate = computed(() => shortwaveFreq.value >= MIN_SW_FREQ 
 
 const getStations = async () => {
   try {
-    /* const api = `https://corsproxy.io/?https://shortwave.live/khz?q=${shortwaveFreq.value}`
-    const { data } = await axios.get(api) */
-    const {data} = await axios.get('/shortwave/khz', {
-      params: { q: shortwaveFreq.value }
+    const {data} = await webToolsApi.get('/shortwave', {
+      params: { freq: shortwaveFreq.value }
     })
 
-    const parser = new DOMParser()
-
-    const page = parser.parseFromString(data, 'text/html')
-
-    shortwaveStations.value = [...page.querySelectorAll("tbody tr")].map((el) => ({
-      name: el.querySelector('#station')!.textContent,
-      lang: el.querySelector('#language')!.textContent,
-      days: el.querySelector('#days')!.textContent,
-      startUTC: el.querySelector('#start')!.textContent,
-      endUTC: el.querySelector('#end')!.textContent,
-    }))
+    shortwaveStations.value = data
 
   } catch (err) {
     presentAlert({

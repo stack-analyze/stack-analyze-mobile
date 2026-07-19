@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import axios, { AxiosError } from 'axios'
+import { AxiosError } from 'axios'
 
 import {
 	IonPage, IonContent, IonItem, IonInput,
@@ -15,6 +15,7 @@ import { openToast } from '../../scripts/warning-message'
 
 import StackToolbar from '@/components/main/StackToolbar.vue'
 import StackButtons from '@/components/main/StackButtons.vue'
+import { webToolsApi } from '../../api/apiExtras'
 
 // states
 const query = ref('')
@@ -31,8 +32,9 @@ const getAlbums = async () => {
 	}
 
 	try {
-		const api = `https://corsproxy.io/?https://api.deezer.com/?q=${query.value}&limit=100`
-		const { data } = await axios.get(api)
+		const { data } = await webToolsApi.get('/deezer', {
+			params: { search: query.value }
+		})
 
 		albums.value = data.data
 	} catch (err) {

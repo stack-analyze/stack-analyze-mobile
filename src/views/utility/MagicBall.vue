@@ -11,6 +11,7 @@ import {
 import StackToolbar from '@/components/main/StackToolbar.vue';
 import StackButtons from '@/components/main/StackButtons.vue';
 import type { MagicBall } from '../../interfaces/MagicBallInterface';
+import { webToolsApi } from '../../api/apiExtras';
 
 // static
 const languageList = ['es', 'en']
@@ -36,8 +37,9 @@ const errorMessage = ref('')
 
 const initMagicBall = async () => {
   try {
-    const api = `https://corsproxy.io/?https://eightballapi.com/api/biased?question=${question.value}&locale=${lang.value}`
-    const { data } = await axios.get(api)
+    const { data } = await webToolsApi.get('magicball', {
+      params: { question: question.value, locale: lang.value }
+    })
 
     magicBall.value = data
     magicBallSaying.value = localeKeyword[lang.value]
@@ -71,7 +73,7 @@ const ClearMagicBall = () => {
             <ion-select placeholder="enter a language" label="language:" interface="popover"
               :interface-options="popoverOptions" v-model="lang">
               <ion-select-option v-for="option in languageList" :value="option" :key="option">{{ option
-                }}</ion-select-option>
+              }}</ion-select-option>
             </ion-select>
           </ion-col>
         </ion-row>
