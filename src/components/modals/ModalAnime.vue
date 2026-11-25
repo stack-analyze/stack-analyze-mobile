@@ -7,6 +7,12 @@ import { type Anime } from '../../interfaces/AnimeInterface';
 import animeApi from '../../api/animeApi';
 import { presentAlert } from '../../scripts/alertMsg';
 
+import { 
+  IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonIcon,
+  IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle,
+  IonCardContent, IonItem, IonLabel, IonText, IonAccordion, IonAccordionGroup
+} from '@ionic/vue'
+
 const { animeID } = defineProps<{ animeID: number }>();
 
 const emit = defineEmits<{
@@ -44,7 +50,7 @@ watchEffect(async () => {
   <ion-content>
     <ion-card>
       <ion-card-header>
-        <ion-img 
+        <img 
           :src="animeSchema.images?.webp?.image_url" 
           :alt="animeSchema.title" 
           class="poster" 

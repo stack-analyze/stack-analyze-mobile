@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {
-  IonCol, IonItem, IonImg,
+  IonCol, IonItem,
   IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle,
   IonCardContent,
 } from '@ionic/vue'
@@ -23,7 +23,7 @@ const { twitchUser } = defineProps<{
   >
     <ion-card mode="ios">
       <ion-card-header mode="md">
-        <ion-img
+        <img
           :src="twitchUser.profile_image_url"
           :alt="twitchUser.login"
         />

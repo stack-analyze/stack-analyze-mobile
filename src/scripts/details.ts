@@ -5,6 +5,15 @@ type detailsVersion = {
 
 export const versionsNotes: detailsVersion[] = [
   {
+    version: '2.9.0',
+    details: `
+      added:
+        1. currency info
+      changed: 
+        1. migrate ion-img to native img tag
+    `
+  },
+  {
     version: '2.8.0',
     details: `
     added:

@@ -15,9 +15,6 @@ import '@ionic/vue/css/ionic-swiper.css';
 /* Theme variables */
 import './theme/variables.css';
 
-/* vue virtual scroll css */
-import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
-
 /* general styles */
 import './main.css';
 

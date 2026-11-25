@@ -4,7 +4,7 @@ import { register } from 'swiper/element/bundle';
 
 import {
   IonicSlides, IonPage, IonContent, IonItem,
-  IonInput, IonGrid, IonChip, IonCard, IonImg,
+  IonInput, IonGrid, IonChip, IonCard,
   IonCardHeader, IonCardTitle, IonCardContent,
 } from "@ionic/vue";
 
@@ -113,7 +113,7 @@ register();
       <ion-card mode="ios">
         <swiper-container :modules="modules" :loop="true">
           <swiper-slide v-for="(sprite, i) in pokesprites" :key="i">
-            <ion-img :src="sprite" class="pokemon" alt="default sprite" />
+            <img :src="sprite" class="pokemon" alt="default sprite" />
           </swiper-slide>
         </swiper-container>
 

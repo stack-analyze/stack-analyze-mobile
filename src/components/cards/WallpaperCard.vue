@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {
-  IonCol, IonCard, IonImg, IonButton
+  IonCol, IonCard, IonButton
 } from '@ionic/vue';
 
 defineProps<{
@@ -12,7 +12,7 @@ defineProps<{
 <template>
 	<ion-col>
 		<ion-card class="ion-padding">
-			<ion-img :src="path" :alt="name" />
+			<img :src="path" :alt="name" />
 			
 			<ion-button
 				color="secondary"

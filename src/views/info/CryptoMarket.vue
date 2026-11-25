@@ -8,7 +8,7 @@ import { presentAlert } from '../../scripts/alertMsg';
 
 import {
   IonPage, IonContent, IonRefresher, IonRefresherContent,
-  IonSearchbar, IonList, IonItem, IonAvatar, IonImg,
+  IonSearchbar, IonList, IonItem, IonAvatar,
   IonLabel, IonText, IonNote
 } from '@ionic/vue'
 import StackToolbar from '@/components/main/StackToolbar.vue';
@@ -105,7 +105,7 @@ showLoading();
       <ion-list class="scroller" inset>
         <ion-item v-for="coin of filterCoins" :key="coin.id">
           <ion-avatar slot="start">
-            <ion-img
+            <img
               :class="cryptoShadow(coin.price_change_percentage_24h)"
               :src="coin.image"
               :alt="coin.name"

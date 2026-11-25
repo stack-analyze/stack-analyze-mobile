@@ -4,7 +4,7 @@ import axios, { AxiosError } from 'axios';
 
 import {
   IonPage, IonContent, IonList, IonItem, IonNote,
-  IonThumbnail, IonImg, IonLabel, IonText,
+  IonThumbnail, IonLabel, IonText,
 } from '@ionic/vue'
 
 import type { PotterCharacter } from '../../interfaces/PotterInfoInterface';
@@ -73,7 +73,7 @@ const clearSearch = () => {
       <ion-list v-for="character of potterCharacters">
       	<ion-item>
       		<ion-thumbnail slot="start">
-      		  <ion-img 
+      		  <img 
       		    :src="character.image" 
       		    :alt="character.nickname" 
       		  />

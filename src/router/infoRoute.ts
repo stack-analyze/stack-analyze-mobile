@@ -24,6 +24,11 @@ const infoRoute: RouteRecordRaw = {
       component: () => import('@/views/info/CryptoMarket.vue')
     },
     {
+      path: "currency",
+      name: "currency info",
+      component: () => import('@/views/info/CurrencyInfo.vue')
+    },
+    {
       path: "bundlephobia",
       name: "bundlephobia info",
       component: () => import('@/views/info/Bundlephobia.vue')

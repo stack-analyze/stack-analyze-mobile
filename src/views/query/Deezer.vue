@@ -4,7 +4,7 @@ import { AxiosError } from 'axios'
 
 import {
 	IonPage, IonContent, IonItem, IonInput,
-	IonGrid, IonRow, IonCol, IonImg,
+	IonGrid, IonRow, IonCol,
 	IonCard, IonCardHeader, IonCardTitle,
 	IonCardSubtitle, IonCardContent, IonList,
 } from '@ionic/vue'
@@ -74,7 +74,7 @@ const getLyricsType = (isExplicit: boolean) => isExplicit
 					<ion-col size-lg="3" size-md="4" size-sm="6" size="12" v-for="album of albums">
 						<ion-card>
 							<ion-card-header>
-								<ion-img :src="album.cover_xl" :alt="album.id.toString()" />
+								<img :src="album.cover_xl" :alt="album.id.toString()" />
 
 								<ion-card-title>{{ album.title }}</ion-card-title>
 

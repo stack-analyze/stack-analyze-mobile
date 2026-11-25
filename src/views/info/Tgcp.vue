@@ -11,7 +11,7 @@ import {
   IonPage, IonContent, IonGrid, IonRow, IonCol,
   IonInput, IonSelect, IonSelectOption, IonItem,
   IonCard, IonCardHeader, IonCardContent, IonCardTitle,
-  IonCardSubtitle, IonImg, IonLabel, IonBadge, IonIcon, IonText,
+  IonCardSubtitle, IonLabel, IonBadge, IonIcon, IonText,
 } from '@ionic/vue'
 
 import StackToolbar from '@/components/main/StackToolbar.vue'
@@ -110,7 +110,7 @@ const clearCardInfo = () => {
 
       <ion-card class="stack-card" mode="ios">
         <ion-card-header mode="md">
-          <ion-img class="github-img" :src="tcgImage" alt="card" />
+          <img class="github-img" :src="tcgImage" alt="card" />
           <ion-card-title :color="tcgCardInfo.suffix === 'EX' ? 'warning' : undefined">
             {{ tcgCardName }}
           </ion-card-title>

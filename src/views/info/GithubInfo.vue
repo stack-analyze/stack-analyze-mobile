@@ -7,7 +7,7 @@ import { presentAlert } from '../../scripts/alertMsg'
 import { openToast } from '../../scripts/warning-message'
 
 import {
-  IonPage, IonContent, IonGrid, IonLabel, IonText, IonItem, IonImg,
+  IonPage, IonContent, IonGrid, IonLabel, IonText, IonItem,
   IonRow, IonCol, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle,
   IonCardContent
 } from '@ionic/vue'
@@ -76,7 +76,7 @@ const clearGitUser = () => {
       
       <ion-card class="stack-card" mode="ios">
         <ion-card-header mode="md">
-          <ion-img 
+          <img 
             :src="githubUser.avatar_url || '/assets/img/No-image-found.jpg'"
             :alt="githubUser.login || 'profile github'" 
             class="github-img"

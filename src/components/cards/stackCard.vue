@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {
-  IonCol, IonImg, IonButton, IonCard,
+  IonCol, IonButton, IonCard,
   IonCardHeader, IonCardContent, IonCardTitle, IonCardSubtitle,
 } from '@ionic/vue'
 
@@ -27,7 +27,7 @@ const errorImg = (e:Event) => {
   >
     <ion-card mode="ios">
       <ion-card-header>
-        <ion-img
+        <img
           :src="`https://stack-analyze.web.app/logos/${stackData.icon}`"
           :alt="stackData.name"
           class="stack-img"

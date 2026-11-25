@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import {
-  IonCol, IonImg, IonButton, IonModal,
+  IonCol, IonButton, IonModal,
   IonCard, IonCardHeader, IonCardContent, IonCardTitle,
 } from '@ionic/vue'
 
@@ -30,7 +30,7 @@ const fallbackImg = (e: Event) => {
   <ion-col>
     <ion-card>
       <ion-card-header>
-        <ion-img
+        <img
           :src="animeData.images.webp.image_url"
           :alt="animeData.title"
           class="poster"

@@ -8,7 +8,7 @@ import { warningOutline } from 'ionicons/icons';
 import {
   IonPage, IonContent, IonGrid, IonRow, IonCol, IonItem,
   IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle,
-  IonCardContent, IonLabel, IonText, IonImg, IonToast
+  IonCardContent, IonLabel, IonText, IonToast
 } from '@ionic/vue';
 
 import StackToolbar from '@/components/main/StackToolbar.vue';
@@ -33,7 +33,7 @@ watchEffect(async () => {
     <ion-content>
       <ion-card mode="ios" class="stack-card">
         <ion-card-header>
-          <ion-img src="/assets/hardware-info/cpu.svg" alt="hardware info img" class="hardware-img" />
+          <img src="/assets/hardware-info/cpu.svg" alt="hardware info img" class="hardware-img" />
           <ion-card-title>{{ modelInfo.model }}</ion-card-title>
           <ion-card-subtitle>
             os:

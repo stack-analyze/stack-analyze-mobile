@@ -6,7 +6,7 @@ import {
   layersOutline, lockClosedOutline, logoTwitch, musicalNoteOutline,
   newspaperOutline, peopleOutline, radioOutline, readerOutline, searchCircleOutline,
   searchOutline, sparklesOutline, terminalOutline, thumbsUpOutline, videocamOutline, walletOutline,
-  eyeOutline, filterOutline
+  eyeOutline, filterOutline, cashOutline
 } from 'ionicons/icons'
 
 import { type Pages } from "../interfaces/RouteInterface";
@@ -49,6 +49,11 @@ const infoToolsPages: Pages[] = [
     title: "crypto",
     url: "/info/crypto",
     icon: walletOutline
+  },
+  {
+    title: 'currency',
+    url: '/info/currency',
+    icon: cashOutline
   },
   {
     title: "bitly",

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {
-  IonMenu, IonHeader, IonToolbar, IonAvatar, IonImg,
+  IonMenu, IonHeader, IonToolbar, IonAvatar,
   IonTitle, IonContent, IonItemGroup, IonItemDivider,
   IonLabel, IonMenuToggle, IonItem, IonIcon
 } from '@ionic/vue'
@@ -17,7 +17,7 @@ const { menuId } = defineProps<{
     <ion-header>
       <ion-toolbar class="toolbar ion-text-center">
         <ion-avatar class="horizontal logo">
-          <ion-img src="/assets/img/logo-mobile.png" alt="icon logo"></ion-img>
+          <img src="/assets/img/logo-mobile.png" alt="icon logo"/>
         </ion-avatar>
         <ion-title>stack-analyze</ion-title>
       </ion-toolbar>

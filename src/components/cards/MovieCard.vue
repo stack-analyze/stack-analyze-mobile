@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 
 import {
-  IonCol, IonImg, IonButton, IonModal,
+  IonCol, IonButton, IonModal,
   IonCard, IonCardHeader, IonCardContent, IonCardTitle,
 } from '@ionic/vue'
 
@@ -28,7 +28,7 @@ const poster = movieData?.poster_path
   <ion-col>
     <ion-card>
       <ion-card-header>
-        <ion-img :src="poster" :alt="movieData.title" />
+        <img :src="poster" :alt="movieData.title" />
       </ion-card-header>
       <ion-card-content>
         <ion-card-title>{{ movieData.title }}</ion-card-title>

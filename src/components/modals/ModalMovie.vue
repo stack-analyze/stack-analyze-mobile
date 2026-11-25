@@ -6,6 +6,12 @@ import movieApi from '../../api/movieApi';
 import type { Movie } from '../../interfaces/MovieInterface';
 import { presentAlert } from '../../scripts/alertMsg';
 
+import { 
+  IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonIcon,
+  IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle,
+  IonCardContent, IonItem, IonLabel,
+} from '@ionic/vue'
+
 const { movieId } = defineProps<{
   movieId: number;
 }>();
@@ -47,7 +53,7 @@ watchEffect(async () => {
   <ion-content>
     <ion-card>
       <ion-card-header>
-        <ion-img 
+        <img 
           :src="
             movieResult?.poster_path
               ? `http://image.tmdb.org/t/p/w500/${movieResult.poster_path}`
